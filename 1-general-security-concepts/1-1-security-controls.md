@@ -1,5 +1,4 @@
 # 1.1 Compare and contrast various types of security controls
-
 *Porównaj ze sobą i wskaż różnice pomiędzy różnymi formami kontroli bezpieczeństwa, których zadaniem jest zapobieganie, wykrywanie oraz minimalizowanie skutków różnych typów zagrożeń.*
 
 Termin ***security controls*** można przetłumaczyć jako **środki bezpieczeństwa** lub **formy kontroli bezpieczeństwa**. Są to **wszelkiego rodzaju środki, których zadaniem jest szeroko pojęta ochrona organizacji wraz z jej zasobami (fizycznymi oraz wirtualnymi), polegająca na minimalizacji lub eliminacji ryzyka wystąpienia incydentów bezpieczeństwa**. Mówiąc inaczej, *security controls* są częścią, a właściwie rezultatem, procesu zarządzania ryzykiem i mają na celu zminimalizowanie lub całkowite wyeliminowanie (o ile to możliwe) potencjalnych zagrożeń.
