@@ -131,6 +131,53 @@ Projektując rozwiązania w naszej organizacji, powinniśmy się dobrze zastanow
 - **Wygoda użytkowników** - wybrany model powinien zapewniać odpowiedni poziom bezpieczeństwa, ale też nie powinien niepotrzebnie utrudniać pracy pracownikom.
 - **Złożoność** - jeśli nasze wymagania są specyficzne i rozważamy skomplikowane scenariusze, powinniśmy się zastanowić nad modelami, które oferują większą kontrolę.
 - **Skalowalność** - na początku proste modele wydają się być wystarczające, jednak miejmy na uwadze, że organizacja będzie się rozwijać i może okazać się, że musimy szybko dostosować się do nowych realiów.
+# Gap analysis
+*Gap analysis* to szeroki termin stosowany w zarządzaniu, który w dosłownym tłumaczeniu oznacza *analizę luk*. Jest to **proces polegający na identyfikacji oraz analizie różnic pomiędzy stanem obecnym, a pożądanym**.
+
+W obszarze bezpieczeństwa IT, analiza luk (ang. *security gap analysis*) sprowadza się do **ustalenia, jakie [środki bezpieczeństwa](https://vilya.pl/sy0-701-security-controls-pl/) (ang. *security controls*) należy wdrożyć bądź poprawić w naszej organizacji, żeby osiągnąć pożądany stan bezpieczeństwa, zdefiniowany na podstawie ustalonych wytycznych**. Innymi słowy, porównujemy aktualnie stosowane środki, z tymi, które trzeba docelowo wdrożyć. Zidentyfikowane odstępstwa powinniśmy potraktować jako potencjalne ryzyko, którym należy się niezwłocznie zająć, jeśli tylko dostępne zasoby na to pozwalają.
+
+Prawidłowo przeprowadzona analiza jest procesem złożonym, ponieważ **uwzględnia aspekty bezpieczeństwa dotyczące różnych obszarów organizacji** (systemy, polityki bezpieczeństwa, pracownicy) oraz wymaga dużego nakładu pracy badawczej, szczególnie jeśli robimy to po raz pierwszy.
+
+Różne poziomy organizacji wymagają przeważnie różnych środków bezpieczeństwa. Przykładowo, w przypadku zasobów ludzkich możemy spróbować oszacować obecny stan wiedzy pracowników nt. zasad bezpieczeństwa IT obowiązujących w firmie i jeśli okaże się niewystarczający, powinniśmy przeprowadzić stosowne szkolenia. Natomiast dla systemów i usług możemy sprawdzić, czy na pewno wdrożyliśmy odpowiednie rozwiązania, stosowane obecnie w branży (np. czy używamy odpowiedniego algorytmu hashującego do obliczania skrótów haseł, przechowywanych w bazie danych).
+
+Osoby odpowiedzialne za bezpieczeństwo informacji w firmie, powinny cyklicznie przeprowadzać procedury *gap analysis*, żeby stale monitorować stan aktualnie używanych środków bezpieczeństwa. Warto przy okazji wspomnieć, że sam proces analizy luk wydaje się bardzo podobny do procesu analizy ryzyka (ang. *risk assessment*). Są to jednak dwie odrębne procedury, ponieważ *gap analysis*, oprócz wskazania istniejących *niedociągnięć*, skutkuje również dokładnym planem działania wraz z kosztami jego wdrożenia.
+
+Proces analizy luk może okazać się dużym wyzwaniem, ponieważ nie ma na to jednej, uniwersalnej procedury. Jednakże działania podejmowane przez różne podmioty, bardzo często mają wspólne elementy, opisane poniżej.
+## 1. Określenie stanu docelowego
+To, do czego dąży dana organizacja pod względem bezpieczeństwa IT, zależy tak naprawdę od samej organizacji - jej celów, obszarów działalności, regulacji prawnych itp. Oznacza to, że każda firma może zupełnie inaczej zdefiniować stan docelowy, co wymaga indywidualnego podejścia do procesu *gap analysis*.
+
+Nic jednak nie stoi na przeszkodzie, żeby wykorzystać w tym celu znane i cenione w branży standardy bezpieczeństwa IT, takie jak [ISO/IEC 27001](https://www.iso.org/standard/27001) lub [NIST SP 800-171](https://csrc.nist.gov/pubs/sp/800/171/r3/final). Dążenie do zgodności z formalnymi standardami jest często niezbędne dla wielu firm, jeśli planują one uzyskać określony certyfikat, który z kolei umożliwi branie udziału w niektórych przetargach. Nie wspominając o prawnych wymogach zgodności z wybranymi standardami dla instytucji działających w obszarach, gdzie bezpieczeństwo informacji jest krytyczne.
+## 2. Zebranie informacji o aktualnym stanie
+Kiedy mamy już zdefiniowane wytyczne, czas na rzetelną ocenę obecnej sytuacji i zebranie szczegółowych informacji o aktualnie stosowanych środkach bezpieczeństwa.
+
+Punktem wyjściowym do tego, jakie konkretnie dane należy zebrać oraz z jakich obszarów (m.in. systemy, procedury, pracownicy), może być dokument z ustalonymi wcześniej wytycznymi. Na przykładzie oficjalnego dokumentu [NIST SP 800-171r3](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r3.pdf), zatytułowanego *Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations*, widzimy szerokie obszary związane z bezpieczeństwem IT, które są podzielone na węższe kategorie. Natomiast w ramach wybranych kategorii znajdziemy ogólne opisy dopasowanych środków bezpieczeństwa.
+
+Na przykład, powyższy dokument zawiera bardzo ogólną sekcję *3.1 Access Control* (kontrola dostępu), która jest podzielona na wiele różnych aspektów związanych z ochroną dostępu do informacji. Dwa z nich to:
+- *03.01.01 Account Management* - znajdziemy tutaj opis powszechnie stosowanych metod zarządzania kontami użytkowników w systemach i aplikacjach, gdzie istotny jest kontrolowany dostęp do zasobów.
+- *03.01.05 Least Privilege* - opisuje w ogólny sposób, jak należy poprawnie wdrożyć zasadę najmniejszego uprzywilejowania.
+
+Dzięki rozbiciu rozległych obszarów na mniejsze elementy, dużo łatwiej jest stworzyć plan działania i monitorować postępy.
+## 3. Przygotowanie szczegółowego raportu
+Wszystkie zebrane do tej pory informacje powinniśmy zawrzeć w **dokumencie podsumowującym, który zaprezentuje w czytelny sposób różnice pomiędzy sytuacją obecną i pożądaną**. Do prostej wizualizacji stanu faktycznego często używa się kolorów, na przykład:
+- Kolorem zielonym można oznaczyć te obszary, które już pokrywają się z postawionymi celami.
+- Kolor żółty przedstawiałby obszary, w których docelowe wymagania są częściowo spełnione, ale wymagają jeszcze dopracowania.
+- Kolor czerwony oznaczałby całkowity bądź częściowy brak oczekiwanych środków bezpieczeństwa.
+
+Poniżej znajduje się wycinek z przykładowego raportu. Należy oczywiście pamiętać, że każda organizacja może posiadać odmienne potrzeby, cele oraz priorytety, więc także dokumentacja może wyglądać zupełnie inaczej, niż ta przedstawiona w poniższym przykładzie.
+
+![[sy0-701-gap-analysis-example.png]]
+Źródło: opracowanie własne (plik źródłowy: [[sy0-701-gap-analysis-example.xltx]]).
+
+Kiedy już posiadamy zestawienie aktualnego stanu środków bezpieczeństwa z docelowymi, **powinniśmy w ostatecznym raporcie określić konkretne działania prowadzące do zniwelowania wykrytych różnic. Dysponując listą zdefiniowanych kroków, jesteśmy również w stanie oszacować koszty ich realizacji**. W powyższym przykładzie podano jedynie ogólne działania, jakie należy podjąć. W pełnym raporcie końcowym można zawrzeć bardziej szczegółowy plan wdrożenia. Oczywiście w taki sposób, żeby pełna dokumentacja zachowała niezbędną czytelność.
+
+Podsumowując, pełny raport z procesu analizy luk powinien (w większości przypadków) zawierać następujące elementy:
+- Wprowadzenie, informujące o zakresie oraz intencji procesu analizy.
+- Wymagania, które należy spełnić, żeby osiągnąć docelowy standard bezpieczeństwa.
+- Lista środków bezpieczeństwa, które są aktualnie stosowane, wraz z ich obecnym stanem.
+- Informacje o tym, które z obecnych środków wymagają dostosowania. Jeśli w danym obszarze w ogóle brakuje odpowiednich zabezpieczeń, również należy o tym zakomunikować i zaproponować odpowiednie rozwiązania.
+- Przewidywany czas realizacji (np. drugi kwartał bieżącego roku).
+- Konkretne kroki, które należy podjąć, żeby osiągnąć wyznaczone cele.
+
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
@@ -142,3 +189,4 @@ Projektując rozwiązania w naszej organizacji, powinniśmy się dobrze zastanow
 - [Na Styku Sieci: AAA, RADIUS i TACACS+ – podstawy](https://www.nastykusieci.pl/aaa-radius-tacacs/)
 - [Fred B. Schneider: Authentication of People](https://www.cs.cornell.edu/courses/cs513/2007fa/paper.chptr05.pdf)
 -  [The Different Types of Authorization Models](https://www.keepersecurity.com/blog/2024/03/19/the-different-types-of-authorization-models/)
+- [Centraleyes: What is a Gap Analysis?](https://www.centraleyes.com/glossary/security-gap-analysis/)
