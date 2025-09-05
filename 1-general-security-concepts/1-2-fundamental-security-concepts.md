@@ -48,6 +48,21 @@ Systemy należy projektować i budować w taki sposób, żeby charakteryzowały 
 - **Monitorowanie** działania systemu (sieci, serwerów, aplikacji) z ustawionymi powiadomieniami (ang. *alerts*) o ewentualnych anomaliach.
 - Regularne **aktualizowanie oprogramowania** celem utrzymania systemów w możliwie *świeżym* stanie (ang. *up-to-date*). Dzięki temu minimalizujemy szansę wystąpienia usterek przez błędy w oprogramowaniu.
 - *Business Continuity Plan* (BCP) - dokument określający środki i działania, jakie należy podjąć, żeby zapewnić ciągłość działania organizacji.
+# Non-repudiation
+Zasada **niezaprzeczalności** (ang. *non-repudiation*), oprócz bycia jednym z fundamentalnych zasad bezpieczeństwa IT, jest również istotnym elementem kryptografii. **Zapewnia, że otrzymana wiadomość, w niezmienionej formie, została wysłana przez domniemanego nadawcę, który teraz nie może tego faktu się wyprzeć**.
+
+Aby osiągnąć *niezaprzeczalność* w cyfrowym świecie, stosuje się m.in. **podpis elektroniczny** (ang. *digital signature*), który można traktować jako wirtualny odcisk palca (ang. *fingerprint*). Podpis cyfrowy jest w pewnym stopniu odpowiednikiem odręcznego podpisu na fizycznym dokumencie.
+
+Mechanizmy kryptograficzne, wykorzystywane w podpisach elektronicznych, są w stanie dostarczyć nam **dowód niezmienności** (ang. *proof of integrity*) oraz **dowód pochodzenia** (ang. *proof of origin*), co przekłada się na zapewnienie wysokiego stopnia autentyczności.
+
+***Proof of integrity*** - dowód niezmienności, dzięki któremu jesteśmy w stanie zweryfikować, że otrzymane informacje są dokładnie takie same, jak te wysłane przez nadawcę. Dane są spójne i nic nie zostało w nich zmienione od chwili nadania, aż do momentu odczytania.
+- Osiągalny dzięki mechanizmowi [hashowania](https://vilya.pl/sy0-601-metody-lamania-hasel/#hash-calculation), czyli obliczania [skrótu](https://vilya.pl/sy0-601-metody-lamania-hasel/#hash-definicja) (ang. *hash*), reprezentującego dane w postaci krótkiego ciągu znaków o stałej długości. Hash, dzięki swoim właściwościom, pomaga stwierdzić, czy treść wiadomości nie uległa zmianie.
+- Jeśli stwierdzimy, że hash dołączony do otrzymanych danych różni się od tego, który sami obliczyliśmy (zakładając, że używamy dokładnie tej samej funkcji hashującej), powinno to wzbudzić nasze podejrzenia. Oryginalna wiadomość mogła zostać uszkodzona lub celowo zmieniona.
+- Należy pamiętać, ze sam skrót nie daje możliwości weryfikacji źródła wiadomości.
+
+***Proof of origin*** - dowód pochodzenia daje możliwość weryfikacji, kto wysłał nam wiadomość i stanowi najważniejszy element zasady niezaprzeczalności. Do utworzenia podpisu cyfrowego przez nadawcę wykorzystywany jest jej/jego **klucz prywatny** (ang. *private key*), a do weryfikacji tegoż podpisu **klucz publiczny** (ang. *public key*).
+
+Uwaga! Należy pamiętać, że przedstawiona zasada niezaprzeczalności opiera się na założeniu, że klucz prywatny jest w posiadaniu domniemanego nadawcy i jest dobrze chroniony.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
