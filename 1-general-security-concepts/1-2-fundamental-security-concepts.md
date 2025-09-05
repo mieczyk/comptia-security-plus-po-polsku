@@ -165,8 +165,8 @@ Wszystkie zebrane do tej pory informacje powinniśmy zawrzeć w **dokumencie pod
 
 Poniżej znajduje się wycinek z przykładowego raportu. Należy oczywiście pamiętać, że każda organizacja może posiadać odmienne potrzeby, cele oraz priorytety, więc także dokumentacja może wyglądać zupełnie inaczej, niż ta przedstawiona w poniższym przykładzie.
 
-![[sy0-701-gap-analysis-example.png]]
-Źródło: opracowanie własne (plik źródłowy: [[sy0-701-gap-analysis-example.xltx]]).
+![Gap analysis example](https://github.com/mieczyk/comptia-security-plus-po-polsku/blob/main/media/1-2-gap-analysis-example.png)
+Źródło: opracowanie własne.
 
 Kiedy już posiadamy zestawienie aktualnego stanu środków bezpieczeństwa z docelowymi, **powinniśmy w ostatecznym raporcie określić konkretne działania prowadzące do zniwelowania wykrytych różnic. Dysponując listą zdefiniowanych kroków, jesteśmy również w stanie oszacować koszty ich realizacji**. W powyższym przykładzie podano jedynie ogólne działania, jakie należy podjąć. W pełnym raporcie końcowym można zawrzeć bardziej szczegółowy plan wdrożenia. Oczywiście w taki sposób, żeby pełna dokumentacja zachowała niezbędną czytelność.
 
