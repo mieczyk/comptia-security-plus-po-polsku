@@ -178,7 +178,6 @@ Podsumowując, pełny raport z procesu analizy luk powinien (w większości przy
 - Przewidywany czas realizacji (np. drugi kwartał bieżącego roku).
 - Konkretne kroki, które należy podjąć, żeby osiągnąć wyznaczone cele.
 # Zero Trust
----
 Wykaz skrótów używanych w opracowaniu zagadnienia *Zero Trust*:
 - **ZT** = *Zero Trust*.
 - **PEP** = *Policy Enforcement Point*.
@@ -229,7 +228,7 @@ Jeśli chcemy wdrażać poważniejsze systemy, powinniśmy zrozumieć w jaki spo
 
 Przyjrzyjmy się ogólnemu diagramowi reprezentującemu ideę architektury *zero trust* (uwaga: schemat pokazuje jedynie logiczny podział elementów architektury ZT i jej fizyczna realizacja może się różnić):
 
-![[1-2-zero-trust-diagram-NIST.png]]
+![Zero Trust diagram - NIST](https://github.com/mieczyk/comptia-security-plus-po-polsku/blob/main/media/1-2-zero-trust-diagram-NIST.png)
 Źródło: [NIST SP-800-207 - Zero Trust Architecture](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf). Wersję polską można ściągnąć tutaj: [NSC 800-207](https://www.gov.pl/attachment/8659d8de-6a83-4860-bcd1-d0648fbe9ead) (jest trochę starsza i w mojej ocenie niezbyt trafnie przetłumaczona).
 
 Podmiot (ang. *subject*) próbuje uzyskać dostęp do zasobu organizacji (ang. *enterprise resource*) z niezaufanego systemu. Każde żądanie dostępu przechodzi przez punkt kontrolny, zwany *Policy Enforcement Point* (PEP), którego zadaniem jest przepuszczanie wyłączne w pełni uwierzytelnionych i autoryzowanych zapytań. PEP nie podejmuje jednak decyzji samodzielnie - za to odpowiada *Policy Decision Point* (PDP), czyli komponent, w którym następuje pełna weryfikacja i zapada werdykt, czy dany podmiot ma prawo uzyskać dostęp do chronionego zasobu. Proces decyzyjny może uwzględniać wiele czynników, co zostało pokazane na powyższym schemacie, ale wrócimy do tego w dalszej części opracowania. Ostatecznie, PEP otrzymuje odpowiedź z PDP i na jej podstawie ustanawia połączenie podmiotu z docelowym zasobem lub je odrzuca.
