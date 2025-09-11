@@ -31,7 +31,30 @@ W dosłownym tłumaczeniu jest **to udawanie kogoś innego niż się jest w rzec
 ## Business email compromise
 TBD
 ## Pretexting
+Atakujący musi mieć dobry **pretekst**, żeby nakłonić swoją ofiarę do ujawnienia cennych informacji. Innymi słowy, musi wymyślić naprawdę zgrabną i wiarygodną bajeczkę, żeby ofiara w nią uwierzyła. Starannie przeprowadzony rekonesans owocuje nawet kilkoma scenariuszami.
 
+**Atakujący może często posługiwać się technicznym żargonem, żeby jeszcze bardziej uwiarygodnić swoją historię**. Aby utrudnić opracowanie dobrego pretekstu musimy być świadomi tego, co publikujemy w Internecie. Pozornie nieszkodliwe informacje umieszczane w mediach społecznościowych mogą posłużyć do opracowania naprawdę wiarygodnej historyjki.
+
+Przykładowe preteksty:
+- *Dzień dobry, nazywam się Danuta Norek i dzwonię z Banku Centralnego Wakandy. Wykryliśmy na Pani koncie podejrzaną aktywność i tymczasowo zablokowaliśmy środki celem weryfikacji. Czy mogłaby Pani zalogować się do swojego banku przez link, który przed chwilą został wysłany i potwierdzić, że operacja została zlecona przez Panią?*
+- *Cześć, Karol! Dzwonię z 3-go piętra, z działu IT._ _Marek_ (atakujący wie, że tak ma na imię menadżer Karola) _prosił mnie, żebym zresetował hasła w Waszym zespole, bo okazało się, że komunikacja między usługami AWS, a naszym serwerem Kerberos była po HTTP zamiast po HTTPS i byliśmy narażeni na sniffing. Czy mógłbyś zresetować swoje hasło przez link, który zaraz Tobie wyślę?*
+- *Jesteś 1000 osobą, która odwiedziła tę witrynę, w związku z tym przygotowaliśmy dla Ciebie małą niespodziankę. Wystarczy, że wypełnisz ten formularz…*
+## Watering hole
+Jeśli organizacja jest bardzo dobrze chroniona (tj. infrastruktura nie ma żadnych znanych podatności, wdrożone polityki bezpieczeństwa są dobrze przemyślane i respektowane, członkowie są dobrze przeszkoleni oraz świadomi zagrożeń), atakujący ma bardzo nikłe szanse powodzenia w bezpośrednim ataku. W takim przypadku jest zmuszony zmienić strategię i zastosować technikę, którą można przetłumaczyć jako *zatruty wodopój* bądź atak *u wodopoju* (ang. ***watering hole attack***).
+
+**Ta strategia polega na określeniu miejsca, poza atakowaną organizacją, gdzie zazwyczaj gromadzą się i przebywają jej członkowie**. Może to być miejsce fizyczne, takie jak kawiarnia chociaż częściej jest to zewnętrzny serwis internetowy (***third party***).
+
+**Kolejnym krokiem jest atak na zidentyfikowany cel pośredni, który jest słabiej chroniony. Polega zazwyczaj na zainfekowaniu strony złośliwym oprogramowaniem, dzięki czemu istnieje duże prawdopodobieństwo, że członkowie organizacji również zostaną zainfekowani i da to atakującemu upragniony dostęp do instytucji docelowej**.
+
+Aby uniknąć wczesnego wykrycia atakujący często próbuje zainfekować jedynie wąską grupę odwiedzających skompromitowaną stronę, np. infekując tylko użytkowników z określonymi adresami IP, związanych z docelowo atakowaną organizacją.
+
+Przykładem takiego ataku z naszego podwórka jest atak na instytucje bankowe w Polsce, gdzie prawdopodobnym źródłem złośliwego oprogramowania był serwer Komisji Nadzoru Finansowego (KNF), który jest często odwiedzany przez pracowników bankowości. Więcej informacji o tym ataku można znaleźć w sieci, na przykład w artykule [Poważny atak na polskie banki mniej tajemniczy](https://www.benchmark.pl/aktualnosci/powazny-atak-na-polskie-banki-mniej-tajemniczy.html).
+## Brand impersonation
+TBD
+## Typosquatting
+**Metoda oszukiwania użytkowników wykorzystująca typowe błędy literowe w adresach URL**. Innym określeniem tej metody jest ***URL hijacking***. Technika wykorzystuje nieuwagę użytkownika oraz fakt, że podstawiony adres z literówką wygląda bardzo podobnie do oryginalnego.
+
+Przykładem jest domena _**google.com**_, gdzie użytkownik może w pośpiechu wpisać błędny adres ***gogole.com***. Akurat w tym przypadku zostajemy przekierowani na oryginalny adres wyszukiwarki, ale w innych okolicznościach możemy mieć mniej szczęścia, bo **_typosquatting_** jest często wykorzystywany do ataków phishingowych.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
