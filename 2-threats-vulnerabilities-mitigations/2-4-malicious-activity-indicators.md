@@ -125,7 +125,45 @@ Bomba logiczna może być częścią znanego wirusa lub robaka, ale wcale nie mu
 Przykład z życia wzięty: [Siemens contractor pleads guilty to planting logic bomb in company spreadsheets](https://www.zdnet.com/article/siemens-contractor-pleads-guilty-to-planting-logic-bomb-in-company-spreadsheets/) - pewien pracownik kontraktowy Siemensa stworzył bombę logiczną, która po pewnym czasie powodowała problemy z ważnym arkuszem kalkulacyjnym. Kiedy to nastąpiło, wspomniany pracownik był wzywany do pozbycia się problemu (oczywiście odpłatnie). Proceder trwał 2 lata zanim został zauważony.
 ## Rootkit
 TBD
+## Jak się bronić?
+Jak widać powyżej, istnieje wiele sposobów na to, żeby złośliwe oprogramowanie znalazło się w naszym systemie, szczególnie jeśli postępujemy nierozważnie. Kiedy już coś *złapiemy*, istnieje szansa na pozbycie się intruza za pomocą programów antywirusowych bądź specjalistycznych aplikacji nastawionych na usunięcie konkretnego typu złośliwego oprogramowania. Niestety, niektórych szkód praktycznie nie da się naprawić (np. permanentnej utraty danych), dlatego **najważniejsza jest profilaktyka**. Na szczęście jest wiele technik obrony, których stosowanie bardzo mocno minimalizuje ryzyko infekcji.
+
+**Nigdy nie klikajmy w podejrzane linki czy okienka pop-up ani nie otwierajmy załączników w wiadomościach email niewiadomego pochodzenia**. Oczywiście to samo tyczy się ściągania i uruchamiania plików z podejrzanych stron internetowych oraz otwierania plików MS Office nieznanego pochodzenia (ze względu na potencjalnie szkodliwe makra VBA).
+
+**Unikajmy odwiedzania podejrzanych stron internetowych** – może się okazać, że nawet bez ściągania czy otwierania podejrzanych plików zostaniemy zainfekowani, bo nasza przeglądarka ma akurat niezałataną lukę bezpieczeństwa.
+
+**Dbajmy o to, żeby oprogramowanie, z którego korzystamy (system operacyjny i aplikacje) było na bieżąco aktualizowane**. Luki w oprogramowaniu są znajdowane niemalże codziennie i dlatego twórcy tegoż oprogramowania (no, przynajmniej ci porządni) dbają o to, żeby te luki jak najszybciej załatać. W zależności od stopnia zagrożenia płynącego z określonej podatności, poprawki mogą pojawić się przy okazji *wypuszczenia* kolejnej wersji (ang. *release*) bądź, jeśli luka jest krytyczna, w postaci łatek (ang. *patch*) do bieżącej wersji.
+
+**Zawsze zwracajmy uwagę na to, co jest instalowane podczas procesu instalacji jakiegokolwiek oprogramowania**. Wiem, że i tak prawie nikt nie czyta treści licencji ([EULA](https://en.wikipedia.org/wiki/End-user_license_agreement)), ale powinniśmy przynajmniej zapoznać się z podstawowymi informacjami pojawiającymi się w oknach instalacyjnych, zanim klikniemy *Dalej* lub *Zgadzam się*. **Poza tym, instalujmy oprogramowanie tylko z zaufanych źródeł**.
+
+**Nawet jeśli otrzymaliśmy pliki z zaufanego źródła, miejmy na uwadze, że to zaufane źródło mogło zostać wcześniej skompromitowane**. Na przykład, możemy otrzymać wiadomość z plikiem od naszego znajomego, który nawet nie wie, że sam padł ofiarą ataku (wiadomość mogła zostać wysłana bez jego wiedzy). Jeśli treść takiej wiadomości wzbudza nasze podejrzenia, powinniśmy niezwłocznie skontaktować się bezpośrednio z nadawcą i potwierdzić, czy rzeczywiście wiadomość została wysłana przez tegoż nadawcę.
+
+Pamiętajmy również, że możemy paść ofiarą techniki [zatrutego wodopoju (ang. *watering hole attack*)](https://vilya.pl/sy0-601-cheatsheet-1-1-social-engineering/#watering-hole-attack). Kiedy jakieś pliki, pomimo znanego pochodzenia, wzbudzają u nas podejrzenia możemy je zweryfikować za pomocą następujących narzędzi:
+- [Sandboxie](https://sandboxie-plus.com/) - oprogramowanie dla systemu Windows, które tworzy wyizolowane środowisko uruchomieniowe (ang. *sandbox*), dzięki czemu uruchomione aplikacje nie wpływają na nasz bazowy system operacyjny.
+- [VirusTotal](https://www.virustotal.com/) – serwis internetowy, który umożliwia przeskanowanie określonych plików pod kątem obecności złośliwego oprogramowania.
+
+**Zainstalujmy sprawdzone oprogramowanie antywirusowe i upewnijmy się, że baza sygnatur (na podstawie sygnatur antywirus jest w stanie zidentyfikować znane złośliwe oprogramowanie) jest na bieżąco aktualizowana**. Nowoczesne antywirusy są w stanie automatycznie skanować pojedyncze pliki i dzięki temu mogą zablokować złośliwy kod, zanim jeszcze ten zostanie uruchomiony. **Dobrze jest też co jakiś czas uruchomić pełne skanowanie systemu**.
+
+Klasyczne oprogramowanie antywirusowe oprócz bazy sygnatur posiada jeszcze **bazę zachowań i cech charakterystycznych** złośliwego oprogramowania. Innymi słowy, oprócz identyfikowania malware’u na podstawie ciągu bajtów, który można de facto łatwo zmodyfikować nadając mu zupełnie nową sygnaturę, antywirusy testują podejrzaną aplikację pod kątem różnych aktywności uważanych za szkodliwe. Takie podejście nazywamy **heurystyką**, czyli łączeniem pewnych faktów, żeby dojść do określonych wniosków.
+
+**Używajmy zapory sieciowej (*firewall*) do filtrowania ruchu sieciowego**. O ile administratorom sieci raczej nie trzeba o tym przypominać, to część użytkowników desktopowych systemów operacyjnych może nawet nie wiedzieć o istnieniu takiego narzędzia.
+
+W skrócie: **firewall** **jest systemem ochrony, sprzętowym bądź w formie oprogramowania, który monitoruje oraz kontroluje ruch sieciowy (zarówno przychodzący jak i wychodzący) pomiędzy określonymi węzłami sieci**. Na przykład między siecią lokalną LAN a siecią publiczną, taką jak Internet. Z kolei prywatne zapory sieciowe, instalowane na pojedynczych stacjach roboczych, nadzorują wszystkie połączenia wychodzące i przychodzące do danej stacji roboczej.
+
+Jeśli chodzi o zasadę działania zapory sieciowej to pamiętajmy, że jej głównym zadaniem nie jest wykrywanie i eliminowanie złośliwego oprogramowania (od tego są antywirusy). **Firewall kontroluje jedynie ruch sieciowy na podstawie zdefiniowanych reguł, które albo zezwalają na połączenie, albo je blokują**. Każde połączenie (wychodzące bądź przychodzące) jest *przepuszczane* przez listę reguł, które określają z jakimi adresami IP można nawiązać połączenie, jakie porty sieciowe są otwarte na połączenia z zewnątrz, czy dana aplikacja jest w ogóle uprawniona do nawiązywania połączeń zewnętrznych etc.
+
+No dobrze, ale jak to ma nas ochronić przed złośliwym oprogramowaniem? Faktem jest, że **firewall raczej nie uchroni nas przed zainstalowaniem malware’u, ale może nas powiadomić kiedy szkodliwy kod będzie próbował nawiązać jakieś nieautoryzowane połączenie z siecią i je zablokować**. Dzięki temu będziemy w stanie zapobiec wielu nieprzyjemnym skutkom działania szkodliwego oprogramowania.
+
+Wracając do prywatnych narzędzi, to od dłuższego czasu systemy operacyjne Windows mają wbudowaną zaporę sieciową ([Windows Firewall](https://en.wikipedia.org/wiki/Windows_Firewall)), która jest domyślnie włączona. W systemie Linux mamy do wyboru m.in. [iptables](https://en.wikipedia.org/wiki/Iptables). System spod znaku nadgryzionego jabłka (Mac OS X) też nie jest gorszy: [About the application firewall](https://support.apple.com/en-us/HT201642).
+
+Bardziej wysublimowaną metodą jest stosowanie systemów prewencyjnych, takich jak **IDS** (*Intrusion Detection System*) oraz **IPS** (*Intrusion Prevention System*). Podobnie jak w przypadku zapory sieciowej, ich podstawową funkcją nie jest wykrywanie i eliminacja złośliwego oprogramowania, ale jak najbardziej mogą pomóc w jego zwalczaniu.
+
+W teorii, zarówno firewall jak i tego typu systemy, są w stanie zabezpieczyć nas przed złośliwym oprogramowaniem, nawet jeśli bazy aplikacji antywirusowych nie posiadają jeszcze aktualnych sygnatur (np. w przypadku całkowicie nowego wirusa). Zaletą tych systemów jest fakt, że analizują one to co dzieje się w sieci, a nie to jak zbudowane jest oprogramowanie.
+
+**Pamiętajmy o regularnym wykonywaniu kopii zapasowych (ang. *backup*) naszych najważniejszych danych**. Kiedy wszystkie powyższe metody zawiodą, przynajmniej będziemy w stanie odzyskać cenne dla nas informacje. W myśl zasady: *nie trzymaj wszystkich jaj w jednym koszyku*, powinniśmy również przechowywać nasze backupy w różnych, niezależnych od siebie miejscach (np. zewnętrzny dysk SSD, który zazwyczaj nie jest podłączony do żadnej z naszych stacji roboczych).
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
 - [Fileless malware attacks explained (with examples)](https://www.comparitech.com/blog/information-security/fileless-malware-attacks/)
+- [Wprowadzenie do systemów IDS](https://sekurak.pl/wprowadzenie-do-systemow-ids/)
+- [Co to jest IDS?](https://kapitanhack.pl/2020/04/09/akronimy/co-to-jest-ids/)
