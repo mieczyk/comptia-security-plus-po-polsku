@@ -111,9 +111,18 @@ Ponieważ ataki tego typu stały się charakterystyczne dla systemu Windows, Mic
 
 Dodatkowo, dla interpretera PowerShell można skonfigurować tzw. [polityki wykonania](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2) (ang. *execution policies*), czyli mechanizmy bezpieczeństwa, które są w stanie kontrolować warunki w jakich PS ładuje pliki konfiguracyjne i uruchamia skrypty (np. w przypadku osobistych wersji systemu Windows, domyślna polityka to [*Restricted*](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2#restricted), która zezwala jedynie na uruchamianie pojedynczych poleceń, ale blokuje wykonanie jakiegokolwiek skryptu).
 ## Keylogger
-TBD
+*Keylogger* jest **oprogramowaniem lub urządzeniem, które przechwytuje i zapisuje klawisze naciśnięte przez użytkownika**. W przypadku programowego keyloggera jest on najczęściej zaimplementowany jako część innego złośliwego oprogramowania, takiego jak trojan czy *spyware*.
+
+Keyloggery sprzętowe przyjmują postać niewielkiego urządzenia USB w formie *przejściówki*, którą wpina się między klawiaturę i port USB. Takie urządzenie zapisuje później wciskane klawisze w swojej pamięci i/lub wysyła zapisane informacje drogą radiową.
 ## Logic bomb
-TBD
+Bomba logiczna (ang. *logic bomb*) to **kawałek złośliwego kodu, który wykonuje się jeśli zostanie spełniony warunek określony przez jego twórcę**. Najczęściej spotyka się bomby z *zapalnikiem czasowym*, tj. kod wykonuje się po określonym czasie lub danego dnia (np. w Prima Aprilis), ale nie jest to regułą. **Tak naprawdę warunek oraz działanie kodu mogą być dowolne**. Przykładowo, niezadowolony pracownik organizacji umieszcza w kodzie produkcyjnym polecenie usunięcia krytycznych danych z bazy, które zostanie wykonane jak tylko ten pracownik zostanie zwolniony.
+
+Bomba logiczna może być częścią znanego wirusa lub robaka, ale wcale nie musi - może to być kawałek złośliwego kodu zapisany gdzieś w systemie przez nieuczciwego programistę. W tym drugim przypadku bomba logiczna jest bardzo trudna do wykrycia, ponieważ oprogramowanie zwalczające malware nie będzie posiadało odpowiednich sygnatur. Dodatkowo, złośliwy kod może sam się usunąć zaraz po wykonaniu, co praktycznie uniemożliwia analizę _post mortem_. Mimo wszystko są pewne czynności, które warto wdrożyć w naszej organizacji, żeby ograniczyć ryzyko _wybuchu_:
+- Przemyślane procedury przeglądu i kontroli poszczególnych elementów systemu, zarówno automatyczne jak i ręczne.
+- Sumienne wykonywanie przeglądu kodu (ang. *code review*) przez doświadczonych programistów podczas procesu wytwarzania oprogramowania.
+- Stosowanie zasady najmniejszego uprzywilejowania (ang. *principle of least privilege*), polegającą na przyznawaniu tylko takich uprawnień, jakich rzeczywiście potrzebuje użytkownik i nic ponad to. Co prawda raczej nie zapobiegnie to utworzeniu bomby logicznej przez wkurzonego pracownika, ale może znacząco ograniczyć skutki jej działania.
+
+Przykład z życia wzięty: [Siemens contractor pleads guilty to planting logic bomb in company spreadsheets](https://www.zdnet.com/article/siemens-contractor-pleads-guilty-to-planting-logic-bomb-in-company-spreadsheets/) - pewien pracownik kontraktowy Siemensa stworzył bombę logiczną, która po pewnym czasie powodowała problemy z ważnym arkuszem kalkulacyjnym. Kiedy to nastąpiło, wspomniany pracownik był wzywany do pozbycia się problemu (oczywiście odpłatnie). Proceder trwał 2 lata zanim został zauważony.
 ## Rootkit
 TBD
 # Materiały źródłowe
