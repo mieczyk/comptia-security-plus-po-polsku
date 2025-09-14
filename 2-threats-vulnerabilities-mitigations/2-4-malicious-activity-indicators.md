@@ -49,6 +49,67 @@ Jako że robaki rozprzestrzeniają się głównie przez sieć, mogą być w pewn
 ## Bloatware
 TBD
 ## Virus
+Istnieje wiele odmian złośliwego oprogramowania, które można podpiąć pod definicję wirusa komputerowego, ale mają jednak pewne cechy charakterystyczne, pozwalające na umieszczenie ich w osobnej kategorii. **Wirus komputerowy** jest natomiast pojęciem bardzo ogólnym.
+
+Wirusem nazywamy złośliwe oprogramowanie, które jest w stanie **samodzielnie się powielać poprzez infekowanie innych plików, ale do zainicjowania procesu replikacji i wykonania pozostałych wpisanych procedur wymagane jest działanie użytkownika**, takie jak np. uruchomienie zainfekowanego pliku. Ręczna interwencja jest elementem odróżniającym wirusy od robaków komputerowych (ang. *worms*), które potrafią rozprzestrzeniać się bez udziału użytkownika.
+
+To do czego wirus jest zdolny (oprócz replikacji) zależy od intencji, umiejętności i wyobraźni jego autora. Niektóre wirusy cechują się bardzo małą szkodliwością, ponieważ zostały napisane tylko dla zabawy lub ewentualnie ich celem jest wyświetlanie irytujących reklam ([*adware*](https://en.wikipedia.org/wiki/Adware)). W takim przypadku, jesteśmy narażeni jedynie na zauważalny spadek wydajności systemu.
+
+Inne wirusy mogą się dobrze przed nami ukryć oraz zbierać o nas informacje, wliczając te wrażliwe, bez naszej wiedzy (*spyware*). Dlatego tak istotne jest korzystanie z dobrego antywirusa z aktualną bazą danych - bez tego możemy przez bardzo długi okres nie zorientować, że nasz system jest zainfekowany, a my jesteśmy pod stałą obserwacją. Oczywiście należy pamiętać o tym, że nawet najlepszy antywirus na rynku może okazać się niewystarczający jeśli *złapiemy* całkiem nowego wirusa, którego sygnatury jeszcze nie zostały rozpracowane przez specjalistów.
+
+Kolejną grupę stanowią wirusy o bardzo wysokim stopniu złośliwości, które są w stanie spowodować nieodwracalne szkody, takie jak zniszczenie lub zaszyfrowanie naszych danych. Dawniej, niektóre wirusy mogły doprowadzić nawet do problemów ze sprzętem (ang. *hardware*) -  więcej informacji na ten temat można znaleźć w tym artykule: [Can a virus damage computer hardware?](https://www.computerhope.com/issues/ch001119.htm).
+
+Niektóre źródła podają również osobną kategorię na wirusy infekujące telefony komórkowe lub inne urządzenia mobilne, jednak taka klasyfikacja jest niezbyt dokładna. Oczywiście, istnieje złośliwe oprogramowanie dedykowane na urządzenia mobilne (np. oprogramowanie szpiegujące), ale nie spełnia ono kryteriów wirusa komputerowego.
+
+Poniżej znajdziemy próbę sklasyfikowania wirusów, opierając się o zasady ich funkcjonowania. Należy jednak pamiętać, że konkretny wirus, w wielu przypadkach, zalicza się do więcej niż jednej kategorii.
+### Wirusy plikowe/aplikacji
+Ich działanie polega na dopisywaniu swojego kodu do istniejących plików wykonywalnych lub całkowitym nadpisywaniu tych plików (w takim przypadku oryginalna zawartość pliku jest raczej nie do odzyskania). Po uruchomieniu zainfekowanego pliku wirus rozpoczyna wykonywanie swoich zaprogramowanych procedur.
+
+Same wirusy plikowe można podzielić na podkategorie, określające w jaki sposób kod wirusa jest dopisywany do oryginalnego pliku (np. na jego końcu, w nagłówku etc.), ale jest to temat mocno wykraczający poza podstawy wymagane na egzaminie, więc tylko o tym wspominam.
+
+Ciekawostką jest fakt, że modyfikacja infekowanych plików może znacząco zwiększyć ich rozmiar, więc za dobrze napisane wirusy uważa się takie, które wykonują swoje zadania zachowując jednocześnie niewielki rozmiar (przy użyciu mniejszej ilości kodu).
+### Wirusy dyskowe/sektorów rozruchowych
+Dzisiaj już rzadko spotykane wirusy, które zamiast modyfikować pliki, zapisują się w [sektorach rozruchowych](https://en.wikipedia.org/wiki/Boot_sector) (ang. *boot sectors*) nośników pamięci. Wirus aktywuje się w chwili odczytania zawartości zainfekowanego sektora, np. podczas uruchamiania się systemu operacyjnego komputera.
+### Wirusy skryptowe
+Ta kategoria obejmuje **wirusy napisane w językach skryptowych**, takich jak *JavaScript* (JS), *Visual Basic Script* (VBS), *Visual Basic for Application* (VBA) czy nawet *Python*. Generalnie dużo prościej jest stworzyć takiego wirusa, w porównaniu z opisanymi wcześniej wirusami plikowymi, ponieważ tutaj **operujemy językiem wysokiego poziomu, który jest interpretowany, a nie kompilowany**. 
+
+Oznacza to, że do *zarażenia* innych plików skryptowych nie musimy znać struktury binarnych plików wykonywalnych, ponieważ pliki skryptowe zawierają jawny tekst (kod skryptu). Wystarczy więc *dokleić* złośliwy kod (również w postaci tekstowej) do zawartości wybranych skryptów.
+
+Niektórzy mogą zastanawiać się, w jaki sposób zwykły skrypt JS może nam zaszkodzić - przecież taki kod jest wykonywany tylko w kontekście przeglądarki. Okazuje się, że niekoniecznie. Nawet pomijając fakt, że przeglądarka może mieć pewne podatności, które umożliwią *przebicie się* do systemu, to w systemie Windows funkcjonuje usługa o nazwie [Windows Script Host](https://en.wikipedia.org/wiki/Windows_Script_Host). Jest to systemowe środowisko do interpretacji i uruchamiania skryptów w określonych językach – domyślnie są to VBS (*Visual Basic Script*) oraz JScript (odmiana JavaScript opracowana przez Microsoft). Teoretycznie jest to usługa rzadko wykorzystywana i może stanowić poważne zagrożenie bezpieczeństwa, dlatego często zaleca się jej [wyłączenie](https://pl.ccm.net/faq/8621-jak-wylaczyc-windows-script-host).
+
+Na końcu warto wspomnieć o **wirusach makr** (tzw. *makrowirusach*), które działają wewnątrz środowiska innego programu. Bardzo często rozbudowane aplikacje umożliwiają swoim użytkownikom rozszerzenie funkcjonalności za pomocą wybranego języka skryptowego. Taki skrypt, rozszerzający funkcjonalność podstawową, nazywamy *makrem*. Najbardziej popularne są złośliwe makra napisane w języku VBA (*Visual Basic for Application*), rezydujące w dokumentach pakietu MS Office (dokumenty Word, arkusze kalkulacyjne Excel, prezentacje PowerPoint itp.).
+### Wirusy nierezydentne
+W przypadku wirusów nierezydentnych (ang. *non-resident virus*), **po uruchomieniu zainfekowanego pliku, kod wirusa *ładuje się* do pamięci operacyjnej, uruchamia się i wyszukuje kolejne obiekty do zarażenia, przeszukując drzewo katalogów w naszym systemie. Po wykonaniu swoich czynności, sterowanie jest przekazywane z powrotem do zainfekowanej aplikacji** - nosiciela (ang. *host application*). 
+
+**Wirus wykonuje swoje instrukcje tak długo, jak długo w pamięci działa proces oryginalnej aplikacji**. Ponieważ kod wirusa wykonuje się przed startem pierwotnej aplikacji, często możemy zauważyć duże opóźnienia zanim właściwy program się uruchomi. Poza tym, możemy również odnotować wzmożoną aktywności nośników danych, ponieważ wirus infekuje inne pliki znalezione na dysku.
+### Wirusy rezydentne
+**Wirus rezydentny** (ang. *resident virus*) charakteryzuje się bardziej wyrafinowaną techniką działania. W odróżnieniu od wirusa nierezydentnego, ten **rezyduje w pamięci RAM jako proces w tle**, nawet po zakończeniu działania oryginalnego programu i korzysta z systemu przerwań (podobnie jak [programy rezydentne TSR](https://en.wikipedia.org/wiki/Terminate-and-stay-resident_program)).
+
+Dzięki tej technice jest w stanie ukryć swój kod przed programami zarządzającymi pamięcią. Warto jeszcze dodać, nie wchodząc w szczegóły techniczne, że wirusy rezydentne można podzielić na ***szybkie*** (ang. *fast infectors*), których celem jest jak najszybsze zainfekowanie jak największej ilości plików, oraz ***wolne*** (ang. *slow infectors*), którym zależy na jak najdłuższym unikaniu wykrycia kosztem szybkości rozprzestrzeniania się infekcji.
+### Fileless virus
+W dosłownym tłumaczeniu jest to *wirus bezplikowy* (ang. *fileless virus*). **W odróżnieniu od standardowych wirusów, opisanych powyżej, ten nie zaraża plików zapisanych na fizycznym nośniku danych i jest obecny jedynie w pamięci operacyjnej RAM**, przez co jest bardzo trudny do wykrycia, nawet przez oprogramowanie antywirusowe.
+
+Na pierwszy rzut oka jest bardzo podobny do wirusów rezydentnych, gdyż one również działają w pamięci operacyjnej, niezależnie od zarażonej aplikacji bazowej (*host application*). Istotną różnicą jest jednak fakt, że **wirusy *bezplikowe* w ogóle nie infekują fizycznych plików**.
+
+Określenie *bezplikowy* (ang. *fileless*) sugeruje, że wirus tego typu nie potrzebuje żadnych plików do swojego działania. To stwierdzenie nie jest do końca prawdziwe (podobnie jak [*serverless computing*](https://www.computerworld.pl/news/Serverless-computing-Mniej-administratorow-wiecej-programistow,416692.html) nie oznacza braku serwerów :)).
+
+O ile sam kod wirusa nie musi być zapisany w żadnym pliku, to jednak coś musi umieścić jego kod w pamięci operacyjnej celem wykonania. Wspomniane _coś_ to zazwyczaj zaufana aplikacja (plik wykonywalny), która została w podstępny sposób wykorzystana do ściągnięcia i uruchomienia złośliwego kodu, bez jego zapisywania. Jest to również przyczyna tego, że ten rodzaj złośliwego oprogramowania jest bardzo trudny do zidentyfikowania - antywirus nie wykryje zainfekowanych plików, bo ich po prostu nie ma, a w systemowym menadżerze zadań będzie widoczny jedynie proces zaufanej aplikacji, bez informacji jakie procedury tak naprawdę wykonuje.
+
+Teoretycznie ten typ wirusa może pojawić się w każdym systemie operacyjnym, jednak znacznie **częściej atakowany jest system Microsoft Windows**. Pomijając fakt, że jest najpopularniejszym systemem operacyjnym wśród *zwykłych* użytkowników, posiada on potężne narzędzie w postaci interpretera poleceń **PowerShell** (**PS**), który umożliwia niemalże pełną kontrolę nad systemem wyłącznie za pomocą interfejsu tekstowego (pojedyncze polecenia oraz skrypty).
+
+To wszystko powoduje, że PowerShell jest idealnym kandydatem do aplikacji będącej nośnikiem złośliwego kodu. Nie dość, że za pomocą poleceń PS można zrobić prawie wszystko, to jeszcze na liście menadżera zadań będzie widoczny tylko niepozorny proces _Windows PowerShell_, nawet jeśli właśnie wykonuje złośliwy skrypt w pamięci.
+
+Okazuje się, że koncepcja takich wirusów nie jest nowa, a ich popularność wzrosła w roku 2017. Stało się to za sprawą rozwoju narzędzi, które znacznie ułatwiły ataki tego typu. Przykładem takiego narzędzia jest framework [Empire](https://github.com/BC-SECURITY/Empire) (wcześniej [PowerShell Empire](https://www.youtube.com/watch?v=IefYMsEFyWU)), automatyzujący szereg czynności wykonywanych już po włamaniu (ang. *post-exploitation*), czy też [PowerSploit](https://gitlab.com/kalilinux/packages/powersploit), który agreguje różne moduły PowerShell przydatne podczas testów penetracyjnych.
+
+Przyjrzyjmy się teraz w jaki sposób można *złapać* wirusa *bezplikowego*, na przykładzie systemu operacyjnego Windows z wykorzystaniem możliwości PowerShell:
+1. Zakładając, że jesteśmy na tyle ostrożni, żeby nie uruchamiać od razu skryptów PS (`*.ps1`) nieznanego pochodzenia, atakujący (*bad actor*) musi nas najpierw zwabić w pułapkę. Na przykład za pomocą ataku phishingowego może nas skłonić do odwiedzenia określonej witryny internetowej.
+2. Strona docelowa zawiera złośliwe oprogramowanie, które jest w stanie wykorzystać luki bezpieczeństwa w naszej przeglądarce internetowej bądź we wtyczkach przez nią używanych (szczególnie kiedy z uporem maniaka wciąż używamy przestarzałych technologii, takich jak Adobe Flash Player czy kontrolki ActiveX). W przypadku krytycznej podatności, jaką jest możliwość zdalnego wykonania kodu (RCE = *Remote Code Execution*), exploit będzie w stanie uruchomić proces PS z zestawem poleceń, które np. ściągną właściwy złośliwy skrypt i od razu wykonają polecenia w nim zawarte. Innymi słowy, wirus rezyduje już w pamięci i realizuje swoje procedury.
+3. Ponieważ kod wirusa znajduje się tylko w pamięci, to po wyłączeniu systemu operacyjnego po prostu zniknie, więc musi sobie jakoś zapewnić przetrwanie. Dlatego zazwyczaj taki wirus modyfikuje rejestr systemu i dopisuje swój kod do autostartu. Jeśli jest stosunkowo krótki, to może umieścić swoje procedury w kluczu rejestru, ale w przypadku bardziej rozbudowanego kodu może ukryć się gdzieś na dysku w postaci skryptu uruchamianego podczas startu systemu. Taki skrypt nie jest tym samym co zarażony plik, więc dalej umownie traktujemy to jako *fileless malware*.
+4. Przy starcie systemu zapisany wcześniej kod wirusa ponownie uruchamia się jako skrypt PowerShell, kontynuując swoją destruktywną działalność.
+
+Ponieważ ataki tego typu stały się charakterystyczne dla systemu Windows, Microsoft specjalnie dostosował swojego wbudowanego w system antywirusa *Windows Defender*, żeby ten był w stanie wykrywać podejrzane czynności w skryptach PowerShell oraz w usłudze [WMI (*Windows Management Instrumentation*)](https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page), oferującej zdalne zarządzanie systemem.
+
+Dodatkowo, dla interpretera PowerShell można skonfigurować tzw. [polityki wykonania](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2) (ang. *execution policies*), czyli mechanizmy bezpieczeństwa, które są w stanie kontrolować warunki w jakich PS ładuje pliki konfiguracyjne i uruchamia skrypty (np. w przypadku osobistych wersji systemu Windows, domyślna polityka to [*Restricted*](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2#restricted), która zezwala jedynie na uruchamianie pojedynczych poleceń, ale blokuje wykonanie jakiegokolwiek skryptu).
 ## Keylogger
 TBD
 ## Logic bomb
@@ -58,3 +119,4 @@ TBD
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
+- [Fileless malware attacks explained (with examples)](https://www.comparitech.com/blog/information-security/fileless-malware-attacks/)
