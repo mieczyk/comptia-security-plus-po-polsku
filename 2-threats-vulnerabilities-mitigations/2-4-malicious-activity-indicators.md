@@ -39,12 +39,22 @@ Typowe zagrożenia związane z działalnością trojanów są następujące:
 - Działania destrukcyjne, takie jak usuwanie plików czy szyfrowanie danych (*ransomware/cryptomalware*).
 - Instalacja innych typów złośliwego oprogramowania.
 ## Worm
+W odróżnieniu od *standardowych* wirusów, **robak (ang. *worm*) jest w stanie sam się replikować, bez ingerencji użytkownika.** Innymi słowy, może pojawić się w naszym systemie, nawet jeśli nie wykonamy żadnego ruchu (otwarcie zakażonego pliku czy odwiedzenie zainfekowanej witryny).
+
+Jest to możliwe, ponieważ **robaki wykorzystują różne niezałatane luki bezpieczeństwa w systemach operacyjnych, usługach sieciowych lub aplikacjach**. **Dzięki temu są w stanie samodzielnie rozprzestrzeniać przez sieć, od komputera do komputera**. Wystarczy, że znajdzie maszynę z odpowiednią podatnością, do wykorzystania której został zaprogramowany. Brak konieczności udziału użytkownika do dalszej ekspansji powoduje, że tego typu _szkodniki_ rozprzestrzeniają się dużo szybciej niż standardowe wirusy.
+
+Jako że robaki rozprzestrzeniają się głównie przez sieć, mogą być w pewnych przypadkach powstrzymane, oprócz oprogramowania antywirusowego, przez zapory sieciowe (ang. _firewalls_) oraz przez systemy wykrywania/prewencji włamań IDS/IPS.
 ## Spyware
+***Spyware*, czyli programy szpiegujące zbierające dane użytkownika bez jego wiedzy**. Może to być zwyczajne śledzenie poczynań (np. poprzez rejestrowanie naciśniętych klawiszy) celem zbudowania profilu, który później zostanie sprzedany nieuczciwym reklamodawcom, a w ekstremalnych przypadkach kradzież poufnych informacji, takich jak dane logowania. Do szpiegowania również można wykorzystać technikę [*browser hijacking*](https://en.wikipedia.org/wiki/Browser_hijacking).
 ## Bloatware
+TBD
 ## Virus
 ## Keylogger
+TBD
 ## Logic bomb
+TBD
 ## Rootkit
+TBD
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
