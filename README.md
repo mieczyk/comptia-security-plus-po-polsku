@@ -16,7 +16,7 @@ Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji 
 # Spis treści
 ## 1.0 General Security Concepts
 ### 1.1 Compare and contrast various types of security controls
-- Categories
+- [Categories](1-general-security-concepts/1-1-security-controls.md#categories)
 	- Technical
 	- Managerial
 	- Operational
