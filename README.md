@@ -17,15 +17,35 @@ Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji 
 ## 1.0 General Security Concepts
 ### 1.1 Compare and contrast various types of security controls
 - [Categories](1-general-security-concepts/1-1-security-controls.md#categories)
-	- Technical
-	- Managerial
-	- Operational
-	- Physical
-- Control types
-	- Preventive
-	- Deterrent
-	- Detective
-	- Corrective
-	- Compensating
-	- Directive
+	- [Technical](1-general-security-concepts/1-1-security-controls.md#technical)
+	- [Managerial](1-general-security-concepts/1-1-security-controls.md#managerial)
+	- [Operational](1-general-security-concepts/1-1-security-controls.md#operational)
+	- [Physical](1-general-security-concepts/1-1-security-controls.md#physical)
+- [Control types](1-general-security-concepts/1-1-security-controls.md#control-types)
+	- [Preventive](1-general-security-concepts/1-1-security-controls.md#preventive)
+	- [Detective](1-general-security-concepts/1-1-security-controls.md#detective)
+	- [Corrective](1-general-security-concepts/1-1-security-controls.md#corrective)
+	- [Compensating](1-general-security-concepts/1-1-security-controls.md#compensating)
+	- [Directive](1-general-security-concepts/1-1-security-controls.md#directive)
 ### 1.2 Summarize fundamental security concepts
+- [Confidentiality, Integrity, and Availability (CIA)](1-general-security-concepts/1-2-fundamental-security-concepts.md#confidentiality-integrity-and-availability-cia)
+	- [Confidentiality](1-general-security-concepts/1-2-fundamental-security-concepts.md#confidentiality)
+	- [Integrity](1-general-security-concepts/1-2-fundamental-security-concepts.md#integrity)
+	- [Availability](1-general-security-concepts/1-2-fundamental-security-concepts.md#availability)
+- [Non-repudiation](1-general-security-concepts/1-2-fundamental-security-concepts.md#non-repudiation)
+- [Authentication, Authorization, and Accounting (AAA)](1-general-security-concepts/1-2-fundamental-security-concepts.md#authentication-authorization-and-accounting-aaa)
+	- [Authenticating people](1-general-security-concepts/1-2-fundamental-security-concepts.md#authenticating-people)
+	- [Authenticating systems](1-general-security-concepts/1-2-fundamental-security-concepts.md#authenticating-systems)
+	- [Authorization models](1-general-security-concepts/1-2-fundamental-security-concepts.md#authorization-models)
+- [Gap analysis](1-general-security-concepts/1-2-fundamental-security-concepts.md#gap-analysis)
+- [Zero Trust](1-general-security-concepts/1-2-fundamental-security-concepts.md#zero-trust)
+	- [Control Plane](1-general-security-concepts/1-2-fundamental-security-concepts.md#control-plane)
+		- [Adaptive identity](1-general-security-concepts/1-2-fundamental-security-concepts.md#adaptive-identity)
+		- [Threat scope reduction](1-general-security-concepts/1-2-fundamental-security-concepts.md#threat-scope-reduction)
+		- [Policy-driven access control](1-general-security-concepts/1-2-fundamental-security-concepts.md#policy-driven-access-control)
+		- [Policy Administrator](1-general-security-concepts/1-2-fundamental-security-concepts.md#policy-administrator)
+		- [Policy Engine](1-general-security-concepts/1-2-fundamental-security-concepts.md#policy-engine)
+	- [Data Plane](1-general-security-concepts/1-2-fundamental-security-concepts.md#data-plane)
+		- [Implicit trust zones](1-general-security-concepts/1-2-fundamental-security-concepts.md#implicit-trust-zones)
+		- [Subject/System](1-general-security-concepts/1-2-fundamental-security-concepts.md#subjectsystem)
+		- [Policy Enforcement Point](1-general-security-concepts/1-2-fundamental-security-concepts.md#policy-enforcement-point)
