@@ -76,3 +76,9 @@ Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji 
 - [Salting](1-general-security-concepts/1-4-cryptographic-solutions.md#salting)
 - [Digital signatures](1-general-security-concepts/1-4-cryptographic-solutions.md#digital-signatures)
 - [Key stretching](1-general-security-concepts/1-4-cryptographic-solutions.md#key-stretching)
+## 4.0 Security Operations
+### 4.1 Given a scenario, apply common security techniques to computing resources
+- [Secure baselines](4-security-operations/4-1-common-security-techniques.md#secure-baselines)
+	- [Establish](4-security-operations/4-1-common-security-techniques.md#establish)
+	- [Deploy](4-security-operations/4-1-common-security-techniques.md#deploy)
+	- [Maintain](4-security-operations/4-1-common-security-techniques.md#maintain)
