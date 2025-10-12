@@ -76,6 +76,27 @@ Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji 
 - [Salting](1-general-security-concepts/1-4-cryptographic-solutions.md#salting)
 - [Digital signatures](1-general-security-concepts/1-4-cryptographic-solutions.md#digital-signatures)
 - [Key stretching](1-general-security-concepts/1-4-cryptographic-solutions.md#key-stretching)
+## 2.0 Threats, Vulnerabilities, and Mitigations
+### 2.2 Explain common threat vectors and attack surfaces
+- [Human vectors/social engineering](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#human-vectorssocial-engineering)
+	- [Phishing](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#phishing)
+	- [Vishing](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#vishing)
+	- [Smishing](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#smishing)
+	- [Misinformation/disinformation](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#misinformationdisinformation)
+	- [Impersonation](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#impersonation)
+	- [Business email compromise](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#business-email-compromise)
+	- [Pretexting](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#pretexting)
+	- [Watering hole](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#watering-hole)
+	- [Brand impersonation](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#brand-impersonation)
+	- [Typosquatting](2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#typosquatting)
+### 2.3 Explain various types of vulnerabilities
+- [Application](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#application)
+	- [Memory injection](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#memory-injection)
+	- [Buffer overflow](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#buffer-overflow)
+	- [Race conditions](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#race-conditions)
+		- [Time-of-check (TOC)](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#time-of-check-toc)
+		- [Time-of-use (TOU)](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#time-of-use-tou)
+	- [Malicious update](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#malicious-update)
 ## 4.0 Security Operations
 ### 4.1 Given a scenario, apply common security techniques to computing resources
 - [Secure baselines](4-security-operations/4-1-common-security-techniques.md#secure-baselines)
