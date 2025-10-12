@@ -108,6 +108,15 @@ Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji 
 	- [Keylogger](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#keylogger)
 	- [Logic bomb](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#logic-bomb)
 	- [Rootkit](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#rootkit)
+### 2.5 Explain the purpose of mitigation techniques used to secure the enterprise
+- [Hardening techniques](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#hardening-techniques)
+	- [Encryption](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#encryption)
+	- [Installation of endpoint protection](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#installation-of-endpoint-protection)
+	- [Host-based firewall](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#host-based-firewall)
+	- [Host-based intrusion prevention system (HIPS)](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#host-based-intrusion-prevention-system-hips)
+	- [Disabling ports/protocols](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#disabling-portsprotocols)
+	- [Default password changes](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#default-password-changes)
+	- [Removal of unnecessary software](2-threats-vulnerabilities-mitigations/2-5-mitigation-techniques.md#removal-of-unnecessary-software)
 ## 4.0 Security Operations
 ### 4.1 Given a scenario, apply common security techniques to computing resources
 - [Secure baselines](4-security-operations/4-1-common-security-techniques.md#secure-baselines)
