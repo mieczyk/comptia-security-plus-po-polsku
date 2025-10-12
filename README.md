@@ -67,3 +67,12 @@ Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji 
 	- [Application restart](1-general-security-concepts/1-3-change-management-processes.md#application-restart)
 	- [Legacy applications](1-general-security-concepts/1-3-change-management-processes.md#legacy-applications)
 	- [Dependencies](1-general-security-concepts/1-3-change-management-processes.md#dependencies)
+### 1.4 Explain the importance of using appropriate cryptographic solutions
+- [Public key infrastructure (PKI)](1-general-security-concepts/1-4-cryptographic-solutions.md#public-key-infrastructure-pki)
+	- [Public key](1-general-security-concepts/1-4-cryptographic-solutions.md#public-key)
+	- [Private key](1-general-security-concepts/1-4-cryptographic-solutions.md#private-key)
+	- [Key escrow](1-general-security-concepts/1-4-cryptographic-solutions.md#key-escrow)
+- [Hashing](1-general-security-concepts/1-4-cryptographic-solutions.md#hashing)
+- [Salting](1-general-security-concepts/1-4-cryptographic-solutions.md#salting)
+- [Digital signatures](1-general-security-concepts/1-4-cryptographic-solutions.md#digital-signatures)
+- [Key stretching](1-general-security-concepts/1-4-cryptographic-solutions.md#key-stretching)
