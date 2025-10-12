@@ -97,6 +97,17 @@ Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji 
 		- [Time-of-check (TOC)](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#time-of-check-toc)
 		- [Time-of-use (TOU)](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#time-of-use-tou)
 	- [Malicious update](2-threats-vulnerabilities-mitigations/2-3-vulnerability-types.md#malicious-update)
+### 2.4 Given a scenario, analyze indicators of malicious activity
+- [Malware attacks](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#malware-attacks)
+	- [Ransomware](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#ransomware)
+	- [Trojan](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#trojan)
+	- [Worm](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#worm)
+	- [Spyware](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#spyware)
+	- [Bloatware](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#bloatware)
+	- [Virus](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#virus)
+	- [Keylogger](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#keylogger)
+	- [Logic bomb](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#logic-bomb)
+	- [Rootkit](2-threats-vulnerabilities-mitigations/2-4-malicious-activity-indicators.md#rootkit)
 ## 4.0 Security Operations
 ### 4.1 Given a scenario, apply common security techniques to computing resources
 - [Secure baselines](4-security-operations/4-1-common-security-techniques.md#secure-baselines)
