@@ -85,7 +85,7 @@ Listy są ogólnym konceptem, którego implementacja zależy od tego, co dokład
 ## Restricted activities
 **Zakres wszystkich planowanych zmian powinien zostać udokumentowany oraz zatwierdzony przez radę ds. zarządzania zmianą (*change control board*) i zespół odpowiedzialny za wdrożenie powinien się tego trzymać**. Na przykład, jeśli celem jest jedynie aktualizacja aplikacji klienckich firmowego systemu fakturowego, to w ramach zaplanowanych prac nie powinniśmy dodatkowo instalować poprawek systemu operacyjnego, jeśli te nie są wymagane do realizacji planu.
 
-**W wyjątkowych sytuacjach, kiedy osiągnięcie celu wdrożenia wymaga dodatkowych czynności, które nie zostały przewidziane przed zgłoszeniem planowanych zmian do akceptacji, zespół może wprowadzić dodatkowe, niezbędne modyfikacje. 
+W wyjątkowych sytuacjach, kiedy osiągnięcie celu wdrożenia wymaga dodatkowych czynności, które nie zostały przewidziane przed zgłoszeniem planowanych zmian do akceptacji, zespół może wprowadzić dodatkowe, niezbędne modyfikacje. 
 
 Jednakże jest to zależne od aktualnie obowiązującej polityki oraz złożoności nadplanowych zmian, które mogą być na tyle poważne, że czasami rozsądniej jest anulować bieżący proces wdrażania i zaplanować nowy. **Procedury postępowania w takich sytuacjach również powinny zostać prawidłowo udokumentowane.**
 ## Downtime
