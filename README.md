@@ -13,6 +13,12 @@ Na te i inne pytania postaram się odpowiedzieć w punktach:
 - Ostatni powód jest bardzo osobisty: **chcę skończyć to, co już zacząłem**.  
 # Jak długo projekt będzie realizowany?
 Planuję rozwijać ten projekt **do momentu, aż wszystkie zagadnienia z edycji SY0-701 zostaną opisane lub do daty premiery nowej edycji egzaminu CompTIA Security+ SY0-801**. Czasu zostało niewiele (prawdopodobnie rok), więc nie ukrywam, że liczę również na Waszą pomoc.
+# Licencja
+Kompendium z opracowaniami jest udostępnione na licencji *Common Creative*  z uznaniem autorstwa i na tych samych warunkach (CC BY-SA 4.0). Oznacza to, że niniejszą treść można dowolnie modyfikować i rozpowszechniać pod warunkiem zachowania informacji o autorach oraz na takich samych warunkach (licencja zmodyfikowanego utworu musi być kompatybilna z CC BY-SA 4.0).
+
+Pełna treść licencji znajduje się w pliku [LICENSE](LICENSE.txt).
+
+Skrócony opis warunków licencji znajdziemy [tutaj](https://creativecommons.org/licenses/by-sa/4.0/deed.pl).
 # Spis treści
 ## 1.0 General Security Concepts
 ### 1.1 Compare and contrast various types of security controls
