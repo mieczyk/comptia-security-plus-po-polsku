@@ -19,6 +19,8 @@ Kompendium z opracowaniami jest udostępnione na licencji *Common Creative*  z u
 Pełna treść licencji znajduje się w pliku [LICENSE](LICENSE.txt).
 
 Skrócony opis warunków licencji znajdziemy [tutaj](https://creativecommons.org/licenses/by-sa/4.0/deed.pl).
+# Współpraca
+Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu opracowań, bo materiału jest naprawdę dużo. Muszę jednak jeszcze przemyśleć procedurę, która umożliwi sprawną współpracę, o ile znajdą się chętne osoby.
 # Spis treści
 ## 1.0 General Security Concepts
 ### 1.1 Compare and contrast various types of security controls
