@@ -75,6 +75,10 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 	- [Application restart](1-general-security-concepts/1-3-change-management-processes.md#application-restart)
 	- [Legacy applications](1-general-security-concepts/1-3-change-management-processes.md#legacy-applications)
 	- [Dependencies](1-general-security-concepts/1-3-change-management-processes.md#dependencies)
+- [Documentation](1-general-security-concepts/1-3-change-management-processes.md#documentation)
+	- [Updating diagrams](1-general-security-concepts/1-3-change-management-processes.md#updating-diagrams)
+	- [Updating policies/procedures](1-general-security-concepts/1-3-change-management-processes.md#updating-policiesprocedures)
+- [Version control](1-general-security-concepts/1-3-change-management-processes.md#version-control)
 ### 1.4 Explain the importance of using appropriate cryptographic solutions
 - [Public key infrastructure (PKI)](1-general-security-concepts/1-4-cryptographic-solutions.md#public-key-infrastructure-pki)
 	- [Public key](1-general-security-concepts/1-4-cryptographic-solutions.md#public-key)

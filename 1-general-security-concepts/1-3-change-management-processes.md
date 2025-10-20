@@ -126,6 +126,38 @@ Weźmy pod uwagę przykładowy scenariusz, który zdarza się dosyć często w p
 Jak widać, pozornie niewielka zmiana (aktualizacja biblioteki), ze względu na istniejące zależności, spowodowała, że musimy wziąć pod uwagę wiele różnych aspektów podczas wdrożenia aktualizacji.
 
 Nieocenioną pomocą przy identyfikowaniu zależności jest posiadanie tzw. listy SBOM (_Software Bill of Materials_), czyli cyfrowego _spisu treści_ oprogramowania, zawierającego dokładne informacje o wszystkich komponentach, bibliotekach i ich wersjach.
+# Documentation
+Proces zarządzania zmianą powinien uwzględniać również zmiany w dokumentacji. Innymi słowy, **każda wprowadzona zmiana powinna zostać niezwłocznie udokumentowana**.
+
+W przeciwnym wypadku może dojść do dezaktualizacji formalnych źródeł wiedzy w organizacji, co sprawi, że staną się one bezużyteczne - szczególnie jeśli zmiany w systemach są wdrażane często i regularnie. Pracownicy przestaną ufać istniejącej dokumentacji, ponieważ nie będą mieli pewności, czy rzeczywiście odzwierciedla ona stan faktyczny.
+
+Dobra dokumentacja oddaje aktualny stan systemów, usług czy aplikacji wraz z ich bieżącą konfiguracją. Zawiera również informacje o tym, w jaki sposób działają poszczególne komponenty obszaru IT, jaki jest ich cel oraz kto w organizacji (np. który zespół) jest za nie odpowiedzialny.
+
+Ważną kwestią są także **listy zmian (ang. *changelog*), które jasno wskazują wszelkie modyfikacje wprowadzane na przestrzeni czasu**.
+## Updating diagrams
+Istotnym elementem każdej dokumentacji jest także graficzna reprezentacja poszczególnych elementów systemów i infrastruktury w postaci diagramów, schematów lub wykresów.
+
+Tę część dokumentacji także należy regularnie aktualizować, dlatego wszelkie **grafiki warto przechowywać w postaci łatwej do edycji**. Jeśli diagram jest dołączony do dokumentacji w formacie PNG lub JPG, dobrze jest posiadać również plik źródłowy (np. plik tekstowy w formacie [PlantUML](https://plantuml.com/)), który można w prosty sposób modyfikować, a jego zmiany śledzić za pośrednictwem systemu kontroli wersji (ang. *version control*).
+## Updating policies/procedures
+Oprócz dokumentacji opisującej poszczególne elementy infrastruktury IT (sieci, systemy, aplikacje) nie należy zapominać o **udokumentowanych politykach obowiązujących w organizacji oraz procedurach**.
+
+Przykładem takiej dokumentacji może być lista kroków wymaganych do sprawdzenia poprawnego działania serwera bazodanowego po jego aktualizacji. Jeśli firma zdecyduje się na migrację do całkowicie innego serwera (np. z MariaDB na PostgreSQL), procedura weryfikacyjna również musi zostać odpowiednio dostosowana.
+
+Aktualizowanie polityk i procedur ma kluczowe znaczenie z punktu widzenia bezpieczeństwa informacji. Zapewnia, że pracownicy korzystają z aktualnych wytycznych zgodnych z bieżącymi konfiguracjami systemów, wymaganiami prawnymi oraz najlepszymi praktykami branżowymi. Nieaktualne procedury mogą prowadzić do błędów operacyjnych, naruszeń bezpieczeństwa lub braku zgodności z regulacjami.
+# Version control
+Systemy kontroli wersji (ang. *version control*) umożliwiają **dokładne śledzenie zmian**, które pojawiają się z każdą nową wersją oprogramowania, dokumentu, konfiguracji czy innego zasobu. Często **pozwalają także na powrót do wybranej wersji**, jeśli zachodzi taka potrzeba (np. aplikacja przestała działać po najnowszej aktualizacji).
+
+Jest to bardzo użyteczne narzędzie, umożliwiające sprawną identyfikację zmian, które mogą powodować awarię, oraz szybkie wycofanie problematycznej wersji.
+
+Kontrola wersji może być wbudowana w aplikację (np. [Confluence](https://www.atlassian.com/software/confluence)), która automatycznie zapisuje każdą wersję opublikowanego dokumentu w historii, do której mamy łatwy dostęp, ale może także stanowić osobne narzędzie (np. [Git](https://git-scm.com/)), umożliwiające wersjonowanie kodu źródłowego, konfiguracji lub dokumentacji technicznej.
+
+W dużym skrócie: wersjonowanie polega na zapisywaniu poszczególnych wersji oprogramowania, dokumentu bądź konfiguracji pomiędzy zmianami, wraz z nadaniem stosownej etykiety. Dzięki temu możemy przeglądać zapisane wersje i w razie potrzeby je przywrócić.
+
+Kontrola wersji odgrywa znaczącą rolę z punktu widzenia bezpieczeństwa informacji:
+- pozwala śledzić, kto i kiedy wprowadził zmiany, co ułatwia analizę incydentów bezpieczeństwa i audyt działań administracyjnych;
+- chroni przed przypadkową utratą danych poprzez możliwość przywrócenia wcześniejszej, stabilnej wersji pliku lub konfiguracji;
+- usprawnia proces reagowania na incydenty poprzez umożliwienie szybkiego odtworzenia poprzedniego stanu środowiska;
+- wspiera zgodność z regulacjami i standardami, które wymagają szczegółowego dokumentowania zmian w systemach informatycznych.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
