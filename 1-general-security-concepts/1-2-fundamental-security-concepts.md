@@ -294,6 +294,12 @@ Terminy takie jak *podmiot* (ang. *subject*) oraz *system* już przewinęły si
 Jest to rodzaj *strażnika bramy* (ang. *gatekeeper*), który przepuszcza tylko uprawnionych interesantów. **Sam jednak nie podejmuje decyzji**, ponieważ dokładne wskazówki otrzymuje od swojego bezpośredniego *dowódcy*, czyli wspomnianego wcześniej komponentu *Policy Decision Point* (*Policy Administrator* + *Policy Engine*). PDP z kolei wydaje werdykt na podstawie informacji o żądaniu otrzymanych z PEP, zestawionych z instrukcjami pochodzącymi z innych źródeł (np. zdefiniowane polityki dostępu).
 
 Na wykresie PEP jest przedstawiony jako pojedynczy element, ale pamiętajmy, że jest to jedynie abstrakcyjny koncept i funkcjonalność PEP może składać się z wielu rozproszonych elementów.
+# Physical security
+## TODO
+Messer:
+- Kiedy mówimy o bezpieczeństwie informacji, naszą pierwszą myślą są cyfrowe środki bezpieczeństwa. Musimy jednak pamiętać, że część z tych środków może okazać się bezużyteczna, jeśli atakującemu uda się uzyskać fizyczny dostęp do serwera lub stacji roboczej, na których przechowywane są istotne dane.
+- Poza tym, w wielu organizacjach, oprócz danych cyfrowych, często przechowywane są ważne dokumenty w formie papierowej, które również wymagają należytej ochrony.
+- *Bollards* - 
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
