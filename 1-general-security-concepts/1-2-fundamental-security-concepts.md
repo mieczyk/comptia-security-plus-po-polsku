@@ -299,7 +299,12 @@ Na wykresie PEP jest przedstawiony jako pojedynczy element, ale pamiętajmy, że
 Messer:
 - Kiedy mówimy o bezpieczeństwie informacji, naszą pierwszą myślą są cyfrowe środki bezpieczeństwa. Musimy jednak pamiętać, że część z tych środków może okazać się bezużyteczna, jeśli atakującemu uda się uzyskać fizyczny dostęp do serwera lub stacji roboczej, na których przechowywane są istotne dane.
 - Poza tym, w wielu organizacjach, oprócz danych cyfrowych, często przechowywane są ważne dokumenty w formie papierowej, które również wymagają należytej ochrony.
-- *Bollards* - 
+- ***Bollards*** - słupy/słupki/pachołki stanowiące rodzaj barykady, uniemożliwiającej fizyczny dostęp do pewnych obszarów placówki. Ich najczęstszym zastosowaniem jest przekierowanie ludzi do wybranego punktu, a także uniemożliwienie wjazdu pojazdom na określony teren (ludzie mogą je bez problemu ominąć pieszo).
+	- Jeśli są wyraźnie oznaczone jaskrawymi barwami, mogą również pełnić funkcję ostrzegawczą.
+	- Przeważnie wykonane są z solidnych materiałów (beton, metal).
+- ***Access control vestibule*** (mantrap) - można to dosłownie przetłumaczyć jako *przedsionek kontroli dostępu* i jest opisem pomieszczanie, przez które trzeba przejść, żeby uzyskać dostęp do dalszej części placówki. Przykładowo: drzwi do kolejnego pomieszczania nie otworzą się dopóki nie zamkniemy drzwi wejściowych i nie uwierzytelnimy się w odpowiedni sposób (np. przykładając kartę dostępu do czytnika).  Procedura przejścia przez taki przedsionek może się różnić w zależności od potrzeb, ale cel jest jednakowy: kontrola dostępu do wybranego obszaru placówki. Takie pomieszczenie kontrolne może być niewielkie, żeby umożliwić przejście tylko jednej osobie na raz.
+- ***Fencing*** - chodzi oczywiście o odpowiednie ogrodzenie. Płoty mogą być różnego rodzaju, w zależności od potrzeb. Nawet niewysokie ogrodzenie pełni funkcję ostrzegawczą. Jeśli płot ma pełnić również funkcję zapobiegawczą, to powinien być trudny do sforsowania, np. wysoki, z drutem kolczastym na górze lub ostrymi zakończeniami (choć trzeba mieć na uwadze panujące w danym kraju przepisy: https://www.rmf.fm/hot-news/news,82153,nowe-przepisy-od-2026-roku-takich-plotow-juz-nie-postawisz.html).
+	- Płot może również być nieprześwitujący, żeby ukryć to co się za nim znajduje, choć w erze dronów, taki środek zapobiegawczy może okazać się niewystarczający.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
