@@ -358,9 +358,11 @@ Pod definicję *access badge* podpada również **elektroniczna karta dostępu**
 
 Warto mieć na uwadze, że podrobienie bądź kradzież takiej karty może stać się dla atakującego przepustką do chronionych miejsc w placówce, więc **wszelkie incydenty związane z utratą karty** lub podejrzenia, że mogła zostać sklonowana, powinny zostać **bezzwłocznie zgłoszone** do odpowiedniego działu organizacji.
 ## Lighting
-- Twórcy egzaminu najwyraźniej nie zgadzają się z powiedzeniem *najciemniej pod latarnią*, ponieważ wskazują oświetlenie jako jeden z fizycznych środków bezpieczeństwa. W gruncie rzeczy ma to sens - dużo trudniej jest pozostać niezauważonym, gdy obszary, przez które potencjalny włamywacz chce się przemknąć, są dobrze oświetlone. Nawet kamery wykorzystujące technologię podczerwieni (ang. *infrared*, IR) nie mogą się równać z dobrym oświetleniem.
-	- Ważny jest również rodzaj oświetlenia, które powinno być równomierne, bez oślepiającego blasku i/lub ciemniejszych obszarów. Jest to szczególnie istotne w przypadku kamer rozpoznających twarze bądź inne obiekty.
-- Automatycznie włączane światła, reagujące na ruch, mogą również pełnić funkcję ostrzegawczą, jeśli włączą się w godzinach, w których teoretycznie już nikt nie pracuje.
+Twórcy egzaminu najwyraźniej nie zgadzają się z powiedzeniem, że *najciemniej jest pod latarnią*, ponieważ wskazują **oświetlenie** (ang. *lighting*) jako jeden z fizycznych środków bezpieczeństwa. W gruncie rzeczy ma to sens, ponieważ dużo **trudniej jest pozostać niezauważonym, gdy obszary, przez które potencjalny włamywacz chce się przemknąć, są dobrze oświetlone**.
+
+Nawet kamery wykorzystujące technologię podczerwieni (ang. *infrared*, IR) nie zapewniają tak dobrej jakości obrazu, jak nagrania rejestrowane w pełnym świetle. Warto również pamiętać, że odpowiednie oświetlenie powinno być równomierne - bez oślepiającego blasku czy ciemniejszych stref. Jest to szczególnie istotne w przypadku kamer rozpoznających twarze bądź inne obiekty.
+
+Dodatkowo, **automatycznie włączane światła reagujące na ruch mogą pełnić funkcję ostrzegawczą**, gdy włączą się w godzinach, w których teoretycznie już nikt nie pracuje.
 ## Sensors
 - Różne rodzaje czujników: ruchu, hałasu, wilgoci, temperatury. Detektory ruchu lub hałasu są wykorzystywane do uruchomienia systemów bezpieczeństwa zapobiegających wtargnięciu na teren placówki, kradzieży itp.
 - Czujniki temperatury i wilgoci są natomiast wykorzystywane w placówkach, gdzie należy dbać o optymalne warunki środowiskowe celem zapewnienia ciągłości pracy urządzeń (np. serwery w centrach danych).
