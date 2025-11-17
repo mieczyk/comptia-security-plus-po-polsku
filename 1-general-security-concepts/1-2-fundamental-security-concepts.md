@@ -364,9 +364,13 @@ Nawet kamery wykorzystujące technologię podczerwieni (ang. *infrared*, IR) nie
 
 Dodatkowo, **automatycznie włączane światła reagujące na ruch mogą pełnić funkcję ostrzegawczą**, gdy włączą się w godzinach, w których teoretycznie już nikt nie pracuje.
 ## Sensors
-- Różne rodzaje czujników: ruchu, hałasu, wilgoci, temperatury. Detektory ruchu lub hałasu są wykorzystywane do uruchomienia systemów bezpieczeństwa zapobiegających wtargnięciu na teren placówki, kradzieży itp.
-- Czujniki temperatury i wilgoci są natomiast wykorzystywane w placówkach, gdzie należy dbać o optymalne warunki środowiskowe celem zapewnienia ciągłości pracy urządzeń (np. serwery w centrach danych).
-- Czujniki muszą być odpowiednio dobrane do naszych potrzeb, z uwzględnieniem różnych czynników środowiskowych.
+Według najbardziej ogólnej definicji, **czujnik (ang. *sensor*) to urządzenie zdolne do odbierania określonych bodźców z otoczenia (np. fizycznych lub chemicznych) oraz przekształcania ich na użyteczny sygnał wyjściowy, najczęściej elektryczny**.
+
+Typów czujników jest bardzo wiele, a ich **najbardziej podstawowym kryterium podziału jest rodzaj bodźca, na który reagują**. Na rynku dostępne są m.in. czujniki temperatury, wilgoci, dźwięku, ruchu czy ciśnienia.
+
+Pamiętajmy, że sensory powinny być odpowiednio dobrane do potrzeb organizacji, z uwzględnieniem warunków środowiskowych. W bezpieczeństwie fizycznym często stosuje się np. detektory ruchu i dźwięku, które po wykryciu określonych sygnałów z otoczenia mogą uruchomić alarm, zapobiegając w ten sposób włamaniu lub kradzieży. Z kolei czujniki temperatury i wilgoci wykorzystuje się w miejscach, gdzie należy utrzymywać optymalne warunki środowiskowe, aby zapewnić ciągłość pracy urządzeń (np. serwerów w centrach danych).
+
+Poniżej znajduje się krótka lista typów czujników, skategoryzowanych na podstawie zjawisk fizycznych wykorzystywanych do ich działania.
 ### Infrared
 - Jak zostało wcześniej wspomniane, często stosuje się kamery wykorzystujące IR w celu lepszego widzenia w ciemności. Tego typu urządzenia są w sanie wykryć promieniowanie podczerwieni, niezależnie od warunków oświetleniowych. Czujniki podczerwieni są często stosowane w wykrywaczach ruchu (PIR), szczególnie gdy nie potrzebujemy obrazu wideo i wystarczy nam tylko informacja o tym, czy coś w danym obszarze się poruszyło.
 - Zasada działania tych czujników opiera się o wykorzystanie światła podczerwonego (ang. *infrared light*) lub promieniowania cieplnego (ang. *heat radiation*). Czujnik reaguje, gdy zostanie wykryta zmiana w promieniowaniu podczerwonym, w danym obszarze (np. w pokoju). Dobrze sprawdzają się w niedużych pomieszczeniach, a ich zaletą jest stosunkowo niska cena.
@@ -410,5 +414,6 @@ Dodatkowo, **automatycznie włączane światła reagujące na ruch mogą pełni�
 - [CertBros: Zero Trust Explained | Real World Example](https://www.youtube.com/watch?v=Y3DjoTiOiOU&ab_channel=CertBros)
 - [Check Point: Network Segmentation vs Micro-Segmentation](https://www.checkpoint.com/cyber-hub/network-security/network-segmentation-vs-micro-segmentation/)
 - [Access Control Vestibule: What is It & How It Works](https://getsafeandsound.com/blog/access-control-vestibule/)
+- [Botland: Czujnik – Co to jest i do czego służy?](https://botland.com.pl/blog/czujnik-co-to-jest-i-do-czego-sluzy/)
 - [Infrared Sensor: What Is It & How Does It Work?](https://getsafeandsound.com/blog/infrared-sensor/)
 - [RS Elektronika: Jak działa czujka ruchu?](https://www.youtube.com/watch?v=opyCukpSC6A)
