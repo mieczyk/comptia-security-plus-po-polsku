@@ -384,8 +384,9 @@ Ze względu na swoją specyfikę czujniki IR dobrze sprawdzają się na niewielk
 
 Planując użycie czujników podczerwieni, należy wziąć pod uwagę ich ograniczenia. Charakteryzują się dużą wrażliwością na czynniki środowiskowe (np. zmiany temperatury, inne źródła ciepła lub promieniowania podczerwonego) oraz ograniczonym zasięgiem. Z tego powodu najlepiej sprawdzają się w mniejszych pomieszczeniach, w których nie ma wielu przeszkód mogących blokować promieniowanie IR.
 ### Pressure
-- ****** Czujnik nacisku (w tym przypadku nie chodzi o czujniki ciśnienia). Może uruchomić alarm, gdy wykryje zmianę w nacisku na daną powierzchnię. Montowany np. w podłodze lub w oknach (przykład: Mission Impossible).
-- Wykrywa zmiany w nacisku na daną powierzchnię (co w sumie z definicji jest ciśnieniem). Obecnie są rzadko stosowane, ale służą do wykrywania przemieszczających się obiektów po powierzchni, do której są podłączone. Maty naciskowe można jeszcze spotkać w automatycznie otwieranych drzwiach (np. kiedy klient podejdzie do nich i stanie w odpowiednim miejscu, te automatycznie się rozsuwają).
+**Czujnik nacisku (ang. *pressure sensor*) jest w stanie wykryć zmiany siły działającej na określoną powierzchnię, czyli mówiąc krótko - zmianę ciśnienia.** Czujnik umieszczony w podłodze może uruchomić alarm, gdy zostanie wykryty znaczny nacisk - na myśl może przyjść scena z Tomem Cruise’em zwisającym z sufitu :). Innym zastosowaniem jest wykrywanie przemieszczających się obiektów po powierzchni, do której taki sensor jest przymocowany.
+
+Czujniki nacisku są obecnie rzadko stosowane w typowych zabezpieczeniach, ale można spotkać je w matach naciskowych wykorzystywanych do automatycznego otwierania drzwi (np. gdy ktoś podejdzie do wejścia i stanie w odpowiednim miejscu, drzwi automatycznie się rozsuwają).
 ### Microwave
 - Podczerwień dobrze sprawdza się w ograniczonych obszarach, ale przy większej powierzchni lepiej sprawdzają się czujniki. Zasada działania opiera się na częstotliwości mikrofal - w celu wykrycia ruchu emitowane są impulsy mikrofal (microwave pulses), a następnie sprawdzane jest odbicie od poruszającego się obiektu.
 - Tego typu czujniki najpierw określają stan wyjściowy dla skanowanego obszaru, traktując wykryte sygnały jako wartości bazowe. Kiedy odpowiedzi na wysłane mikrofale odbiegają od tych wartości podstawowych, sensor się aktywuje.
