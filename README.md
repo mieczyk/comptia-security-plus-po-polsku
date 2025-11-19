@@ -66,7 +66,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 	- [Access badge](1-general-security-concepts/1-2-fundamental-security-concepts.md#access-badge)
 	- [Lighting](1-general-security-concepts/1-2-fundamental-security-concepts.md#lighting)
 	- [Sensors](1-general-security-concepts/1-2-fundamental-security-concepts.md#sensors)
-		- [Infrared](1-general-security-concepts/1-2-fundamental-security-concepts.md#infrared)
+		- [Infrared](1-general-security-concepts/1-2-fundamental-security-concepts.md#infrared-ir)
 		- [Pressure](1-general-security-concepts/1-2-fundamental-security-concepts.md#pressure)
 		- [Microwave](1-general-security-concepts/1-2-fundamental-security-concepts.md#microwave)
 		- [Ultrasonic](1-general-security-concepts/1-2-fundamental-security-concepts.md#ultrasonic)

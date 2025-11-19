@@ -371,20 +371,18 @@ Typów czujników jest bardzo wiele, a ich **najbardziej podstawowym kryterium p
 Pamiętajmy, że sensory powinny być odpowiednio dobrane do potrzeb organizacji, z uwzględnieniem warunków środowiskowych. W bezpieczeństwie fizycznym często stosuje się np. detektory ruchu i dźwięku, które po wykryciu określonych sygnałów z otoczenia mogą uruchomić alarm, zapobiegając w ten sposób włamaniu lub kradzieży. Z kolei czujniki temperatury i wilgoci wykorzystuje się w miejscach, gdzie należy utrzymywać optymalne warunki środowiskowe, aby zapewnić ciągłość pracy urządzeń (np. serwerów w centrach danych).
 
 Poniżej znajduje się krótka lista typów czujników, skategoryzowanych na podstawie zjawisk fizycznych wykorzystywanych do ich działania.
-### Infrared
-- Jak zostało wcześniej wspomniane, często stosuje się kamery wykorzystujące IR w celu lepszego widzenia w ciemności. Tego typu urządzenia są w sanie wykryć promieniowanie podczerwieni, niezależnie od warunków oświetleniowych. Czujniki podczerwieni są często stosowane w wykrywaczach ruchu (PIR), szczególnie gdy nie potrzebujemy obrazu wideo i wystarczy nam tylko informacja o tym, czy coś w danym obszarze się poruszyło.
-- Zasada działania tych czujników opiera się o wykorzystanie światła podczerwonego (ang. *infrared light*) lub promieniowania cieplnego (ang. *heat radiation*). Czujnik reaguje, gdy zostanie wykryta zmiana w promieniowaniu podczerwonym, w danym obszarze (np. w pokoju). Dobrze sprawdzają się w niedużych pomieszczeniach, a ich zaletą jest stosunkowo niska cena.
-- Czujniki podczerwieni reagują na zmiany światła podczerwonego, które jest niewidoczne dla ludzkiego oka. Urządzenia te wykrywają promieniowanie podczerwone emitowane przez każdy obiekt, którego temperatura jest wyższa od zera bezwzględnego (czyli w zasadzie każdy znany obiekt, bo najniższa temperatura jaką udało się do tej pory mechanicznie uzyskać to 450 pikokelwinów). Kiedy promieniowanie podczerwone (cieplne) trafia do czujnika, jest ono zamieniane na sygnały elektryczne. Tutaj opisany został rodzaj czujnika pasywnego (ang. *passive sensor*), który tylko wykrywa promieniowanie obiektów.
-	- Niektóre obiekty są tak gorące, że emitują również widoczne światło (np. ogień).
-- Czujnik aktywny (ang. *active sensor*), oprócz odbiornika posiada również nadajnik, który emituje światło podczerwone. Taki czujnik reaguje na światło odbite od obiektów znajdujących się na drodze, wracające do odbiornika. Czas potrzebny na powrót sygnału do źródła pozwala oszacować nie tylko obecność, ale też odległość obiektu.
-- Zastosowania:
-	- Wykrywanie ruchu (ang. *motion detection*), np. w obszarach chronionych. Jeśli w pomieszczeniu, w którym nic nie powinno się w danej chwili znajdować, zostanie wykryty ruch, system może uruchomić alarm. Używając czujnika podczerwieni nie musimy mieć kamery.
-	- Czujniki przeciwpożarowe. Jak wiemy, czujniki IR wykrywają sygnatury cieplne, więc nagły wzrost poziomi promieniowania cieplnego może świadczyć o pożarze w danym pomieszczeniu.
-	- Wspomniane wcześniej kamery, które umożliwiają rejestrowanie obrazu w nocy.
-	- Są również wykorzystywane w czujnikach zbliżeniowych (np. asystenci parkowania w samochodach).
-- Ograniczenia:
-	- Duża wrażliwość na warunki środowiskowe (np. zmiany atmosferyczne, inne źródła ciepła/promieniowania podczerwonego itp.).
-	- Ograniczony zasięg - dobrze sprawdzają się w niedużych pomieszczeniach, bez dużej ilości przeszkód fizycznych, które mogłyby blokować promieniowanie IR.
+### Infrared (IR)
+**Czujniki podczerwieni (ang. *infrared*) reagują na zmiany światła podczerwonego, które jest niewidoczne dla ludzkiego oka**. W zależności od zasady działania urządzenia te można podzielić na dwa typy:
+- **Pasywny czujnik podczerwieni (ang. *passive infrared sensor* = PIR)** - wykrywa promieniowanie podczerwone emitowane przez każdy obiekt o temperaturze wyższej niż zero absolutne, czyli w praktyce przez wszystkie znane obiekty. Gdy promieniowanie dociera do czujnika, jest ono przekształcane w sygnał elektryczny. Warto dodać, że niektóre obiekty emitują również widzialne światło, jeśli są wystarczająco gorące (np. ogień).
+- **Aktywny czujnik podczerwieni (ang. *active infrared sensor* = AIR)** - oprócz odbiornika posiada także nadajnik emitujący światło podczerwone. Czujnik reaguje na sygnał odbity od obiektów znajdujących się na jego drodze. Czas powrotu sygnału pozwala nie tylko wykryć obecność przeszkody, ale także oszacować jej odległość.
+
+Ze względu na swoją specyfikę czujniki IR dobrze sprawdzają się na niewielkich obszarach, a ich niewątpliwą zaletą jest stosunkowo niska cena. Najpopularniejsze zastosowania:
+- **Wykrywacze ruchu** (ang. *motion detectors*) - jeśli w pomieszczeniu, w którym nikt nie powinien przebywać, zostanie wykryty ruch, system może uruchomić alarm. Jest to wygodne rozwiązanie, szczególnie gdy nie potrzebujemy obrazu wideo, a jedynie informacji o tym, czy w danym obszarze coś się poruszyło.
+- **Czujniki przeciwpożarowe** - ponieważ promieniowanie termiczne jest częścią widma podczerwonego, to czujniki IR mogą wykrywać sygnatury cieplne. Nagły wzrost poziomu promieniowania może świadczyć o pożarze w danym pomieszczeniu.
+- **Kamery wykorzystujące IR** - umożliwiają lepsze widzenie w ciemności, wykrywając promieniowanie podczerwieni niezależnie od warunków oświetleniowych.
+- **Czujniki zbliżeniowe** (np. systemy wspomagania parkowania w samochodach).
+
+Planując użycie czujników podczerwieni, należy wziąć pod uwagę ich ograniczenia. Charakteryzują się dużą wrażliwością na czynniki środowiskowe (np. zmiany temperatury, inne źródła ciepła lub promieniowania podczerwonego) oraz ograniczonym zasięgiem. Z tego powodu najlepiej sprawdzają się w mniejszych pomieszczeniach, w których nie ma wielu przeszkód mogących blokować promieniowanie IR.
 ### Pressure
 - ****** Czujnik nacisku (w tym przypadku nie chodzi o czujniki ciśnienia). Może uruchomić alarm, gdy wykryje zmianę w nacisku na daną powierzchnię. Montowany np. w podłodze lub w oknach (przykład: Mission Impossible).
 - Wykrywa zmiany w nacisku na daną powierzchnię (co w sumie z definicji jest ciśnieniem). Obecnie są rzadko stosowane, ale służą do wykrywania przemieszczających się obiektów po powierzchni, do której są podłączone. Maty naciskowe można jeszcze spotkać w automatycznie otwieranych drzwiach (np. kiedy klient podejdzie do nich i stanie w odpowiednim miejscu, te automatycznie się rozsuwają).
