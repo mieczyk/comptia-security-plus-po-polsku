@@ -316,6 +316,9 @@ W dzisiejszych czasach warto także wziąć pod uwagę drony. Chodzi oczywiście
 ## Access control vestibule
 Chyba najtrafniejszym polskim odpowiednikiem tego terminu, zarówno znaczeniowo jak i funkcjonalnie, jest ***śluza bezpieczeństwa***. W dosłownym tłumaczeniu jest to *przedsionek kontroli dostępu*, jednak w praktyce określenie to nie jest powszechnie używane.. Inną nazwą tego środka bezpieczeństwa, z którą można się jeszcze spotkać, jest *mantrap* (dosłownie: pułapka na ludzi).
 
+![Access control vestibule](../media/1-2-physical-security-vestibule.png)
+Źródło: własne.
+
 **Jest to niewielkie pomieszczenie, przez które trzeba przejść, żeby uzyskać dostęp do dalszej części placówki**. Jego główną rolą jest zabezpieczenie przed atakami typu [*tailgating/piggybacking*](https://vilya.pl/sy0-601-cheatsheet-1-1-social-engineering/#tailgating) (w skrócie: osoba nieuprawniona *przykleja się* do osoby uprawnionej pod jakimś niepozornym pretekstem i podąża za nią do miejsc z ograniczonym dostępem).
 
 Śluza bezpieczeństwa posiada przeważnie dwoje drzwi - wejściowe, prowadzące do śluzy z zewnątrz, oraz wyjściowe, które są przejściem do chronionego obszaru. Wejście do takiego przedsionka może wymagać jakiejś formy autoryzacji (np. przyłożenia karty dostępu), ale tak naprawdę to drugie przejście jest najważniejsze.
@@ -329,6 +332,9 @@ Takie pomieszczenie kontrolne jest zazwyczaj niewielkie, żeby umożliwić przej
 Atutem tego rozwiązania, w połączeniu z [monitoringiem wideo](#video-surveillance), jest możliwość przeprowadzenia dodatkowej weryfikacji (np. wykrywanie niebezpiecznych obiektów lub podejrzanego zachowania) oraz dokumentowanie wszystkich wizyt. Taki podgląd jest szczególnie użyteczny, kiedy np. dojdzie do incydentu z ukradzioną kartą dostępu, ponieważ w bazie danych zostanie zarejestrowane wejście właściciela skradzionej karty, ale już na nagraniu może okazać się, że naruszenia dokonała zupełnie inna osoba.
 ## Fencing
 Pokusiłbym się o stwierdzenie, że stosowanie **ogrodzenia** (ang. *fencing*) jest jedną z najstarszych metod obrony przed fizycznymi zagrożeniami, a także stosunkowo skuteczną.
+
+![Fencing](../media/1-2-physical-security-fencing.jpg)
+Źródło: pixabay.com.
 
 **Rodzaj płotu stanowiącego ogrodzenie jest w dużej mierze zależny od chronionego obiektu**. W przypadku placówek wymagających wysokiego stopnia bezpieczeństwa, stosowane będą ogrodzenia trudne do sforsowania, które mogą dodatkowo wchodzić w skład kilku *pierścieni* (obwodów obronnych). Przykładem jest wysoki płot z ostrymi zakończeniami lub mur z drutem kolczastym na górze (ciekawostka: stosując tego typu zabezpieczenia warto mieć na uwadze [przepisy obowiązujące w danym kraju](https://www.rmf.fm/hot-news/news,82153,nowe-przepisy-od-2026-roku-takich-plotow-juz-nie-postawisz.html)).
 
@@ -348,6 +354,9 @@ Mnogość dostępnego dziś asortymentu pozwala dobrać odpowiedni sprzęt do na
 ## Security guard
 **Pracownicy ochrony (ang. *security guards*) są niezbędni, gdy wymagany jest ludzki osąd bądź interwencja.** Przykładowo, opisany wyżej system monitoringu może pomóc w wykrywaniu nieprawidłowości, ale ktoś musi na taki incydent zareagować - i tym kimś jest odpowiednio przeszkolony oraz wykwalifikowany pracownik ochrony (w dalszej części opracowania nazywany również strażnikiem, celem uniknięcia powtórzeń).
 
+![Security guard](../media/1-2-physical-security-guard.jpg)
+Źródło: pixabay.com.
+
 Personel ochrony jest często spotykany przy wejściu do budynku (recepcja) bądź przy bramie wjazdowej na teren placówki (portiernia). Można ich także znaleźć w specjalnych pokojach, które stanowią z reguły *centrum zarządzania* systemami ochrony, włączając w to monitoring. Oczywiście nie oznacza to, że strażnicy zawsze przebywają w jednym miejscu, ponieważ zwykle do listy ich regularnych obowiązków zalicza się obchody po placówce.
 
 Pracownicy ochrony stacjonujący przy wejściu do firmy lub przy bramie wjazdowej nierzadko odpowiadają za weryfikację wchodzących/wjeżdżających oraz wychodzących/wyjeżdżających osób (pracowników, klientów, gości). Dodatkowym atutem obecności umundurowanej jednostki w takim miejscu jest fakt, że może to skutecznie *odstraszyć* ludzi o nieczystych intencjach, o ile nie są wystarczająco zdeterminowani. Praca na takim stanowisku może wiązać się również z prowadzeniem dziennika odwiedzin (ang. *visitor log*), w którym zapisywane są dane osób odwiedzających wraz z godziną wejścia oraz wyjścia.
@@ -362,9 +371,15 @@ Taki identyfikator często nosi się na widoku - zarówno przez stałych pracown
 
 Pod definicję *access badge* podpada również **elektroniczna karta dostępu**, czyli **karta magnetyczna i/lub wyposażona w chip RFID** (*Radio-Frequency Identification*), na której zapisane są dane identyfikacyjne właściciela. Taka **karta jest jednocześnie kluczem** do miejsc, do których jej posiadacz ma dostęp - odpowiednie czytniki weryfikują dane przechowywane na karcie oraz zapisują fakt jej użycia w scentralizowanej bazie danych. Oczywiście wspomniany wyżej identyfikator dostępu z wyeksponowanymi informacjami może być równocześnie elektroniczną kartą dostępu.
 
+![Access badge](../media/1-2-physical-security-badge.jpg)
+Źródło: pixabay.com.
+
 Warto mieć na uwadze, że podrobienie bądź kradzież takiej karty może stać się dla atakującego przepustką do chronionych miejsc w placówce, więc **wszelkie incydenty związane z utratą karty** lub podejrzenia, że mogła zostać sklonowana, powinny zostać **bezzwłocznie zgłoszone** do odpowiedniego działu organizacji.
 ## Lighting
 Twórcy egzaminu najwyraźniej nie zgadzają się z powiedzeniem, że *najciemniej jest pod latarnią*, ponieważ wskazują **oświetlenie** (ang. *lighting*) jako jeden z fizycznych środków bezpieczeństwa. W gruncie rzeczy ma to sens, ponieważ dużo **trudniej jest pozostać niezauważonym, gdy obszary, przez które potencjalny włamywacz chce się przemknąć, są dobrze oświetlone**.
+
+![Lighting](../media/1-2-physical-security-lighting.jpg)
+Źródło: pixabay.com.
 
 Nawet kamery wykorzystujące technologię podczerwieni (ang. *infrared*, IR) nie zapewniają tak dobrej jakości obrazu, jak nagrania rejestrowane w pełnym świetle. Warto również pamiętać, że odpowiednie oświetlenie powinno być równomierne - bez oślepiającego blasku czy ciemniejszych stref. Jest to szczególnie istotne w przypadku kamer rozpoznających twarze bądź inne obiekty.
 
