@@ -76,7 +76,7 @@ Pamiętajmy, że przedstawiony wyżej ogólny opis frameworka AAA jest jedynie a
 
 Ogólny proces kontroli dostępu do chronionych zasobów, z wykorzystaniem scentralizowanego serwera AAA (na przykładzie protokołu RADIUS), mógłby wyglądać następująco: 
 
-![AAA server access](https://github.com/mieczyk/comptia-security-plus-po-polsku/blob/main/media/1-2-AAA-server-access.png)
+![AAA server access](../media/1-2-AAA-server-access.png)
 
 Przykłady popularnych protokołów AAA:
 - **RADIUS** (*Remote Access Dial-In User Service*) - protokół będący otwartym standardem, realizujący założenia frameworka AAA, który powstał w 1991 roku i jest do dzisiaj wykorzystywany (**głównie w sieciach bezprzewodowych**). **Uwierzytelnienie oraz autoryzacja są realizowane w ramach pojedynczego kroku**, podczas gdy śledzenie aktywności odbywa się w osobnym procesie. Starsze implementacje wykorzystywały porty UDP o numerach 1645 (*authentication, authorization*) oraz 1646 (*accounting*), natomiast nowsze wersje używają w tym samym celu portów **UDP** **1812** (uwierzytelnienie i autoryzacja) oraz **1813** (rejestrowanie poczynań). Podczas komunikacji sieciowej **jedynie hasła są zaszyfrowane** - pozostałe informacje są przesyłane w formie jawnej.
@@ -309,6 +309,9 @@ W dzisiejszych czasach warto także wziąć pod uwagę drony. Chodzi oczywiście
 ## Bollards
  Termin ten można przetłumaczyć jako **słupy, słupki lub pachołki stanowiące rodzaj barykady**, uniemożliwiającej fizyczny dostęp do pewnych obszarów placówki. Przeważnie są one wykonane z solidnych materiałów, takich jak beton lub metal.
 
+![Bollards](../media/1-2-physical-security-bollards.jpg)
+Źródło: własne.
+
  Ich najczęstszym zastosowaniem jest **uniemożliwienie wjazdu pojazdom na określony teren**, gdyż ludzie mogą je bez problemu ominąć pieszo. Ich główną funkcją ochronną jest **zapobieganie wypadkom oraz celowym atakom z wykorzystaniem pojazdów (ang. *vehicle-ramming*)**. Jeśli słupy są wyraźnie oznaczone jaskrawymi barwami, mogą również pełnić funkcję ostrzegawczą.
 ## Access control vestibule
 Chyba najtrafniejszym polskim odpowiednikiem tego terminu, zarówno znaczeniowo jak i funkcjonalnie, jest ***śluza bezpieczeństwa***. W dosłownym tłumaczeniu jest to *przedsionek kontroli dostępu*, jednak w praktyce określenie to nie jest powszechnie używane.. Inną nazwą tego środka bezpieczeństwa, z którą można się jeszcze spotkać, jest *mantrap* (dosłownie: pułapka na ludzi).
@@ -332,6 +335,9 @@ Pokusiłbym się o stwierdzenie, że stosowanie **ogrodzenia** (ang. *fencing*)
 Nawet niewysokie ogrodzenie może pełnić funkcję ostrzegawczą lub *odstraszającą* (ang. *deterrent*), a czasem obie jednocześnie. Jeśli chcemy dodatkowo ukryć obiekt przed spojrzeniami przypadkowych gapiów, powinniśmy zastosować płot nieprześwitujący, choć w erze dronów jest to raczej mało skuteczne rozwiązanie.
 ## Video surveillance
 **Monitoring wideo, czyli wykorzystanie kamer do rejestrowania obrazu** oraz uruchamiania alarmu w razie potrzeby. Jeśli nasze rozwiązanie **umożliwia podgląd obrazu w czasie rzeczywistym**, to system możemy określić mianem CCTV (*Closed Circuit Television*). Wykorzystanie sieci kamer CCTV pozwala na obserwację wielu obszarów placówki w tym samym czasie i to przeważnie z jednego stanowiska (np. z pokoju pracowników ochrony).
+
+![Video cameras](../media/1-2-physical-security-video.jpg)
+Źródło: własne.
 
 Istotną funkcją systemów monitorujących jest **zapisywanie nagrań wideo na nośnikach danych**, które mogą później posłużyć jako **materiał dowodowy w ewentualnym dochodzeniu**, kiedy dojdzie do naruszenia bezpieczeństwa (ang. *security breach*). Dodatkowo taka dokumentacja wideo może być nieocenioną pomocą dla policji lub innych uprawnionych służb, jeśli na terenie placówki dojdzie do przestępstwa.
 
