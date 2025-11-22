@@ -396,9 +396,11 @@ Czujniki mikrofalowe są zwykle bardziej czułe niż czujniki IR i pozwalają na
 
 Z drugiej jednak strony ich wysoka czułość może prowadzić do zwiększonej liczby błędów typu *false positive*, zwłaszcza w środowiskach z dużą liczbą odbić sygnału lub obiektów poruszających się w tle.
 ### Ultrasonic
-- Czujnik ultradźwiękowy. Wysyła sygnały ultradźwiękowe i sprawdza, czy te fale dźwiękowe odbijają się od obiektów (podobnie jak nietoperze). Taki czujnik może być wykorzystany nie tylko do wykrywania ruchu, ale również do wykrywania ewentualnych kolizji.
-- Rzadko stosowane w komercyjnych systemach bezpieczeństwa ze względu na swoje niedoskonałości. Alarm może zostać wyzwolony przez działające w danym obszarze maszyny bądź inne wibracje. Dodatkowo, mogą mieć niekorzystny wpływ na ludzi przebywających w pobliżu.
-- Dzisiaj stosuje się je głównie w czujnikach zbliżeniowych (np.  samochodach).
+**Czujniki ultradźwiękowe** (ang. *ultrasonic*) również dzielimy na aktywne i pasywne. **Pasywne sensory wykrywają określony dźwięk w otoczeniu**, na który zostały wcześniej skalibrowane, natomiast **aktywne emitują fale ultradźwiękowe o wysokiej częstotliwości, które odbijają się od obiektów znajdujących się na ich drodze, a następnie analizują zmiany we wzorze odbicia**.
+
+W praktyce to przede wszystkim **aktywne czujniki ultradźwiękowe** są stosowane w systemach bezpieczeństwa. Mogą jednak generować fałszywe alarmy, ponieważ są podatne na zakłócenia wywołane pracą maszyn, wibracjami czy hałasem mechanicznym. Dodatkowo ultradźwięki o wysokim natężeniu mogą być nieprzyjemne dla zwierząt, a w niektórych przypadkach również dla ludzi przebywających w pobliżu.
+
+Tego typu czujniki są wykorzystywane m.in. w detektorach ruchu oraz czujnikach zbliżeniowych (np. w samochodach). Ich główną zaletą jest **duży obszar działania**, a pole widzenia czujnika nie jest tak istotne jak w przypadku czujników opartych na podczerwieni.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
