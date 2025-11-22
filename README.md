@@ -31,6 +31,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 	- [Physical](1-general-security-concepts/1-1-security-controls.md#physical)
 - [Control types](1-general-security-concepts/1-1-security-controls.md#control-types)
 	- [Preventive](1-general-security-concepts/1-1-security-controls.md#preventive)
+	- [Deterrent](1-general-security-concepts/1-1-security-controls.md#deterrent)
 	- [Detective](1-general-security-concepts/1-1-security-controls.md#detective)
 	- [Corrective](1-general-security-concepts/1-1-security-controls.md#corrective)
 	- [Compensating](1-general-security-concepts/1-1-security-controls.md#compensating)

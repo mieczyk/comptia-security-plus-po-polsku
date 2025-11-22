@@ -40,6 +40,21 @@ Mogą to być reguły firewalla blokujące dostęp do wybranych zasobów sieciow
 	- Ogrodzenie wokół terenu organizacji (ang. *fence*).
 	- Zamki w drzwiach (ang. *locks*), zarówno mechaniczne (na klucz), jak i elektroniczne (na kartę dostępu lub z skanerem biometrycznym).
 	- Pachołki/słupki pełniące rolę blokady, uniemożliwiającej przejazd pojazdów (ang. *bollards*).
+## Deterrent
+Rolą tych środków bezpieczeństwa jest **zniechęcanie (ang. *deter*) i odstraszanie potencjalnego intruza poprzez dobitne wskazanie ewentualnych konsekwencji uzyskania nieautoryzowanego dostępu do strzeżonych zasobów**. Pamiętajmy, że narzędzia z tej kategorii same w sobie nikogo nie powstrzymają, ale mogą sprawić, że ewentualny włamywacz zastanowi się dwa razy przed kontynuacją swoich działań.
+
+Może się to okazać wystarczające, szczególnie jeśli ostrzegana osoba nie ma złych zamiarów. Przykładowo, ktoś przez pomyłkę otrzymał maila z poufnymi informacjami (nadawca pomylił adres odbiorcy) - ostrzeżenie w stopce o konsekwencjach prawnych wykorzystania tych danych zazwyczaj wystarczy, żeby omyłkowy odbiorca po prostu usuną tę wiadomość i powiadomił nadawcę o pomyłce.
+### Przykłady
+- ***Technical****:
+    - Ekran powitalny (ang. *splash screen*), wyświetlający się na ekranie komputera lub urządzenia mobilnego, który informuje o tym, że dalszy dostęp do systemu jest przeznaczony jedynie dla uprawnionych użytkowników. Jeśli użytkownik takich uprawnień nie posiada, powinien zaniechać dalszych działań, pod groźbą konsekwencji prawnych.
+    - [Baner ostrzegawczy](https://www.tecmint.com/ssh-warning-banner-linux/) przeznaczony dla użytkowników logujących się przez SSH.
+- ***Managerial****:
+    - Stopka w mailu, ostrzegająca, że jeśli odbiorca nie jest uprawniony do odczytania/przetwarzania otrzymanych informacji, winien jest natychmiast skasować.
+    - Zapiski w umowie z pracownikiem, w których zawarte są potencjalne konsekwencje nieuprawnionego wykorzystania dostępnych informacji. Karą za naruszenie warunków umowy może być degradacja, zwolnienie dyscyplinarne, kara finansowa, a nawet postawienie zarzutów karnych.
+- ***Operational****:
+    - Recepcja znajdująca się przy wejściu do firmy. W odróżnieniu od ochrony przy wejściu, rolą recepcjonisty bądź recepcjonistki nie jest powstrzymanie intruza. Jeśli jednak sama obecność pracowników recepcji nie powstrzyma nieproszonego gościa, mogą oni powiadomić ochronę o incydencie (choć kiedy to nastąpi, funkcja recepcji zmienia się z *deterrent* na *detective/corrective* :)).
+- ***Physical****:
+    - Znaki ostrzegawcze typu *nieupoważnionym wstęp wzbroniony* (ang. *restricted area*), wraz z informacją o potencjalnych konsekwencjach złamania zakazu.
 ## Detective
 Formy kontroli bezpieczeństwa pełniące **funkcję wykrywającą i ostrzegawczą**. Ich celem jest poinformowanie o incydencie bezpieczeństwa, który już miał miejsce.
 
