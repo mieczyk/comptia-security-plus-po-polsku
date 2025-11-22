@@ -76,7 +76,7 @@ Pamiętajmy, że przedstawiony wyżej ogólny opis frameworka AAA jest jedynie a
 
 Ogólny proces kontroli dostępu do chronionych zasobów, z wykorzystaniem scentralizowanego serwera AAA (na przykładzie protokołu RADIUS), mógłby wyglądać następująco: 
 
-![AAA server access](https://github.com/mieczyk/comptia-security-plus-po-polsku/blob/main/media/1-2-AAA-server-access.png)
+![AAA server access](../media/1-2-AAA-server-access.png)
 
 Przykłady popularnych protokołów AAA:
 - **RADIUS** (*Remote Access Dial-In User Service*) - protokół będący otwartym standardem, realizujący założenia frameworka AAA, który powstał w 1991 roku i jest do dzisiaj wykorzystywany (**głównie w sieciach bezprzewodowych**). **Uwierzytelnienie oraz autoryzacja są realizowane w ramach pojedynczego kroku**, podczas gdy śledzenie aktywności odbywa się w osobnym procesie. Starsze implementacje wykorzystywały porty UDP o numerach 1645 (*authentication, authorization*) oraz 1646 (*accounting*), natomiast nowsze wersje używają w tym samym celu portów **UDP** **1812** (uwierzytelnienie i autoryzacja) oraz **1813** (rejestrowanie poczynań). Podczas komunikacji sieciowej **jedynie hasła są zaszyfrowane** - pozostałe informacje są przesyłane w formie jawnej.
@@ -294,6 +294,134 @@ Terminy takie jak *podmiot* (ang. *subject*) oraz *system* już przewinęły si
 Jest to rodzaj *strażnika bramy* (ang. *gatekeeper*), który przepuszcza tylko uprawnionych interesantów. **Sam jednak nie podejmuje decyzji**, ponieważ dokładne wskazówki otrzymuje od swojego bezpośredniego *dowódcy*, czyli wspomnianego wcześniej komponentu *Policy Decision Point* (*Policy Administrator* + *Policy Engine*). PDP z kolei wydaje werdykt na podstawie informacji o żądaniu otrzymanych z PEP, zestawionych z instrukcjami pochodzącymi z innych źródeł (np. zdefiniowane polityki dostępu).
 
 Na wykresie PEP jest przedstawiony jako pojedynczy element, ale pamiętajmy, że jest to jedynie abstrakcyjny koncept i funkcjonalność PEP może składać się z wielu rozproszonych elementów.
+# Physical security
+Kiedy mówimy o bezpieczeństwie informacji, naszą pierwszą myślą są cyfrowe środki bezpieczeństwa. Jednakże jako specjaliści od bezpieczeństwa, powinniśmy brać pod uwagę również możliwość ich obejścia poprzez **uzyskanie fizycznego dostępu** do serwera lub stacji roboczej, na których przechowywane są istotne dane. Poza tym w wielu organizacjach oprócz danych cyfrowych często przetrzymywane są ważne dokumenty w formie papierowej, które również wymagają należytej ochrony.
+
+**Bezpośredni (fizyczny) dostęp do systemów, sieci lub urządzeń jest często najprostszym sposobem na ominięcie wielu wyrafinowanych cyfrowych środków bezpieczeństwa**. Jako przykład można wymienić bezpośredni dostęp do maszyny, kradzież sprzętu czy też nieautoryzowane *wpięcie się* do sieci, w której brakuje odpowiedniej weryfikacji wewnętrznego ruchu.
+
+Podobnie jak w przypadku projektowania wirtualnego systemu bezpieczeństwa, **pierwszym krokiem powinno być opracowanie planu zabezpieczeń** konkretnej placówki (ang. *site security*). Najpierw powinniśmy zidentyfikować miejsca narażone na nadużycia oraz oszacować ryzyko ich wystąpienia, a następnie dobrać adekwatne środki zapobiegawcze. Należy również zauważyć, że przedstawione poniżej zabezpieczenia fizyczne również mogą stanowić wielowarstwowy system ochronny, podobnie jak omówione wcześniej [środki techniczne](../1-general-security-concepts/1-1-security-controls.md#technical).
+
+Poniżej znajduje się opis różnych narzędzi wymaganych na egzaminie, jednakże warto wspomnieć, że rozpiska egzaminacyjna nie wymienia kilku innych istotnych zabezpieczeń fizycznych, które również są powszechnie stosowane - są to np. zamki (mechaniczne lub elektroniczne), alarmy czy też systemy przeciwpożarowe (ang. *fire suppression systems*).
+
+Jedną z mniej oczywistych technik, które mogą wspomóc zabezpieczenie placówki, jest maskowanie poprzez umiejscowienie jej na mało znanym i uczęszczanym terenie oraz zadbanie o niepozorny wygląd budynku. Taki zabieg można określić jako *kamuflaż przemysłowy* (ang. *industrial camouflage*). Oczywiście nie należy tego traktować jako skuteczną metodę zabezpieczającą, a jedynie jako technikę wspomagającą, opierającą się o zasadę *bezpieczeństwa przez niejawność* (ang. *security through obscurity*).
+
+W dzisiejszych czasach warto także wziąć pod uwagę drony. Chodzi oczywiście o drony cywilne, wykorzystywane do podglądania lub szpiegostwa gospodarczego. Choć dla większości organizacji nie jest to krytyczne zagrożenie, to dobrze jest mieć świadomość, że takie incydenty też mogą wystąpić. Należy przy tym pamiętać, że nawet jeśli zbudujemy skuteczny system wykrywania dronów, to ich neutralizacja może okazać się niemożliwa ze względu na prawo, które chroni taki sprzęt jako własność prywatną.
+## Bollards
+ Termin ten można przetłumaczyć jako **słupy, słupki lub pachołki stanowiące rodzaj barykady**, uniemożliwiającej fizyczny dostęp do pewnych obszarów placówki. Przeważnie są one wykonane z solidnych materiałów, takich jak beton lub metal.
+
+![Bollards](../media/1-2-physical-security-bollards.jpg)
+Źródło: własne.
+
+ Ich najczęstszym zastosowaniem jest **uniemożliwienie wjazdu pojazdom na określony teren**, gdyż ludzie mogą je bez problemu ominąć pieszo. Ich główną funkcją ochronną jest **zapobieganie wypadkom oraz celowym atakom z wykorzystaniem pojazdów (ang. *vehicle-ramming*)**. Jeśli słupy są wyraźnie oznaczone jaskrawymi barwami, mogą również pełnić funkcję ostrzegawczą.
+## Access control vestibule
+Chyba najtrafniejszym polskim odpowiednikiem tego terminu, zarówno znaczeniowo jak i funkcjonalnie, jest ***śluza bezpieczeństwa***. W dosłownym tłumaczeniu jest to *przedsionek kontroli dostępu*, jednak w praktyce określenie to nie jest powszechnie używane.. Inną nazwą tego środka bezpieczeństwa, z którą można się jeszcze spotkać, jest *mantrap* (dosłownie: pułapka na ludzi).
+
+![Access control vestibule](../media/1-2-physical-security-vestibule.png)
+Źródło: własne.
+
+**Jest to niewielkie pomieszczenie, przez które trzeba przejść, żeby uzyskać dostęp do dalszej części placówki**. Jego główną rolą jest zabezpieczenie przed atakami typu [*tailgating/piggybacking*](https://vilya.pl/sy0-601-cheatsheet-1-1-social-engineering/#tailgating) (w skrócie: osoba nieuprawniona *przykleja się* do osoby uprawnionej pod jakimś niepozornym pretekstem i podąża za nią do miejsc z ograniczonym dostępem).
+
+Śluza bezpieczeństwa posiada przeważnie dwoje drzwi - wejściowe, prowadzące do śluzy z zewnątrz, oraz wyjściowe, które są przejściem do chronionego obszaru. Wejście do takiego przedsionka może wymagać jakiejś formy autoryzacji (np. przyłożenia karty dostępu), ale tak naprawdę to drugie przejście jest najważniejsze.
+
+Zasady działania takiej śluzy mogą się różnić w zależności od potrzeb, ale przeważnie opierają się na następujących regułach:
+- Aby otworzyć drzwi prowadzące do zastrzeżonego pomieszczenia, należy się najpierw uwierzytelnić (karta dostępu, czytnik biometryczny, kod PIN).
+- W zależności od konfiguracji: przejście dalej może nie być możliwe, kiedy pierwsze drzwi (wejściowe) pozostaną otwarte i/lub pierwsze drzwi pozostaną zamknięte dopóki drugie się nie zamkną i osoba znajdująca się w środku nie przejdzie do kolejnego pomieszczenia.
+
+Takie pomieszczenie kontrolne jest zazwyczaj niewielkie, żeby umożliwić przejście tylko jednej osobie na raz. Dzięki temu mamy kontrolę nad *przepływem* ludzi wchodzących i wychodzących oraz uzyskujemy pewność, że zastosowane środki weryfikacji spełnią swoją rolę, gdyż nikt nie będzie w stanie np. podejrzeć kodu PIN zza pleców.
+
+Atutem tego rozwiązania, w połączeniu z [monitoringiem wideo](#video-surveillance), jest możliwość przeprowadzenia dodatkowej weryfikacji (np. wykrywanie niebezpiecznych obiektów lub podejrzanego zachowania) oraz dokumentowanie wszystkich wizyt. Taki podgląd jest szczególnie użyteczny, kiedy np. dojdzie do incydentu z ukradzioną kartą dostępu, ponieważ w bazie danych zostanie zarejestrowane wejście właściciela skradzionej karty, ale już na nagraniu może okazać się, że naruszenia dokonała zupełnie inna osoba.
+## Fencing
+Pokusiłbym się o stwierdzenie, że stosowanie **ogrodzenia** (ang. *fencing*) jest jedną z najstarszych metod obrony przed fizycznymi zagrożeniami, a także stosunkowo skuteczną.
+
+![Fencing](../media/1-2-physical-security-fencing.jpg)
+Źródło: pixabay.com.
+
+**Rodzaj płotu stanowiącego ogrodzenie jest w dużej mierze zależny od chronionego obiektu**. W przypadku placówek wymagających wysokiego stopnia bezpieczeństwa, stosowane będą ogrodzenia trudne do sforsowania, które mogą dodatkowo wchodzić w skład kilku *pierścieni* (obwodów obronnych). Przykładem jest wysoki płot z ostrymi zakończeniami lub mur z drutem kolczastym na górze (ciekawostka: stosując tego typu zabezpieczenia warto mieć na uwadze [przepisy obowiązujące w danym kraju](https://www.rmf.fm/hot-news/news,82153,nowe-przepisy-od-2026-roku-takich-plotow-juz-nie-postawisz.html)).
+
+Nawet niewysokie ogrodzenie może pełnić funkcję ostrzegawczą lub *odstraszającą* (ang. *deterrent*), a czasem obie jednocześnie. Jeśli chcemy dodatkowo ukryć obiekt przed spojrzeniami przypadkowych gapiów, powinniśmy zastosować płot nieprześwitujący, choć w erze dronów jest to raczej mało skuteczne rozwiązanie.
+## Video surveillance
+**Monitoring wideo, czyli wykorzystanie kamer do rejestrowania obrazu** oraz uruchamiania alarmu w razie potrzeby. Jeśli nasze rozwiązanie **umożliwia podgląd obrazu w czasie rzeczywistym**, to system możemy określić mianem CCTV (*Closed Circuit Television*). Wykorzystanie sieci kamer CCTV pozwala na obserwację wielu obszarów placówki w tym samym czasie i to przeważnie z jednego stanowiska (np. z pokoju pracowników ochrony).
+
+![Video cameras](../media/1-2-physical-security-video.jpg)
+Źródło: własne.
+
+Istotną funkcją systemów monitorujących jest **zapisywanie nagrań wideo na nośnikach danych**, które mogą później posłużyć jako **materiał dowodowy w ewentualnym dochodzeniu**, kiedy dojdzie do naruszenia bezpieczeństwa (ang. *security breach*). Dodatkowo taka dokumentacja wideo może być nieocenioną pomocą dla policji lub innych uprawnionych służb, jeśli na terenie placówki dojdzie do przestępstwa.
+
+Mnogość dostępnego dziś asortymentu pozwala dobrać odpowiedni sprzęt do naszych potrzeb, uwzględniając przy tym możliwości finansowe - od tanich, czarno-białych kamer o niskiej rozdzielczości, po drogie kamery *ultra HD* z dobrymi obiektywami, dostępem bezprzewodowym i dodatkowymi funkcjami, które pośrednio lub bezpośrednio przyczyniają się do podniesienia poziomu bezpieczeństwa:
+- **Automatyczne wykrywanie ruchu**. Tego typu kamery przeważnie aktywują się dopiero po zarejestrowaniu przemieszczających się obiektów w ich polu widzenia - pozwala to na oszczędność baterii (jeśli sprzęt jest zasilany akumulatorem) oraz miejsca na nośnikach danych. Dodatkowo wykrycie ruchu może od razu zaalarmować obserwatora. Takie podejście jest szczególnie użyteczne przy nadzorze rzadko uczęszczanych miejsc.
+- **Rozpoznawanie twarzy, tablic rejestracyjnych i innych obiektów** (np. [paczki chipsów](https://www.theguardian.com/us-news/2025/oct/24/baltimore-student-ai-gun-detection-system-doritos) ;)), możliwe dzięki coraz doskonalszym algorytmom z obszaru sztucznej inteligencji, których zadaniem jest przetwarzanie obrazu (ang. *image processing*).
+- **Doświetlanie obiektów** z użyciem wbudowanych [promienników podczerwieni](https://solidsecurity.pl/blog/jak-dziala-promiennik-podczerwieni-w-kamerach), co zapewnia lepsze *widzenie* po zmroku.
+## Security guard
+**Pracownicy ochrony (ang. *security guards*) są niezbędni, gdy wymagany jest ludzki osąd bądź interwencja.** Przykładowo, opisany wyżej system monitoringu może pomóc w wykrywaniu nieprawidłowości, ale ktoś musi na taki incydent zareagować - i tym kimś jest odpowiednio przeszkolony oraz wykwalifikowany pracownik ochrony (w dalszej części opracowania nazywany również strażnikiem, celem uniknięcia powtórzeń).
+
+![Security guard](../media/1-2-physical-security-guard.jpg)
+Źródło: pixabay.com.
+
+Personel ochrony jest często spotykany przy wejściu do budynku (recepcja) bądź przy bramie wjazdowej na teren placówki (portiernia). Można ich także znaleźć w specjalnych pokojach, które stanowią z reguły *centrum zarządzania* systemami ochrony, włączając w to monitoring. Oczywiście nie oznacza to, że strażnicy zawsze przebywają w jednym miejscu, ponieważ zwykle do listy ich regularnych obowiązków zalicza się obchody po placówce.
+
+Pracownicy ochrony stacjonujący przy wejściu do firmy lub przy bramie wjazdowej nierzadko odpowiadają za weryfikację wchodzących/wjeżdżających oraz wychodzących/wyjeżdżających osób (pracowników, klientów, gości). Dodatkowym atutem obecności umundurowanej jednostki w takim miejscu jest fakt, że może to skutecznie *odstraszyć* ludzi o nieczystych intencjach, o ile nie są wystarczająco zdeterminowani. Praca na takim stanowisku może wiązać się również z prowadzeniem dziennika odwiedzin (ang. *visitor log*), w którym zapisywane są dane osób odwiedzających wraz z godziną wejścia oraz wyjścia.
+
+Warto mieć na uwadze, że nie jest to stuprocentowo skuteczny środek zabezpieczający, ponieważ ludzie też są omylni i mogą wydać błędny osąd - szczególnie w sytuacji, gdy atakujący posłuży się wyrafinowaną [socjotechniką](../2-threats-vulnerabilities-mitigations/2-2-threat-vectors-and-attack-surfaces.md#human-vectorssocial-engineering). Żeby wyeliminować, a przynajmniej ograniczyć skutki ludzkich pomyłek, można zastosować **podwójną weryfikację**. Polega ona na tym, że do wykonania określonej czynności niezbędne jest potwierdzenie przez drugiego, uprawnionego pracownika. Dzięki temu zmniejszamy ryzyko naruszenia ustalonych procedur bezpieczeństwa (dobrym przykładem takiego podejścia jest [konieczność przebywania w kokpicie samolotu przynajmniej dwóch upoważnionych członków załogi](https://polskieradio24.pl/artykul/1409042,lot-wprowadza-wazna-procedure-minimum-dwie-osoby-w-kabinie-pilotow), choć jakiś czas temu pojawiły się pomysły, aby [zrezygnować z tego zabezpieczenia](https://www.rynek-lotniczy.pl/wiadomosci/loty-tylko-z-jednym-pilotem-16089.html)).
+
+Niestety, **praca człowieka jest relatywnie droga** w porównaniu z technicznymi środkami, uwzględniając zarówno wdrożenie, jak i utrzymanie. Choć bywa niezbędna, wiele organizacji stara się ograniczać liczbę pracowników ochrony, wspierając ich jednocześnie automatycznymi rozwiązaniami.
+## Access badge
+W wielu organizacjach, które poważnie podchodzą do bezpieczeństwa, osoby przebywające na ich terenie są zobowiązane do noszenia przy sobie **identyfikatora dostępu**. Przybiera on formę plakietki ze zdjęciem, nazwiskiem, a także stanowiskiem osoby, która jest jego właścicielem.
+
+Taki identyfikator często nosi się na widoku - zarówno przez stałych pracowników, jak i przez odwiedzających, którym przydziela się identyfikator tymczasowy. Dzięki temu personel, a w szczególności pracownicy ochrony, są w stanie odróżnić innych pracowników od gości, a także **stwierdzić, czy określona osoba powinna w ogóle w danym miejscu przebywać**.
+
+Pod definicję *access badge* podpada również **elektroniczna karta dostępu**, czyli **karta magnetyczna i/lub wyposażona w chip RFID** (*Radio-Frequency Identification*), na której zapisane są dane identyfikacyjne właściciela. Taka **karta jest jednocześnie kluczem** do miejsc, do których jej posiadacz ma dostęp - odpowiednie czytniki weryfikują dane przechowywane na karcie oraz zapisują fakt jej użycia w scentralizowanej bazie danych. Oczywiście wspomniany wyżej identyfikator dostępu z wyeksponowanymi informacjami może być równocześnie elektroniczną kartą dostępu.
+
+![Access badge](../media/1-2-physical-security-badge.jpg)
+Źródło: pixabay.com.
+
+Warto mieć na uwadze, że podrobienie bądź kradzież takiej karty może stać się dla atakującego przepustką do chronionych miejsc w placówce, więc **wszelkie incydenty związane z utratą karty** lub podejrzenia, że mogła zostać sklonowana, powinny zostać **bezzwłocznie zgłoszone** do odpowiedniego działu organizacji.
+## Lighting
+Twórcy egzaminu najwyraźniej nie zgadzają się z powiedzeniem, że *najciemniej jest pod latarnią*, ponieważ wskazują **oświetlenie** (ang. *lighting*) jako jeden z fizycznych środków bezpieczeństwa. W gruncie rzeczy ma to sens, ponieważ dużo **trudniej jest pozostać niezauważonym, gdy obszary, przez które potencjalny włamywacz chce się przemknąć, są dobrze oświetlone**.
+
+![Lighting](../media/1-2-physical-security-lighting.jpg)
+Źródło: pixabay.com.
+
+Nawet kamery wykorzystujące technologię podczerwieni (ang. *infrared*, IR) nie zapewniają tak dobrej jakości obrazu, jak nagrania rejestrowane w pełnym świetle. Warto również pamiętać, że odpowiednie oświetlenie powinno być równomierne - bez oślepiającego blasku czy ciemniejszych stref. Jest to szczególnie istotne w przypadku kamer rozpoznających twarze bądź inne obiekty.
+
+Dodatkowo, **automatycznie włączane światła reagujące na ruch mogą pełnić funkcję ostrzegawczą**, gdy włączą się w godzinach, w których teoretycznie już nikt nie pracuje.
+## Sensors
+Według najbardziej ogólnej definicji, **czujnik (ang. *sensor*) to urządzenie zdolne do odbierania określonych bodźców z otoczenia (np. fizycznych lub chemicznych) oraz przekształcania ich na użyteczny sygnał wyjściowy, najczęściej elektryczny**.
+
+Typów czujników jest bardzo wiele, a ich **najbardziej podstawowym kryterium podziału jest rodzaj bodźca, na który reagują**. Na rynku dostępne są m.in. czujniki temperatury, wilgoci, dźwięku, ruchu czy ciśnienia.
+
+Pamiętajmy, że sensory powinny być odpowiednio dobrane do potrzeb organizacji, z uwzględnieniem warunków środowiskowych. W bezpieczeństwie fizycznym często stosuje się np. detektory ruchu i dźwięku, które po wykryciu określonych sygnałów z otoczenia mogą uruchomić alarm, zapobiegając w ten sposób włamaniu lub kradzieży. Z kolei czujniki temperatury i wilgoci wykorzystuje się w miejscach, gdzie należy utrzymywać optymalne warunki środowiskowe, aby zapewnić ciągłość pracy urządzeń (np. serwerów w centrach danych).
+
+Poniżej znajduje się krótka lista typów czujników, skategoryzowanych na podstawie zjawisk fizycznych wykorzystywanych do ich działania.
+### Infrared (IR)
+**Czujniki podczerwieni (ang. *infrared*) reagują na zmiany światła podczerwonego, które jest niewidoczne dla ludzkiego oka**. W zależności od zasady działania urządzenia te można podzielić na dwa typy:
+- **Pasywny czujnik podczerwieni (ang. *passive infrared sensor* = PIR)** - wykrywa promieniowanie podczerwone emitowane przez każdy obiekt o temperaturze wyższej niż zero absolutne, czyli w praktyce przez wszystkie znane obiekty. Gdy promieniowanie dociera do czujnika, jest ono przekształcane w sygnał elektryczny. Warto dodać, że niektóre obiekty emitują również widzialne światło, jeśli są wystarczająco gorące (np. ogień).
+- **Aktywny czujnik podczerwieni (ang. *active infrared sensor* = AIR)** - oprócz odbiornika posiada także nadajnik emitujący światło podczerwone. Czujnik reaguje na sygnał odbity od obiektów znajdujących się na jego drodze. Czas powrotu sygnału pozwala nie tylko wykryć obecność przeszkody, ale także oszacować jej odległość.
+
+Ze względu na swoją specyfikę czujniki IR dobrze sprawdzają się na niewielkich obszarach, a ich niewątpliwą zaletą jest stosunkowo niska cena. Najpopularniejsze zastosowania:
+- **Wykrywacze ruchu** (ang. *motion detectors*) - jeśli w pomieszczeniu, w którym nikt nie powinien przebywać, zostanie wykryty ruch, system może uruchomić alarm. Jest to wygodne rozwiązanie, szczególnie gdy nie potrzebujemy obrazu wideo, a jedynie informacji o tym, czy w danym obszarze coś się poruszyło.
+- **Czujniki przeciwpożarowe** - ponieważ promieniowanie termiczne jest częścią widma podczerwonego, to czujniki IR mogą wykrywać sygnatury cieplne. Nagły wzrost poziomu promieniowania może świadczyć o pożarze w danym pomieszczeniu.
+- **Kamery wykorzystujące IR** - umożliwiają lepsze widzenie w ciemności, wykrywając promieniowanie podczerwieni niezależnie od warunków oświetleniowych.
+- **Czujniki zbliżeniowe** (np. systemy wspomagania parkowania w samochodach).
+
+Planując użycie czujników podczerwieni, należy wziąć pod uwagę ich ograniczenia. Charakteryzują się dużą wrażliwością na czynniki środowiskowe (np. zmiany temperatury, inne źródła ciepła lub promieniowania podczerwonego) oraz ograniczonym zasięgiem. Z tego powodu najlepiej sprawdzają się w mniejszych pomieszczeniach, w których nie ma wielu przeszkód mogących blokować promieniowanie IR.
+### Pressure
+**Czujnik nacisku (ang. *pressure sensor*) jest w stanie wykryć zmiany siły działającej na określoną powierzchnię, czyli mówiąc krótko - zmianę ciśnienia.** Czujnik umieszczony w podłodze może uruchomić alarm, gdy zostanie wykryty znaczny nacisk - na myśl może przyjść scena z Tomem Cruise’em zwisającym z sufitu :). Innym zastosowaniem jest wykrywanie przemieszczających się obiektów po powierzchni, do której taki sensor jest przymocowany.
+
+Czujniki nacisku są obecnie rzadko stosowane w typowych zabezpieczeniach, ale można spotkać je w matach naciskowych wykorzystywanych do automatycznego otwierania drzwi (np. gdy ktoś podejdzie do wejścia i stanie w odpowiednim miejscu, drzwi automatycznie się rozsuwają).
+### Microwave
+Wiemy już, że czujniki podczerwieni dobrze sprawdzają się na niewielkich obszarach. Gdy jednak potrzebujemy monitorować większą przestrzeń, znacznie lepiej radzą sobie **detektory mikrofalowe** (ang. *microwave*), które działają poprzez **emisję i odbiór fal elektromagnetycznych w paśmie mikrofal**.
+
+**W celu wykrycia ruchu czujnik emituje impulsy mikrofalowe (ang. *microwave pulses*), które odbijają się od obiektów znajdujących się w monitorowanym obszarze. Następnie analizuje on różnice między sygnałem wysłanym a odebranym. W praktyce wykorzystuje się najczęściej efekt Dopplera, czyli zmianę częstotliwości odbitej fali wywołaną ruchem obiektu.** Dzięki temu sensor rozpoznaje, czy w strefie doszło do jakiejkolwiek zmiany.
+
+Czujniki mikrofalowe są zwykle bardziej czułe niż czujniki IR i pozwalają na monitorowanie większej powierzchni. Mogą również wykrywać ruch przez niektóre materiały, przez które przenikają mikrofale. Dodatkową zaletą jest odporność na zmiany temperatury, ponieważ urządzenia te nie bazują na promieniowaniu cieplnym.
+
+Z drugiej jednak strony ich wysoka czułość może prowadzić do zwiększonej liczby błędów typu *false positive*, zwłaszcza w środowiskach z dużą liczbą odbić sygnału lub obiektów poruszających się w tle.
+### Ultrasonic
+**Czujniki ultradźwiękowe** (ang. *ultrasonic*) również dzielimy na aktywne i pasywne. **Pasywne sensory wykrywają określony dźwięk w otoczeniu**, na który zostały wcześniej skalibrowane, natomiast **aktywne emitują fale ultradźwiękowe o wysokiej częstotliwości, które odbijają się od obiektów znajdujących się na ich drodze, a następnie analizują zmiany we wzorze odbicia**.
+
+W praktyce to przede wszystkim **aktywne czujniki ultradźwiękowe** są stosowane w systemach bezpieczeństwa. Mogą jednak generować fałszywe alarmy, ponieważ są podatne na zakłócenia wywołane pracą maszyn, wibracjami czy hałasem mechanicznym. Dodatkowo ultradźwięki o wysokim natężeniu mogą być nieprzyjemne dla zwierząt, a w niektórych przypadkach również dla ludzi przebywających w pobliżu.
+
+Tego typu czujniki są wykorzystywane m.in. w detektorach ruchu oraz czujnikach zbliżeniowych (np. w samochodach). Ich główną zaletą jest **duży obszar działania**, a pole widzenia czujnika nie jest tak istotne jak w przypadku czujników opartych na podczerwieni.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
@@ -310,3 +438,8 @@ Na wykresie PEP jest przedstawiony jako pojedynczy element, ale pamiętajmy, że
 - [CloudFlare: What is the control plane? | Control plane vs. data plane](https://www.cloudflare.com/learning/network-layer/what-is-the-control-plane/)
 - [CertBros: Zero Trust Explained | Real World Example](https://www.youtube.com/watch?v=Y3DjoTiOiOU&ab_channel=CertBros)
 - [Check Point: Network Segmentation vs Micro-Segmentation](https://www.checkpoint.com/cyber-hub/network-security/network-segmentation-vs-micro-segmentation/)
+- [Access Control Vestibule: What is It & How It Works](https://getsafeandsound.com/blog/access-control-vestibule/)
+- [Botland: Czujnik – Co to jest i do czego służy?](https://botland.com.pl/blog/czujnik-co-to-jest-i-do-czego-sluzy/)
+- [Botland: Różnice między czujnikiem PIR a czujnikiem mikrofalowym](https://botland.com.pl/blog/roznice-miedzy-czujnikiem-pir-a-czujnikiem-mikrofalowym/)
+- [Infrared Sensor: What Is It & How Does It Work?](https://getsafeandsound.com/blog/infrared-sensor/)
+- [RS Elektronika: Jak działa czujka ruchu?](https://www.youtube.com/watch?v=opyCukpSC6A)
