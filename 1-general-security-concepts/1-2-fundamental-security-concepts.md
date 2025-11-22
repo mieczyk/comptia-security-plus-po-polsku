@@ -388,10 +388,13 @@ Planując użycie czujników podczerwieni, należy wziąć pod uwagę ich ograni
 
 Czujniki nacisku są obecnie rzadko stosowane w typowych zabezpieczeniach, ale można spotkać je w matach naciskowych wykorzystywanych do automatycznego otwierania drzwi (np. gdy ktoś podejdzie do wejścia i stanie w odpowiednim miejscu, drzwi automatycznie się rozsuwają).
 ### Microwave
-- Podczerwień dobrze sprawdza się w ograniczonych obszarach, ale przy większej powierzchni lepiej sprawdzają się czujniki. Zasada działania opiera się na częstotliwości mikrofal - w celu wykrycia ruchu emitowane są impulsy mikrofal (microwave pulses), a następnie sprawdzane jest odbicie od poruszającego się obiektu.
-- Tego typu czujniki najpierw określają stan wyjściowy dla skanowanego obszaru, traktując wykryte sygnały jako wartości bazowe. Kiedy odpowiedzi na wysłane mikrofale odbiegają od tych wartości podstawowych, sensor się aktywuje.
-- Są przeważnie bardziej czułe niż czujniki IR oraz mają większe możliwości. Potrafią wykryć ruch nawet poprzez materiały, które mikrofale są w stanie spenetrować, a także działają w szerszych zakresach temperatury, ponieważ nie bazują na promieniowaniu cieplnym. Powoduje to jednak, że są przeważnie droższe od czujników IR.
-- Ich większa czułość może również sprawiać, że są bardziej podatne na błędy typu *false positivie*.
+Wiemy już, że czujniki podczerwieni dobrze sprawdzają się na niewielkich obszarach. Gdy jednak potrzebujemy monitorować większą przestrzeń, znacznie lepiej radzą sobie **detektory mikrofalowe** (ang. *microwave*), które działają poprzez **emisję i odbiór fal elektromagnetycznych w paśmie mikrofal**.
+
+**W celu wykrycia ruchu czujnik emituje impulsy mikrofalowe (ang. *microwave pulses*), które odbijają się od obiektów znajdujących się w monitorowanym obszarze. Następnie analizuje on różnice między sygnałem wysłanym a odebranym. W praktyce wykorzystuje się najczęściej efekt Dopplera, czyli zmianę częstotliwości odbitej fali wywołaną ruchem obiektu.** Dzięki temu sensor rozpoznaje, czy w strefie doszło do jakiejkolwiek zmiany.
+
+Czujniki mikrofalowe są zwykle bardziej czułe niż czujniki IR i pozwalają na monitorowanie większej powierzchni. Mogą również wykrywać ruch przez niektóre materiały, przez które przenikają mikrofale. Dodatkową zaletą jest odporność na zmiany temperatury, ponieważ urządzenia te nie bazują na promieniowaniu cieplnym.
+
+Z drugiej jednak strony ich wysoka czułość może prowadzić do zwiększonej liczby błędów typu *false positive*, zwłaszcza w środowiskach z dużą liczbą odbić sygnału lub obiektów poruszających się w tle.
 ### Ultrasonic
 - Czujnik ultradźwiękowy. Wysyła sygnały ultradźwiękowe i sprawdza, czy te fale dźwiękowe odbijają się od obiektów (podobnie jak nietoperze). Taki czujnik może być wykorzystany nie tylko do wykrywania ruchu, ale również do wykrywania ewentualnych kolizji.
 - Rzadko stosowane w komercyjnych systemach bezpieczeństwa ze względu na swoje niedoskonałości. Alarm może zostać wyzwolony przez działające w danym obszarze maszyny bądź inne wibracje. Dodatkowo, mogą mieć niekorzystny wpływ na ludzi przebywających w pobliżu.
@@ -414,5 +417,6 @@ Czujniki nacisku są obecnie rzadko stosowane w typowych zabezpieczeniach, ale m
 - [Check Point: Network Segmentation vs Micro-Segmentation](https://www.checkpoint.com/cyber-hub/network-security/network-segmentation-vs-micro-segmentation/)
 - [Access Control Vestibule: What is It & How It Works](https://getsafeandsound.com/blog/access-control-vestibule/)
 - [Botland: Czujnik – Co to jest i do czego służy?](https://botland.com.pl/blog/czujnik-co-to-jest-i-do-czego-sluzy/)
+- [Botland: Różnice między czujnikiem PIR a czujnikiem mikrofalowym](https://botland.com.pl/blog/roznice-miedzy-czujnikiem-pir-a-czujnikiem-mikrofalowym/)
 - [Infrared Sensor: What Is It & How Does It Work?](https://getsafeandsound.com/blog/infrared-sensor/)
 - [RS Elektronika: Jak działa czujka ruchu?](https://www.youtube.com/watch?v=opyCukpSC6A)
