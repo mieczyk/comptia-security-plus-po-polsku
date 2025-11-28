@@ -422,6 +422,11 @@ Z drugiej jednak strony ich wysoka czułość może prowadzić do zwiększonej l
 W praktyce to przede wszystkim **aktywne czujniki ultradźwiękowe** są stosowane w systemach bezpieczeństwa. Mogą jednak generować fałszywe alarmy, ponieważ są podatne na zakłócenia wywołane pracą maszyn, wibracjami czy hałasem mechanicznym. Dodatkowo ultradźwięki o wysokim natężeniu mogą być nieprzyjemne dla zwierząt, a w niektórych przypadkach również dla ludzi przebywających w pobliżu.
 
 Tego typu czujniki są wykorzystywane m.in. w detektorach ruchu oraz czujnikach zbliżeniowych (np. w samochodach). Ich główną zaletą jest **duży obszar działania**, a pole widzenia czujnika nie jest tak istotne jak w przypadku czujników opartych na podczerwieni.
+# Deception and disruption technology (TODO)
+Messer:
+- Techniki, których zadaniem jest oszukanie atakujących, żeby zmarnować ich czas, trzymając jednocześnie z dala od produkcyjnych systemów, oraz zdobyć jak najwięcej informacji o stosowanych przez nich technikach i metodach działania (dzięki temu można lepiej dostosować nasze zabezpieczenia).
+- **Honeypot** - pułapka przyciągająca potencjalnych atakujących i angażuje ich w bezcelowe zadania. Przeważnie będą to zautomatyzowane narzędzia do rekonesansu. Śledząc ich działania poznajemy zestaw technik, które są wykorzystywane przeciwko nam (co dokładnie zostało zautomatyzowane, jakie zasoby i systemy są na celowniku).
+
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
