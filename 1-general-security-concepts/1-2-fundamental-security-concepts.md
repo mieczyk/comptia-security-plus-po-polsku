@@ -425,7 +425,20 @@ Tego typu czujniki są wykorzystywane m.in. w detektorach ruchu oraz czujnikach 
 # Deception and disruption technology (TODO)
 Messer:
 - Techniki, których zadaniem jest oszukanie atakujących, żeby zmarnować ich czas, trzymając jednocześnie z dala od produkcyjnych systemów, oraz zdobyć jak najwięcej informacji o stosowanych przez nich technikach i metodach działania (dzięki temu można lepiej dostosować nasze zabezpieczenia).
-- **Honeypot** - pułapka przyciągająca potencjalnych atakujących i angażuje ich w bezcelowe zadania. Przeważnie będą to zautomatyzowane narzędzia do rekonesansu. Śledząc ich działania poznajemy zestaw technik, które są wykorzystywane przeciwko nam (co dokładnie zostało zautomatyzowane, jakie zasoby i systemy są na celowniku).
+- **Honeypot** - pułapka przyciągająca potencjalnych atakujących, która angażuje ich w bezcelowe zadania. Przeważnie będą to zautomatyzowane narzędzia do rekonesansu. Śledząc ich działania poznajemy zestaw technik, które są wykorzystywane przeciwko nam (co dokładnie zostało zautomatyzowane, jakie zasoby i systemy są na celowniku).
+	- Tego typu pułapki często przypominają rzeczywiste systemy, więc dopóki atakujący się nie zorientuje, jest szansa, że straci dużo czasu na próby włamania do systemu-zaślepki, który skutecznie odciąga jego uwagę od rzeczywistych, produkcyjnych zasobów.
+	- Do postawienia własnego honeypota można wykorzystać różne rozwiązania komercyjne bądź open-source (TODO: znaleźć przykłady). Nasz wybór będzie zapewne uzależniony od wymaganego poziomu skomplikowania oraz budżetu (nie jest niespodzianką, że bardziej wyrafinowane rozwiązania są z reguły droższe).
+- **Honeynet** - Kiedy okaże się, że atakujący nie mają problemów z zorientowaniem się, że trafili do *pułapki*, będziemy niestety zmuszeni do zastosowania bardziej wyszukanych rozwiązań, które lepiej *udają* rzeczywiste środowisko - może to wymagać infrastruktury w postaci honeypotów połączonych w sieć (honeynet).
+	- Taka sieć-pułapka może bardzo przypominać rzeczywiste sieci z stacjami roboczymi (ang. workstations), serwerami (ang. servers), routerami czy firewallami. W takim przypadku dużo trudniej jest zorientować się napastnikowi w sytuacji, w której się znalazł.
+- **Honeyfile** - pliki-wabiki wyglądające na takie, które zawierają ważne i wrażliwe dane, ale w rzeczywistości przechowują fałszywe informacje, a każda próba ich odczytu może wywołać alarm. Najprostszym przykładem (choć trochę zbyt oczywistym) może być umieszczony na serwerze plik o nazwie `passwords.dat`, który zawierałby jakieś przypadkowe hashe. Każde otwarcie lub ściągnięcie pliku powinno zostać odnotowane . Oczywiście plik nie powinien być ogólnodostępny, inaczej mógłby wygenerować wiele fałszywych ostrzeżeń.
+- **Honeytoken** to łatwa do namierzenia porcja nieużytecznych danych, które zostały celowo umieszczone w środowisku organizacji (w plikach z konfiguracją, rekordach baz danych, repozytoriach kodu itp.), a ich celem jest wykrycie nieautoryzowanego dostępu, wycieku danych lub aktywności atakującego, kiedy ten będzie próbował się gdzieś nimi posłużyć.
+	- Przykładem mogą być fałszywe dane dostępowe do API (*API credentials*). Jeśli ktoś będzie próbował się nimi posłużyć, będziemy wiedzieć, że doszło do naruszenia bezpieczeństwa i potencjalnego wycieku danych.
+		- Podobnie jak lista fałszywych adresów email - jeśli pojawią się gdzieś w Internecie, również będzie to dla nas sygnał ostrzegawczy.
+	- Technika umożliwia wczesne wykrycie potencjalnych incydentów bezpieczeństwa, a często pozwala również namierzyć atakujących oraz śledzić ich działania.
+	- Jest stosunkowo łatwa do wdrożenia i nie wymaga dużych zasobów.
+- Przykłady (do weryfikacji)
+	- https://owasp.org/www-project-honeypot/ - budowanie honeypotów opartych o *ModSecurity* WAF.
+	- https://www.projecthoneypot.org/index.php - Przykład honeyneta, do którego każdy może się przyłączyć. Umieszczamy na naszej stronie kawałek kodu, który generuje fałszywe adresy email, formularze kontaktowe itp. Adresy IP, które zostaną zidentyfikowane podczas próby ich nadużycia, trafiają na czarną listę.
 
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
