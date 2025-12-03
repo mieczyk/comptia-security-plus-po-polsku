@@ -440,6 +440,10 @@ Messer:
 	- https://owasp.org/www-project-honeypot/ - budowanie honeypotów opartych o *ModSecurity* WAF.
 	- https://www.projecthoneypot.org/index.php - Przykład honeyneta, do którego każdy może się przyłączyć. Umieszczamy na naszej stronie kawałek kodu, który generuje fałszywe adresy email, formularze kontaktowe itp. Adresy IP, które zostaną zidentyfikowane podczas próby ich nadużycia, trafiają na czarną listę.
 
+Książka:
+- Istnieje grupa narzędzi sieciowych, których zadaniem jest nie tyle zapobieganie włamań, co gromadzenie informacji o atakujących i przeprowadzanych atakach oraz zakłócanie ich działań. Tę kategorię określamy jako ***deception and disruption***, co w wolnym tłumaczeniu oznacza zwodzenie, wprowadzanie w błąd (ang. *deception*) oraz zakłócanie (ang. *disruption*).
+	- Zebrane w ten sposób informacje mogą być na wagę złota dla zespołów IT odpowiedzialnych za bezpieczeństwo, ponieważ dostarczają wiedzy o rzeczywistych próbach ataku, a także wykorzystywanych technikach i narzędziach. Dzięki temu można  zastosować środki bezpieczeństwa, które są dostosowane do realnych zagrożeń, a nie tylko hipotetycznych.
+- *Honeypots and honeynets are used to gather information about attackers, and honeyfiles and honeytokens are used to identify potential breaches and attackers who have gathered information from systems in your environment.*
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
