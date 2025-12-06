@@ -81,11 +81,12 @@ Wykorzystywane w kryptografii zasady matematyczne sprawiają, że **praktycznie 
 **Szyfrowanie służy do zapewnienia poufności danych**, które mogą być w różnych stanach:
 - **Dane w spoczynku** (ang. *at rest*) - przechowywane na nośnikach danych.
 - **Dane przesyłane** (ang. *in transit*) - np. podczas przesyłania przez sieć.
-- **Dane przetwarzane/w użyciu** (ang. *in use*) - przechowywane w pamięci operacyjnej i przetwarzane przez działający program.
+- **Dane przetwarzane/w użyciu** (ang. *in use*) - przechowywane w pamięci operacyjnej i przetwarzane przez działający program. (TODO: kiedy są w użyciu to raczej nie są szyfrowane)
+
 Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
 
 Oczywiście sam fakt zaszyfrowania danych nie powoduje, że są one w stu procentach zabezpieczone. Tutaj działa zasada podobna do stosowania silnych (długich i trudnych do odgadnięcia) oraz słabych haseł (krótkich wyrazów z słownika), z tą różnicą, że o skuteczności rozwiązania stanowią dwa czynniki: 
-- **Algorytm szyfrujący/deszyfrujący** - zawsze należy stosować algorytmy, które są powszechnie uznawane za bezpieczne i unikać tych, w których znaleziono i udokumentowano luki w działaniu. Dodatkowo, opracowanie skutecznego algorytmu, którego nie sposób złamać w rozsądnym czasie, wymaga ogromnej wiedzy z zakresu matematyki. Dlatego w tym przypadku lepiej jest unikać tworzenia własnych rozwiązań i skorzystać z gotowych standardów.
+- **Algorytm szyfrujący/deszyfrujący** (*cipher*) - zawsze należy stosować algorytmy, które są powszechnie uznawane za bezpieczne i unikać tych, w których znaleziono i udokumentowano luki w działaniu. Dodatkowo, opracowanie skutecznego algorytmu, którego nie sposób złamać w rozsądnym czasie, wymaga ogromnej wiedzy z zakresu matematyki. Dlatego w tym przypadku lepiej jest unikać tworzenia własnych rozwiązań i skorzystać z gotowych standardów.
 - **Wartość klucza** - nawet najlepszy algorytm na nic się nie zda, jeśli zastosujemy klucz łatwy do odgadnięcia (podobnie jak w przypadku stosowania słabego hasła).
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
