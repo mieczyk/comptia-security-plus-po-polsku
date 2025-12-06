@@ -73,6 +73,14 @@ Aby zapobiegać skutkom takich zdarzeń, stosuje się **zewnętrzne (oferowane p
 Dostęp do kopii zapasowych kluczy powinien być ściśle chroniony. Dlatego firmy korzystające z takich rozwiązań powinny mieć jasno zdefiniowaną politykę odzyskiwania kluczy (ang. *key recovery*), która dokładnie opisuje, w jakich konkretnych sytuacjach klucz może zostać odzyskany z depozytu i przez kogo.
 
 **Podsumowując:** *key escrow* to system przechowywania i odzyskiwania kluczy prywatnych, do których dostęp - w razie potrzeby - posiadają wyłącznie uprawnione osoby.
+# Encryption
+**Szyfrowanie (ang. *encryption*) to proces wykorzystujący matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Wykorzystane w tym celu zasady matematyczne sprawiają, że **praktycznie niewykonalne jest odwrócenie tego procesu bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
+
+**Szyfrowanie służy do zapewnienia poufności danych**, które mogą być w różnych stanach:
+- **Dane w spoczynku** (ang. *at rest*) - przechowywane na nośnikach danych.
+- **Dane przesyłane** (ang. *in transit*) - np. podczas przesyłania przez sieć.
+- **Dane przetwarzane/w użyciu** (ang. *in use*) - przechowywane w pamięci operacyjnej i przetwarzane przez działający program.
+Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
