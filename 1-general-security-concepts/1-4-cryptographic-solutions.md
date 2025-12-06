@@ -74,13 +74,19 @@ Dostęp do kopii zapasowych kluczy powinien być ściśle chroniony. Dlatego fir
 
 **Podsumowując:** *key escrow* to system przechowywania i odzyskiwania kluczy prywatnych, do których dostęp - w razie potrzeby - posiadają wyłącznie uprawnione osoby.
 # Encryption
-**Szyfrowanie (ang. *encryption*) to proces wykorzystujący matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Wykorzystane w tym celu zasady matematyczne sprawiają, że **praktycznie niewykonalne jest odwrócenie tego procesu bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
+**Szyfrowanie (ang. *encryption*) to operacja kryptograficzna wykorzystująca matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Procesem odwrotnym jest **deszyfrowanie (ang. *decryption*), czyli transformacja zaszyfrowanego tekstu (ang. *ciphertext*) do postaci tekstu jawnego (ang. *plain text*)**.
+
+Wykorzystywane w kryptografii zasady matematyczne sprawiają, że **praktycznie niewykonalne jest odszyfrowanie danych bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
 
 **Szyfrowanie służy do zapewnienia poufności danych**, które mogą być w różnych stanach:
 - **Dane w spoczynku** (ang. *at rest*) - przechowywane na nośnikach danych.
 - **Dane przesyłane** (ang. *in transit*) - np. podczas przesyłania przez sieć.
 - **Dane przetwarzane/w użyciu** (ang. *in use*) - przechowywane w pamięci operacyjnej i przetwarzane przez działający program.
 Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
+
+Oczywiście sam fakt zaszyfrowania danych nie powoduje, że są one w stu procentach zabezpieczone. Tutaj działa zasada podobna do stosowania silnych (długich i trudnych do odgadnięcia) oraz słabych haseł (krótkich wyrazów z słownika), z tą różnicą, że o skuteczności rozwiązania stanowią dwa czynniki: 
+- **Algorytm szyfrujący/deszyfrujący** - zawsze należy stosować algorytmy, które są powszechnie uznawane za bezpieczne i unikać tych, w których znaleziono i udokumentowano luki w działaniu. Dodatkowo, opracowanie skutecznego algorytmu, którego nie sposób złamać w rozsądnym czasie, wymaga ogromnej wiedzy z zakresu matematyki. Dlatego w tym przypadku lepiej jest unikać tworzenia własnych rozwiązań i skorzystać z gotowych standardów.
+- **Wartość klucza** - nawet najlepszy algorytm na nic się nie zda, jeśli zastosujemy klucz łatwy do odgadnięcia (podobnie jak w przypadku stosowania słabego hasła).
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
