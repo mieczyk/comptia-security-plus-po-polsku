@@ -74,16 +74,14 @@ Dostęp do kopii zapasowych kluczy powinien być ściśle chroniony. Dlatego fir
 
 **Podsumowując:** *key escrow* to system przechowywania i odzyskiwania kluczy prywatnych, do których dostęp - w razie potrzeby - posiadają wyłącznie uprawnione osoby.
 # Encryption
-**Szyfrowanie (ang. *encryption*) to operacja kryptograficzna wykorzystująca matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Procesem odwrotnym jest **deszyfrowanie (ang. *decryption*), czyli transformacja zaszyfrowanego tekstu (ang. *ciphertext*) do postaci tekstu jawnego (ang. *plain text*)**.
+**Szyfrowanie (ang. *encryption*) to operacja kryptograficzna wykorzystująca matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Procesem odwrotnym jest **deszyfrowanie (ang. *decryption*), czyli transformacja zaszyfrowanego tekstu (ang. *ciphertext*) do postaci tekstu jawnego (ang. *plain text*)**. Wykorzystywane przy tym zasady matematyczne sprawiają, że **praktycznie niewykonalne jest odszyfrowanie danych bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
 
-Wykorzystywane w kryptografii zasady matematyczne sprawiają, że **praktycznie niewykonalne jest odszyfrowanie danych bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
+Bardziej ogólnym terminem jest **kryptografia** (ang. *cryptography*), która jest szeroką dziedziną informatyki, obejmującą m.in. wspomniane procesy szyfrowania oraz deszyfrowania. Jednym z najważniejszych zadań kryptografii jest **zapewnienie poufności danych** (ang. *confidentiality*). To właśnie tutaj szyfrowanie jest wykorzystywane najczęściej, ponieważ jednym z filarów triady bezpieczeństwa IT jest ochrona przed niepowołanym dostępem, zarówno **danych przesyłanych przez sieć** (ang. *in transit*), jak i tych **składowanych na nośnikach danych** (ang. *at rest*). Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
 
-**Szyfrowanie służy do zapewnienia poufności danych**, które mogą być w różnych stanach:
-- **Dane w spoczynku** (ang. *at rest*) - przechowywane na nośnikach danych.
-- **Dane przesyłane** (ang. *in transit*) - np. podczas przesyłania przez sieć.
-- **Dane przetwarzane/w użyciu** (ang. *in use*) - przechowywane w pamięci operacyjnej i przetwarzane przez działający program. (TODO: kiedy są w użyciu to raczej nie są szyfrowane)
-
-Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
+Pozostałe zadania kryptografii, które są równie istotne, to:
+- **Zapewnienie spójności danych** (ang. *integrity*), czyli gwarancja, że nie zostały zmienione przez niewłaściwe osoby.
+- **Weryfikacja tożsamości** (ang. *authentication*).
+- **Zapewnienie niezaprzeczalności** (ang. *non-repudiation*), czyli zaręczenia, że dana wiadomość przyszła od określonego nadawcy.
 
 Oczywiście sam fakt zaszyfrowania danych nie powoduje, że są one w stu procentach zabezpieczone. Tutaj działa zasada podobna do stosowania silnych (długich i trudnych do odgadnięcia) oraz słabych haseł (krótkich wyrazów z słownika), z tą różnicą, że o skuteczności rozwiązania stanowią dwa czynniki: 
 - **Algorytm szyfrujący/deszyfrujący** (*cipher*) - zawsze należy stosować algorytmy, które są powszechnie uznawane za bezpieczne i unikać tych, w których znaleziono i udokumentowano luki w działaniu. Dodatkowo, opracowanie skutecznego algorytmu, którego nie sposób złamać w rozsądnym czasie, wymaga ogromnej wiedzy z zakresu matematyki. Dlatego w tym przypadku lepiej jest unikać tworzenia własnych rozwiązań i skorzystać z gotowych standardów.
