@@ -73,6 +73,23 @@ Aby zapobiegać skutkom takich zdarzeń, stosuje się **zewnętrzne (oferowane p
 Dostęp do kopii zapasowych kluczy powinien być ściśle chroniony. Dlatego firmy korzystające z takich rozwiązań powinny mieć jasno zdefiniowaną politykę odzyskiwania kluczy (ang. *key recovery*), która dokładnie opisuje, w jakich konkretnych sytuacjach klucz może zostać odzyskany z depozytu i przez kogo.
 
 **Podsumowując:** *key escrow* to system przechowywania i odzyskiwania kluczy prywatnych, do których dostęp - w razie potrzeby - posiadają wyłącznie uprawnione osoby.
+# Encryption
+**Szyfrowanie (ang. *encryption*) to operacja kryptograficzna wykorzystująca matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Procesem odwrotnym jest **deszyfrowanie (ang. *decryption*), czyli transformacja zaszyfrowanego tekstu (ang. *ciphertext*) do postaci tekstu jawnego (ang. *plaintext*)**. Wykorzystywane przy tym zasady matematyczne sprawiają, że **praktycznie niewykonalne jest odszyfrowanie danych bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
+
+Bardziej ogólnym terminem jest **kryptografia** (ang. *cryptography*), która stanowi szeroką dziedzinę informatyki obejmującą m.in. wspomniane procesy szyfrowania oraz deszyfrowania. Jednym z najważniejszych zadań kryptografii jest **zapewnienie poufności danych** (ang. *confidentiality*). To właśnie tutaj szyfrowanie jest wykorzystywane najczęściej, ponieważ jednym z filarów triady bezpieczeństwa IT jest ochrona przed niepowołanym dostępem - zarówno **danych przesyłanych przez sieć** (ang. *in transit*), jak i **składowanych na nośnikach danych** (ang. *at rest*). Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
+
+Pozostałe zadania kryptografii, które są równie istotne, to:
+- **Zapewnienie spójności danych** (ang. *integrity*), czyli gwarancja, że nie zostały zmienione przez osoby nieuprawnione.
+- **Weryfikacja tożsamości** (ang. *authentication*).
+- **Zapewnienie niezaprzeczalności** (ang. *non-repudiation*), czyli uniemożliwienie nadawcy wyparcia się wysłania danej wiadomości.
+
+Oczywiście sam fakt zaszyfrowania danych nie oznacza, że są one w pełni zabezpieczone. Działa tu zasada podobna do stosowania silnych (długich i trudnych do odgadnięcia) oraz słabych haseł (krótkich wyrazów ze słownika). W przypadku kryptografii o skuteczności rozwiązania stanowią dwa czynniki:
+- **Algorytm szyfrujący/deszyfrujący** (ang. *cipher*) - zawsze należy stosować algorytmy powszechnie uznawane za bezpieczne i unikać tych, w których znaleziono i udokumentowano luki. Opracowanie skutecznego algorytmu, którego nie sposób złamać w rozsądnym czasie, wymaga solidnej wiedzy matematycznej, dlatego lepiej unikać tworzenia własnych rozwiązań i korzystać z gotowych standardów.
+- **Wartość klucza** - nawet najlepszy algorytm na nic się nie zda, jeśli zastosujemy klucz łatwy do odgadnięcia (podobnie jak w przypadku stosowania słabego hasła).
+
+Dobierając odpowiednie rozwiązania kryptograficzne, należy również uwzględnić, że w wielu specjalistycznych zastosowaniach moc obliczeniowa i energia mogą być ograniczone. W takim przypadku można zastosować tzw. **kryptografię lekką** (ang. *lightweight cryptography*). W środowiskach, gdzie pobór mocy musi być silnie ograniczony ze względu na źródła energii o niewielkiej pojemności (np. satelity, zdalne czujniki, karty inteligentne), często stosuje się specjalistyczne rozwiązania sprzętowe wspierające kryptografię lekką. Innym przypadkiem, gdzie lekkie algorytmy są kluczowe, jest wymaganie niskich opóźnień podczas przesyłania danych (ang. *low latency*).
+
+W ramach ciekawostki warto wspomnieć o tzw. **szyfrowaniu homomorficznym** (ang. *homomorphic encryption*), które pozwala wykonywać operacje bezpośrednio na zaszyfrowanych danych, bez konieczności uprzedniego ich odszyfrowania.
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
