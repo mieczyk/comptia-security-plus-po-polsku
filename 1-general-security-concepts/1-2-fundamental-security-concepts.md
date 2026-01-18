@@ -423,9 +423,13 @@ W praktyce to przede wszystkim **aktywne czujniki ultradźwiękowe** są stosowa
 
 Tego typu czujniki są wykorzystywane m.in. w detektorach ruchu oraz czujnikach zbliżeniowych (np. w samochodach). Ich główną zaletą jest **duży obszar działania**, a pole widzenia czujnika nie jest tak istotne jak w przypadku czujników opartych na podczerwieni.
 # Deception and disruption technology (TODO)
-- Techniki, których zadaniem jest oszukanie atakujących, żeby zmarnować ich czas, trzymając jednocześnie z dala od produkcyjnych systemów, oraz zdobyć jak najwięcej informacji o stosowanych przez nich technikach i metodach działania (dzięki temu można lepiej dostosować nasze zabezpieczenia).
-- Istnieje grupa narzędzi sieciowych, których zadaniem jest nie tyle zapobieganie włamań, co gromadzenie informacji o atakujących i przeprowadzanych atakach oraz zakłócanie ich działań. Tę kategorię określamy jako ***deception and disruption***, co w wolnym tłumaczeniu oznacza zwodzenie, wprowadzanie w błąd (ang. *deception*) oraz zakłócanie (ang. *disruption*).
-	- Zebrane w ten sposób informacje mogą być na wagę złota dla zespołów IT odpowiedzialnych za bezpieczeństwo, ponieważ dostarczają wiedzy o rzeczywistych próbach ataku, a także wykorzystywanych technikach i narzędziach. Dzięki temu można  zastosować środki bezpieczeństwa, które są dostosowane do realnych zagrożeń, a nie tylko hipotetycznych.
+Istnieje grupa narzędzi, których zadaniem jest nie tyle zapobieganie włamaniom, co **zwodzenie potencjalnych atakujących, zbieranie oraz analizowanie informacji o wykorzystywanych przez nich technikach, celowe zakłócanie ich działań, a także wykrywanie incydentów *post factum***.
+
+Tego typu narzędzia klasyfikujemy do kategorii ***deception and disruption***, co w wolnym tłumaczeniu oznacza **zwodzenie**, **wprowadzanie w błąd** (ang. *deception*) oraz **zakłócanie** (ang. *disruption*).
+
+Techniki dezinformacji i zakłócania służą temu, żeby zwabić atakującego w pułapkę, marnując jego czas, trzymając go jednocześnie z daleka od rzeczywistych systemów produkcyjnych. Dodatkową korzyścią jest monitorowanie i rejestrowanie wszystkich działań przechytrzonego napastnika, dzięki czemu osoby odpowiedzialne za bezpieczeństwo IT zdobywają cenną wiedzę o metodach i narzędziach używanych do realnego ataku. Zebrane w ten sposób informacje można później wykorzystać do identyfikacji wektorów ataku (ang. *attack vectors*) oraz dokładniejszego określania powierzchni ataku (ang. *attack surface*), co z kolei prowadzi do stosowania skuteczniejszych zabezpieczeń i trafniejszego szacowania ryzyka.
+
+---
 - *Honeypots and honeynets are used to gather information about attackers, and honeyfiles and honeytokens are used to identify potential breaches and attackers who have gathered information from systems in your environment.*
 - Przykłady (do weryfikacji)
 	- https://owasp.org/www-project-honeypot/ - budowanie honeypotów opartych o *ModSecurity* WAF.
