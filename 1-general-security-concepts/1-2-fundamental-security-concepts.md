@@ -422,29 +422,35 @@ Z drugiej jednak strony ich wysoka czułość może prowadzić do zwiększonej l
 W praktyce to przede wszystkim **aktywne czujniki ultradźwiękowe** są stosowane w systemach bezpieczeństwa. Mogą jednak generować fałszywe alarmy, ponieważ są podatne na zakłócenia wywołane pracą maszyn, wibracjami czy hałasem mechanicznym. Dodatkowo ultradźwięki o wysokim natężeniu mogą być nieprzyjemne dla zwierząt, a w niektórych przypadkach również dla ludzi przebywających w pobliżu.
 
 Tego typu czujniki są wykorzystywane m.in. w detektorach ruchu oraz czujnikach zbliżeniowych (np. w samochodach). Ich główną zaletą jest **duży obszar działania**, a pole widzenia czujnika nie jest tak istotne jak w przypadku czujników opartych na podczerwieni.
-# Deception and disruption technology (TODO)
+# Deception and disruption technology
 Istnieje grupa narzędzi, których zadaniem jest nie tyle zapobieganie włamaniom, co **zwodzenie potencjalnych atakujących, zbieranie oraz analizowanie informacji o wykorzystywanych przez nich technikach, celowe zakłócanie ich działań, a także wykrywanie incydentów *post factum***.
 
 Tego typu narzędzia klasyfikujemy do kategorii ***deception and disruption***, co w wolnym tłumaczeniu oznacza **zwodzenie**, **wprowadzanie w błąd** (ang. *deception*) oraz **zakłócanie** (ang. *disruption*).
 
 Techniki dezinformacji i zakłócania służą temu, żeby zwabić atakującego w pułapkę, marnując jego czas, trzymając go jednocześnie z daleka od rzeczywistych systemów produkcyjnych. Dodatkową korzyścią jest monitorowanie i rejestrowanie wszystkich działań przechytrzonego napastnika, dzięki czemu osoby odpowiedzialne za bezpieczeństwo IT zdobywają cenną wiedzę o metodach i narzędziach używanych do realnego ataku. Zebrane w ten sposób informacje można później wykorzystać do identyfikacji wektorów ataku (ang. *attack vectors*) oraz dokładniejszego określania powierzchni ataku (ang. *attack surface*), co z kolei prowadzi do stosowania skuteczniejszych zabezpieczeń i trafniejszego szacowania ryzyka.
 
----
-- *Honeypots and honeynets are used to gather information about attackers, and honeyfiles and honeytokens are used to identify potential breaches and attackers who have gathered information from systems in your environment.*
-- Przykłady (do weryfikacji)
-	- https://owasp.org/www-project-honeypot/ - budowanie honeypotów opartych o *ModSecurity* WAF.
-	- https://www.projecthoneypot.org/index.php - Przykład honeyneta, do którego każdy może się przyłączyć. Umieszczamy na naszej stronie kawałek kodu, który generuje fałszywe adresy email, formularze kontaktowe itp. Adresy IP, które zostaną zidentyfikowane podczas próby ich nadużycia, trafiają na czarną listę.
-	- Jeśli ktoś jest zainteresowany tematyką badania różnych technik ataków celem budowania skuteczniejszej ochrony, może odwiedzić stronę organizacji non-profit [The Honeynet Project](https://www.honeynet.org/).
+Opisane poniżej technologie można podzielić na dwie grupy, jeśli chodzi o zastosowanie:
+- Wyłapywanie prób ataku oraz gromadzenie informacji o atakujących i wykorzystywanych złośliwych technikach: *honeypots* oraz *honeynets*.
+- Wykrywanie potencjalnych włamań: *honeyfiles* oraz *honeytokens*.
+
+Jeśli kogoś interesuje temat zbierania danych o atakach, to można odwiedzić witrynę [The Honeynet Project](https://www.honeynet.org/), należącą do międzynarodowej organizacji non-profit, która skupia się na badaniu różnych metod ataków oraz budowaniu narzędzi zabezpieczających.
 ## Honeypot
+
+---
 - **Honeypot** - pułapka przyciągająca potencjalnych atakujących, która angażuje ich w bezcelowe zadania. Przeważnie będą to zautomatyzowane narzędzia do rekonesansu. Śledząc ich działania poznajemy zestaw technik, które są wykorzystywane przeciwko nam (co dokładnie zostało zautomatyzowane, jakie zasoby i systemy są na celowniku).
 	- Tego typu pułapki często przypominają rzeczywiste systemy, więc dopóki atakujący się nie zorientuje, jest szansa, że straci dużo czasu na próby włamania do systemu-zaślepki, który skutecznie odciąga jego uwagę od rzeczywistych, produkcyjnych zasobów.
 	- Do postawienia własnego honeypota można wykorzystać różne rozwiązania komercyjne bądź open-source (TODO: znaleźć przykłady). Nasz wybór będzie zapewne uzależniony od wymaganego poziomu skomplikowania oraz budżetu (nie jest niespodzianką, że bardziej wyrafinowane rozwiązania są z reguły droższe).
 - **Honeypot** - system, który celowo został skonfigurowany w taki sposób, żeby wyglądał na taki, który przechowuje cenne informacje i jest jednocześnie podatny na ataki. W rzeczywistości jednak jest pułapką, która tylko zachowuje się jak prawdziwy system oraz nie zawiera żadnych istotnych informacji. Jest natomiast silnie monitorowany - każda akcja wykonana przez atakującego, który dał się nabrać, jest rejestrowana do późniejszej analizy.
+- Przykłady:
+	- [OWASP Honeypot-Project](https://github.com/OWASP/Honeypot-Project/) - repozytorium zawierające przykładowe pułapki oraz sposoby gromadzenia informacji o potencjalnych atakach do dalszej analizy.
+	- https://github.com/paralax/awesome-honeypots
+	- https://github.com/telekom-security/tpotce?tab=readme-ov-file
 ## Honeynet
 - **Honeynet** - Kiedy okaże się, że atakujący nie mają problemów z zorientowaniem się, że trafili do *pułapki*, będziemy niestety zmuszeni do zastosowania bardziej wyszukanych rozwiązań, które lepiej *udają* rzeczywiste środowisko - może to wymagać infrastruktury w postaci honeypotów połączonych w sieć (honeynet).
 	- Taka sieć-pułapka może bardzo przypominać rzeczywiste sieci z stacjami roboczymi (ang. workstations), serwerami (ang. servers), routerami czy firewallami. W takim przypadku dużo trudniej jest zorientować się napastnikowi w sytuacji, w której się znalazł.
 - **Honeynets** - podobnie jak honeypots są wykorzystywane do wykrywania oraz analizowania ataków na pojedynczy system, celem honeynets jest namierzanie i badanie ataków sieciowych. 
 	- Honeynet to w zasadzie grupa systemów honeypot, połączonych w sieć, dzięki czemu, z perspektywy napastnika, środowisko bardziej przypomina prawdziwą sieć firmową. Dzięki temu atakujący, zanim się zorientuje w sytuacji, może wykorzystać szerszą gamę technik i narzędzi, co stanowi doskonały materiał do późniejszej analizy dla specjalistów od bezpieczeństwa.
+- [Project Honey Pot](https://www.projecthoneypot.org/index.php) - Przykład honeyneta, do którego każdy może się przyłączyć. Umieszczamy na naszej stronie kawałek kodu, który generuje fałszywe adresy email, formularze kontaktowe itp. Adresy IP, które zostaną zidentyfikowane podczas próby ich nadużycia, trafiają na czarną listę.
 ## Honeyfile
 - **Honeyfile** - pliki-wabiki wyglądające na takie, które zawierają ważne i wrażliwe dane, ale w rzeczywistości przechowują fałszywe informacje, a każda próba ich odczytu może wywołać alarm. Najprostszym przykładem (choć trochę zbyt oczywistym) może być umieszczony na serwerze plik o nazwie `passwords.dat`, który zawierałby jakieś przypadkowe hashe. Każde otwarcie lub ściągnięcie pliku powinno zostać odnotowane . Oczywiście plik nie powinien być ogólnodostępny, inaczej mógłby wygenerować wiele fałszywych ostrzeżeń.
 - **Honeyfile** - w odróżnieniu od wspomnianych wcześniej pułapek honeypots/honeynets, których głównym zadaniem jest badanie i analiza zachowań potencjalnego włamywacza, pliki-pułapki służą przede wszystkim do wykrywania włamań (*intrusion detection*).
