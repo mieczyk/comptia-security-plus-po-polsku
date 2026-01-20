@@ -435,13 +435,13 @@ Opisane poniżej technologie można podzielić na dwie grupy, jeśli chodzi o za
 
 Jeśli kogoś interesuje temat zbierania danych o atakach, to można odwiedzić witrynę [The Honeynet Project](https://www.honeynet.org/), należącą do międzynarodowej organizacji non-profit, która skupia się na badaniu różnych metod ataków oraz budowaniu narzędzi zabezpieczających.
 ## Honeypot
-*Honeypot* to **pułapka w postaci systemu lub usługi, których zadaniem jest przyciąganie potencjalnych atakujących i odciąganie ich od rzeczywistych zasobów produkcyjnych**. Analizując działania napastnika, który dał się w ten sposób zwieść, organizacja może poznać stosowane techniki ataku oraz dowiedzieć się, które usługi i systemy są najczęściej obierane za cel.
+*Honeypot* to **pułapka w postaci systemu lub usługi, których zadaniem jest przyciąganie potencjalnych atakujących i odciąganie ich od rzeczywistych zasobów produkcyjnych**. Analizując działania napastnika, który dał się w ten sposób zwieść, **organizacja może poznać stosowane techniki ataku oraz dowiedzieć się, które usługi i systemy są najczęściej obierane za cel**.
 
 Systemy-pułapki są projektowane tak, aby **możliwie wiernie imitowały prawdziwe systemy** - udostępniają pozorne usługi, podatności i konfiguracje. Dopóki atakujący nie rozpozna pułapki, może tracić czas na próby kompromitacji systemu-zaślepki, co zmniejsza ryzyko bezpośredniego ataku na środowisko produkcyjne. Należy podkreślić, że *honeypot* nie blokuje ataku, lecz umożliwia jego obserwację i wczesne wykrycie.
 
 Z technicznego punktu widzenia *honeypot* **nie zawiera żadnych wrażliwych danych ani krytycznych funkcji biznesowych**, mimo że sprawia takie wrażenie. Kluczowym elementem jest **intensywne monitorowanie** - wszystkie działania atakującego są rejestrowane i wykorzystywane do analizy incydentów oraz doskonalenia mechanizmów obronnych. Wyróżnia się *honeypoty* niskiej interakcji (prostsze i bezpieczniejsze) oraz wysokiej interakcji (bardziej realistyczne, ale trudniejsze w utrzymaniu).
 
-Do wdrożenia honeypotów można wykorzystać rozwiązania open source i komercyjne, w zależności od budżetu i wymaganego poziomu realizmu. Przykładowe projekty *open source*:
+Do wdrożenia honeypotów można wykorzystać rozwiązania *open source* i komercyjne, w zależności od budżetu i wymaganego poziomu realizmu. Przykładowe projekty *open source*:
 - [OWASP Honeypot-Project](https://github.com/OWASP/Honeypot-Project/) - repozytorium zawierające przykładowe pułapki oraz sposoby gromadzenia informacji o potencjalnych atakach do dalszej analizy.
 - [Awesome Honeypots](https://github.com/paralax/awesome-honeypots) - lista *honeypotów* udających różne usługi.
 - [T-Pot - The All In One Multi Honeypot Platform](https://github.com/telekom-security/tpotce) - rozbudowana platforma, która umożliwia uruchomienie i centralne zarządzanie wieloma pułapkami emulującymi różne popularne usługi.
