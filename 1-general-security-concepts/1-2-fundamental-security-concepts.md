@@ -435,16 +435,16 @@ Opisane poniżej technologie można podzielić na dwie grupy, jeśli chodzi o za
 
 Jeśli kogoś interesuje temat zbierania danych o atakach, to można odwiedzić witrynę [The Honeynet Project](https://www.honeynet.org/), należącą do międzynarodowej organizacji non-profit, która skupia się na badaniu różnych metod ataków oraz budowaniu narzędzi zabezpieczających.
 ## Honeypot
+*Honeypot* to **pułapka w postaci systemu lub usługi, których zadaniem jest przyciąganie potencjalnych atakujących i odciąganie ich od rzeczywistych zasobów produkcyjnych**. Analizując działania napastnika, który dał się w ten sposób zwieść, organizacja może poznać stosowane techniki ataku oraz dowiedzieć się, które usługi i systemy są najczęściej obierane za cel.
 
----
-- **Honeypot** - pułapka przyciągająca potencjalnych atakujących, która angażuje ich w bezcelowe zadania. Przeważnie będą to zautomatyzowane narzędzia do rekonesansu. Śledząc ich działania poznajemy zestaw technik, które są wykorzystywane przeciwko nam (co dokładnie zostało zautomatyzowane, jakie zasoby i systemy są na celowniku).
-	- Tego typu pułapki często przypominają rzeczywiste systemy, więc dopóki atakujący się nie zorientuje, jest szansa, że straci dużo czasu na próby włamania do systemu-zaślepki, który skutecznie odciąga jego uwagę od rzeczywistych, produkcyjnych zasobów.
-	- Do postawienia własnego honeypota można wykorzystać różne rozwiązania komercyjne bądź open-source (TODO: znaleźć przykłady). Nasz wybór będzie zapewne uzależniony od wymaganego poziomu skomplikowania oraz budżetu (nie jest niespodzianką, że bardziej wyrafinowane rozwiązania są z reguły droższe).
-- **Honeypot** - system, który celowo został skonfigurowany w taki sposób, żeby wyglądał na taki, który przechowuje cenne informacje i jest jednocześnie podatny na ataki. W rzeczywistości jednak jest pułapką, która tylko zachowuje się jak prawdziwy system oraz nie zawiera żadnych istotnych informacji. Jest natomiast silnie monitorowany - każda akcja wykonana przez atakującego, który dał się nabrać, jest rejestrowana do późniejszej analizy.
-- Przykłady:
-	- [OWASP Honeypot-Project](https://github.com/OWASP/Honeypot-Project/) - repozytorium zawierające przykładowe pułapki oraz sposoby gromadzenia informacji o potencjalnych atakach do dalszej analizy.
-	- https://github.com/paralax/awesome-honeypots
-	- https://github.com/telekom-security/tpotce?tab=readme-ov-file
+Systemy-pułapki są projektowane tak, aby **możliwie wiernie imitowały prawdziwe systemy** - udostępniają pozorne usługi, podatności i konfiguracje. Dopóki atakujący nie rozpozna pułapki, może tracić czas na próby kompromitacji systemu-zaślepki, co zmniejsza ryzyko bezpośredniego ataku na środowisko produkcyjne. Należy podkreślić, że *honeypot* nie blokuje ataku, lecz umożliwia jego obserwację i wczesne wykrycie.
+
+Z technicznego punktu widzenia *honeypot* **nie zawiera żadnych wrażliwych danych ani krytycznych funkcji biznesowych**, mimo że sprawia takie wrażenie. Kluczowym elementem jest **intensywne monitorowanie** - wszystkie działania atakującego są rejestrowane i wykorzystywane do analizy incydentów oraz doskonalenia mechanizmów obronnych. Wyróżnia się *honeypoty* niskiej interakcji (prostsze i bezpieczniejsze) oraz wysokiej interakcji (bardziej realistyczne, ale trudniejsze w utrzymaniu).
+
+Do wdrożenia honeypotów można wykorzystać rozwiązania open source i komercyjne, w zależności od budżetu i wymaganego poziomu realizmu. Przykładowe projekty *open source*:
+- [OWASP Honeypot-Project](https://github.com/OWASP/Honeypot-Project/) - repozytorium zawierające przykładowe pułapki oraz sposoby gromadzenia informacji o potencjalnych atakach do dalszej analizy.
+- [Awesome Honeypots](https://github.com/paralax/awesome-honeypots) - lista *honeypotów* udających różne usługi.
+- [T-Pot - The All In One Multi Honeypot Platform](https://github.com/telekom-security/tpotce) - rozbudowana platforma, która umożliwia uruchomienie i centralne zarządzanie wieloma pułapkami emulującymi różne popularne usługi.
 ## Honeynet
 - **Honeynet** - Kiedy okaże się, że atakujący nie mają problemów z zorientowaniem się, że trafili do *pułapki*, będziemy niestety zmuszeni do zastosowania bardziej wyszukanych rozwiązań, które lepiej *udają* rzeczywiste środowisko - może to wymagać infrastruktury w postaci honeypotów połączonych w sieć (honeynet).
 	- Taka sieć-pułapka może bardzo przypominać rzeczywiste sieci z stacjami roboczymi (ang. workstations), serwerami (ang. servers), routerami czy firewallami. W takim przypadku dużo trudniej jest zorientować się napastnikowi w sytuacji, w której się znalazł.
