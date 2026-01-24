@@ -71,6 +71,11 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 		- [Pressure](1-general-security-concepts/1-2-fundamental-security-concepts.md#pressure)
 		- [Microwave](1-general-security-concepts/1-2-fundamental-security-concepts.md#microwave)
 		- [Ultrasonic](1-general-security-concepts/1-2-fundamental-security-concepts.md#ultrasonic)
+- [Deception and disruption technology](1-general-security-concepts/1-2-fundamental-security-concepts.md#deception-and-disruption-technology)
+	- [Honeypot](1-general-security-concepts/1-2-fundamental-security-concepts.md#honeypot)
+	- [Honeynet](1-general-security-concepts/1-2-fundamental-security-concepts.md#honeynet)
+	- [Honeyfile](1-general-security-concepts/1-2-fundamental-security-concepts.md#honeyfile)
+	- [Honeytoken](1-general-security-concepts/1-2-fundamental-security-concepts.md#honeytoken)
 ### 1.3 Explain the importance of change management processes and the impact to security
 - [Business processes impacting security operation](1-general-security-concepts/1-3-change-management-processes.md#business-processes-impacting-security-operation)
 	- [Approval process](1-general-security-concepts/1-3-change-management-processes.md#approval-process)
