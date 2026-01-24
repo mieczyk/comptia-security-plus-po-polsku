@@ -422,6 +422,49 @@ Z drugiej jednak strony ich wysoka czułość może prowadzić do zwiększonej l
 W praktyce to przede wszystkim **aktywne czujniki ultradźwiękowe** są stosowane w systemach bezpieczeństwa. Mogą jednak generować fałszywe alarmy, ponieważ są podatne na zakłócenia wywołane pracą maszyn, wibracjami czy hałasem mechanicznym. Dodatkowo ultradźwięki o wysokim natężeniu mogą być nieprzyjemne dla zwierząt, a w niektórych przypadkach również dla ludzi przebywających w pobliżu.
 
 Tego typu czujniki są wykorzystywane m.in. w detektorach ruchu oraz czujnikach zbliżeniowych (np. w samochodach). Ich główną zaletą jest **duży obszar działania**, a pole widzenia czujnika nie jest tak istotne jak w przypadku czujników opartych na podczerwieni.
+# Deception and disruption technology
+Istnieje grupa narzędzi, których zadaniem jest nie tyle zapobieganie włamaniom, co **zwodzenie potencjalnych atakujących, zbieranie oraz analizowanie informacji o wykorzystywanych przez nich technikach, celowe zakłócanie ich działań, a także wykrywanie incydentów *post factum***.
+
+Tego typu narzędzia klasyfikujemy do kategorii ***deception and disruption***, co w wolnym tłumaczeniu oznacza **zwodzenie**, **wprowadzanie w błąd** (ang. *deception*) oraz **zakłócanie** (ang. *disruption*).
+
+Techniki dezinformacji i zakłócania służą temu, żeby zwabić atakującego w pułapkę, marnując jego czas, trzymając go jednocześnie z daleka od rzeczywistych systemów produkcyjnych. Dodatkową korzyścią jest monitorowanie i rejestrowanie wszystkich działań przechytrzonego napastnika, dzięki czemu osoby odpowiedzialne za bezpieczeństwo IT zdobywają cenną wiedzę o metodach i narzędziach używanych do realnego ataku. Zebrane w ten sposób informacje można później wykorzystać do identyfikacji wektorów ataku (ang. *attack vectors*) oraz dokładniejszego określania powierzchni ataku (ang. *attack surface*), co z kolei prowadzi do stosowania skuteczniejszych zabezpieczeń i trafniejszego szacowania ryzyka.
+
+Opisane poniżej technologie można podzielić na dwie grupy, jeśli chodzi o zastosowanie:
+- Wyłapywanie prób ataku oraz gromadzenie informacji o atakujących i wykorzystywanych złośliwych technikach: *honeypots* oraz *honeynets*.
+- Wykrywanie potencjalnych włamań: *honeyfiles* oraz *honeytokens*.
+
+Jeśli kogoś interesuje temat zbierania danych o atakach, to można odwiedzić witrynę [The Honeynet Project](https://www.honeynet.org/), należącą do międzynarodowej organizacji non-profit, która skupia się na badaniu różnych metod ataków oraz budowaniu narzędzi zabezpieczających.
+## Honeypot
+*Honeypot* to **pułapka w postaci systemu lub usługi, których zadaniem jest przyciąganie potencjalnych atakujących i odciąganie ich od rzeczywistych zasobów produkcyjnych**. Analizując działania napastnika, który dał się w ten sposób zwieść, **organizacja może poznać stosowane techniki ataku oraz dowiedzieć się, które usługi i systemy są najczęściej obierane za cel**.
+
+Systemy-pułapki są projektowane tak, aby **możliwie wiernie imitowały prawdziwe systemy** - udostępniają pozorne usługi, podatności i konfiguracje. Dopóki atakujący nie rozpozna pułapki, może tracić czas na próby kompromitacji systemu-zaślepki, co zmniejsza ryzyko bezpośredniego ataku na środowisko produkcyjne. Należy podkreślić, że *honeypot* nie blokuje ataku, lecz umożliwia jego obserwację i wczesne wykrycie.
+
+Z technicznego punktu widzenia *honeypot* **nie zawiera żadnych wrażliwych danych ani krytycznych funkcji biznesowych**, mimo że sprawia takie wrażenie. Kluczowym elementem jest **intensywne monitorowanie** - wszystkie działania atakującego są rejestrowane i wykorzystywane do analizy incydentów oraz doskonalenia mechanizmów obronnych. Wyróżnia się *honeypoty* niskiej interakcji (prostsze i bezpieczniejsze) oraz wysokiej interakcji (bardziej realistyczne, ale trudniejsze w utrzymaniu).
+
+Do wdrożenia honeypotów można wykorzystać rozwiązania *open source* i komercyjne, w zależności od budżetu i wymaganego poziomu realizmu. Przykładowe projekty *open source*:
+- [OWASP Honeypot-Project](https://github.com/OWASP/Honeypot-Project/) - repozytorium zawierające przykładowe pułapki oraz sposoby gromadzenia informacji o potencjalnych atakach do dalszej analizy.
+- [Awesome Honeypots](https://github.com/paralax/awesome-honeypots) - lista *honeypotów* udających różne usługi.
+- [T-Pot - The All In One Multi Honeypot Platform](https://github.com/telekom-security/tpotce) - rozbudowana platforma, która umożliwia uruchomienie i centralne zarządzanie wieloma pułapkami emulującymi różne popularne usługi.
+## Honeynet
+Trochę bardziej rozbudowaną formą pułapki jest *honeynet*, która w odróżnieniu od standardowego *honeypota*, **tworzy się całe środowisko imitujące prawdziwą infrastrukturę organizacji. Składa się przeważnie z wielu systemów *honeypot* połączonych w sieć i może obejmować stacje robocze, serwery, urządzenia sieciowe, a nawet zapory sieciowe**. Z perspektywy atakującego wygląda to jak realistyczna sieć firmowa, dzięki czemu trudniej zorientować się, że ma do czynienia z kontrolowanym środowiskiem.
+
+Jej celem jest skłonienie napastnika do dłuższej interakcji i użycia bardziej złożonych technik, co zwiększa wartość pozyskiwanych danych z punktu widzenia analizy zagrożeń. Podobnie jak wspomniany wcześniej *honeypot*, **służy przede wszystkim do wykrywania oraz zbierania danych o atakach sieciowych**, celem dalszych badań.
+
+W przeciwieństwie do pojedynczych *honeypotów*, które często koncentrują się na obserwacji działań napastnika w ramach pojedynczego hosta, sieć-pułapka umożliwia monitoring ataków, które wychodzą poza ramy pojedynczego systemu (hosta). Przykładowo, *honeynet* pozwala na zbieranie informacji o tzw. ruchu bocznym (ang. *lateral movement*), czyli dalszym przemieszczaniu się w ramach sieci, po pierwszym udanym ataku na jeden z jej *przyczółków*. Oczywiście musimy pamiętać o tym, że taka sieć musi być odizolowana od rzeczywistej sieci produkcyjnej.
+## Honeyfile
+Jest to specjalnie przygotowany **plik-wabik, który przechowuje pozornie wrażliwe lub atrakcyjne dane, choć w rzeczywistości nie mają one żadnej wartości, a celem jego stosowania jest wykrywanie nieautoryzowanego dostępu**.
+
+Najprostszym przykładem może być plik o bardzo kuszącej nazwie (np. `passwords.dat` lub `finance_backup.xlsx`), zawierający losowe dane lub fikcyjne skróty (ang. *hashes*) haseł, które jednak powinno dać się łatwo zidentyfikować. **Każda próba otwarcia, skopiowania lub pobrania takiego pliku powinna zostać automatycznie zarejestrowana i wygenerować alarm bezpieczeństwa**.
+
+Zadaniem pliku-pułapki jest **wskazanie, że ktoś uzyskał dostęp do zasobów, do których nie powinien mieć uprawnień**. Z tego powodu plik nie powinien być ogólnodostępny, aby nie generować fałszywych alarmów. Dlatego umieszcza się go w lokalizacjach, które zwykły użytkownik ignoruje, ale które mogą być atrakcyjnym celem osoby atakującej.
+
+W przeciwieństwie do opisanych wcześniej pułapek typu *honeypot* oraz *honeynet*, które służą głównie do obserwowania i analizowania zachowań atakującego, *honeyfile* pełni przede wszystkim **funkcję mechanizmu wykrywania włamań** (ang. *intrusion detection*). Dodatkowo, jeżeli zawartość takiego pliku zostanie wykryta poza chronionym środowiskiem (np. w ruchu sieciowym, repozytorium publicznym lub w internecie), jest to jednoznaczny dowód naruszenia bezpieczeństwa (ang. *security breach*), którego wcześniej nie wykryliśmy.
+## Honeytoken
+*Honeytoken* to **porcja fałszywych, nieużywanych danych, które tylko wyglądają na użyteczne, a ich rzeczywistym zadaniem jest wykrywanie potencjalnych naruszeń bezpieczeństwa** (ang. *security breach*). Mogą to być m.in. fikcyjne dane uwierzytelniające, klucze API, rekordy w bazach danych czy też wpisy w plikach konfiguracyjnych.
+
+Każda **próba wykorzystania tego typu danych** (np. logowanie przy użyciu fałszywych poświadczeń) lub **pojawienie się ich poza organizacją**, z bardzo dużym prawdopodobieństwem **wskazuje na naruszenie bezpieczeństwa lub wyciek danych**.  Z tego powodu, *honeytokeny*  powinny być **łatwe do jednoznacznej identyfikacji oraz nie mogą być używane w standardowych procesach biznesowych**.
+
+Technika ta jest relatywnie prosta w implementacji, nie wymaga rozbudowanej infrastruktury i dobrze uzupełnia inne mechanizmy monitorowania, takie jak systemy SIEM (*Security Information and Event Management*) czy DLP (*Data Loss Prevention*). Warto również wspomnieć, że jej przeznaczeniem jest nie prewencja ataków, a ich wykrywanie. Dzięki *honeytokenom* mamy szansę nie tylko na wczesne wyłapanie ewentualnego incydentu, ale też na namierzenie potencjalnych sprawców i śledzenie ich aktywności.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
