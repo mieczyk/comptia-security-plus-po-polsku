@@ -90,6 +90,18 @@ Oczywiście sam fakt zaszyfrowania danych nie oznacza, że są one w pełni zabe
 Dobierając odpowiednie rozwiązania kryptograficzne, należy również uwzględnić, że w wielu specjalistycznych zastosowaniach moc obliczeniowa i energia mogą być ograniczone. W takim przypadku można zastosować tzw. **kryptografię lekką** (ang. *lightweight cryptography*). W środowiskach, gdzie pobór mocy musi być silnie ograniczony ze względu na źródła energii o niewielkiej pojemności (np. satelity, zdalne czujniki, karty inteligentne), często stosuje się specjalistyczne rozwiązania sprzętowe wspierające kryptografię lekką. Innym przypadkiem, gdzie lekkie algorytmy są kluczowe, jest wymaganie niskich opóźnień podczas przesyłania danych (ang. *low latency*).
 
 W ramach ciekawostki warto wspomnieć o tzw. **szyfrowaniu homomorficznym** (ang. *homomorphic encryption*), które pozwala wykonywać operacje bezpośrednio na zaszyfrowanych danych, bez konieczności uprzedniego ich odszyfrowania.
+## Level
+Szyfrowanie danych w spoczynku (ang. *at-rest*) może odbywać się na **różnych poziomach** (ang. *levels*) - od pojedynczej komórki w tabeli bazodanowej, przez pliki, po całe nośniki danych. Poszczególne poziomy szyfrowania, obowiązujące na egzaminie, zostały pokrótce opisane poniżej.
+### Full-disk
+**Pełne szyfrowanie dysku** (*full-disk encryption*, FDE) polega na **szyfrowaniu całej zawartości nośnika**, w tym plików systemowych. Z perspektywy użytkownika rozwiązanie jest praktycznie transparentne: po poprawnym uwierzytelnieniu podczas rozruchu systemu dane są automatycznie odszyfrowywane *w locie*, bez potrzeby ręcznego inicjowania procesu deszyfrowania.
+
+Mechanizm działania FDE opiera się na dostarczeniu klucza deszyfrującego na etapie startu systemu, najczęściej przez program rozruchowy (*bootloader*) lub dedykowany moduł sprzętowy (np. TPM, czyli *Trusted Platform Module*). Po jego użyciu system operacyjny operuje już na odszyfrowanych danych. W praktyce oznacza to, że chronione są dane w spoczynku (ang. *data at rest*), ale niekoniecznie w trakcie aktywnej pracy systemu.
+
+Z punktu widzenia bezpieczeństwa **FDE skutecznie chroni przed nieautoryzowanym dostępem w przypadku utraty lub kradzieży nośnika**, ponieważ odczytanie danych bez klucza szyfrowania jest praktycznie niemożliwe. Jest to szczególnie istotne w kontekście incydentów bezpieczeństwa, ponieważ utrata tak zaszyfrowanego nośnika jest często klasyfikowana jako utrata danych, a nie ich wyciek, co może ograniczać konsekwencje prawne.
+
+To rozwiązanie ma również pewne wady. **Jeśli system jest uruchomiony i użytkownik zalogowany, dane są dostępne w postaci odszyfrowanej**. W takim stanie możliwe są ataki, np. przez złośliwe oprogramowanie lub fizyczny dostęp do niezablokowanej stacji roboczej. Pamiętajmy również, że jeśli utracimy dostęp do klucza (np. przez przypadek), to my także nie będziemy w stanie odczytać naszych danych.
+
+Szyfrowanie pełno-dyskowe może być realizowane **programowo** (np. [BitLocker](https://support.microsoft.com/pl-pl/windows/om%C3%B3wienie-funkcji-bitlocker-44c0c61c-989d-4a69-8822-b95cd49b1bbf), [FileVault](https://support.apple.com/pl-pl/guide/deployment/dep82064ec40/web), [VeraCrypt](https://veracrypt.io/en/Home.html)) lub **sprzętowo**. W drugim przypadku, mamy często na myśli **dyski SED** (*Self-Encrypting Drive*), czyli urządzenia, w których szyfrowanie odbywa się na poziomie firmware’u, a klucz kryptograficzny jest generowany i przechowywany wewnętrznie. Często dostęp do tego klucza jest chroniony hasłem lub PIN-em, co zapobiega automatycznemu odszyfrowaniu danych po podłączeniu dysku. Nie jest to jednak rozwiązanie wolne od wad, o których więcej można się dowiedzieć z artykułu dostępnego w serwisie *Open Security*: [Bezpieczeństwo dysków SED (self encrypted drive)](https://opensecurity.pl/bezpieczenstwo-dyskow-sed-self-encrypted-drive/).
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
@@ -153,6 +165,8 @@ W związku z powyższym, aktualnie zaleca się stosowanie **funkcji z rodziny P
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
 - [IBM: What is public key infrastructure?](https://www.ibm.com/think/topics/public-key-infrastructure)
 - [IBM Tech Talk: What is Public Key Infrastructure (PKI)?](https://www.youtube.com/watch?v=0ctat6RBrFo)
+- [Open Security: Bezpieczeństwo dysków SED (self encrypted drive)](https://opensecurity.pl/bezpieczenstwo-dyskow-sed-self-encrypted-drive/)
+- [Sekurak: Czym jest VeraCrypt? Kompleksowy poradnik dotyczący szyfrowania dysków](https://sekurak.pl/czym-jest-veracrypt-kompleksowy-poradnik-dotyczacy-szyfrowania-dyskow/)
 - [Hash vs. Checksum: Understanding the Difference and Their Role in Cybersecurity](https://medium.com/@mustafa_kamal/hash-vs-checksum-understanding-the-difference-and-their-role-in-cybersecurity-95c6c4a2aff3)
 - [CISA: Understanding Digital Signatures](https://www.cisa.gov/news-events/news/understanding-digital-signatures)
 - [StackOverflow: Digital signature for a file using openssl](https://stackoverflow.com/questions/10782826/digital-signature-for-a-file-using-openssl)
