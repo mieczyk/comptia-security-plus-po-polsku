@@ -106,6 +106,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 - [Encryption](1-general-security-concepts/1-4-cryptographic-solutions.md#encryption)
 	- [Level](1-general-security-concepts/1-4-cryptographic-solutions.md#level)
 		- [Full-disk](1-general-security-concepts/1-4-cryptographic-solutions.md#full-disk)
+        - [Partition](1-general-security-concepts/1-4-cryptographic-solutions.md#partition)
 - [Hashing](1-general-security-concepts/1-4-cryptographic-solutions.md#hashing)
 - [Salting](1-general-security-concepts/1-4-cryptographic-solutions.md#salting)
 - [Digital signatures](1-general-security-concepts/1-4-cryptographic-solutions.md#digital-signatures)
