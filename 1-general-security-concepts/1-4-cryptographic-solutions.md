@@ -114,7 +114,7 @@ Jak sama nazwa wskazuje, **ten poziom szyfrowania obejmuje pojedyncze pliki** (a
 Szyfrowanie plików jest zazwyczaj prostsze do wdrożenia i zarządzania niż FDE (np. łatwiej jest wysłać pojedyncze, zaszyfrowane pliki przez sieć), ale jego skuteczne stosowanie wymaga większej uwagi (np. można omyłkowo pominąć istotne pliki, przez co nie będą w żaden sposób chronione).
 
 Przykładowe narzędzia umożliwiające szyfrowanie pojedynczych plików:
-- [GnuPG](https://www.gnupg.org/) - otwarto-źródłowa implementacja standardu OpenPGP, która wspiera nie tylko szyfrowanie, ale również podpisywanie dokumentów ([[#Digital signatures]]).
+- [GnuPG](https://www.gnupg.org/) - otwarto-źródłowa implementacja standardu OpenPGP, która wspiera nie tylko szyfrowanie, ale również [podpisywanie dokumentów](#digital-signatures).
 - [7-Zip](https://www.7-zip.org/) - aplikacja służy głównie do archiwizacji i kompresji plików, ale opcjonalnie umożliwia zabezpieczenie utworzonego archiwum hasłem (szyfrowanie symetryczne odbywa się wtedy przy okazji kompresji).
 - [OpenSSL](https://www.openssl.org/) - zestaw narzędzi i biblioteka *open source*, która implementuje protokoły SSL/TLS, wraz z algorytmami kryptograficznymi umożliwiającymi szyfrowanie danych. Trzeba jednak mieć na uwadze, że jest to raczej narzędzie niskopoziomowe, którego skuteczne używanie wymaga odpowiedniej wiedzy technicznej. Więcej informacji o szyfrowaniu plików z wykorzystaniem OpenSSL można znaleźć w tym niedługim opracowaniu: [Encrypting and decrypting files with OpenSSL](https://opensource.com/article/21/4/encryption-decryption-openssl).
 # Hashing
