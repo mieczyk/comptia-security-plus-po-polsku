@@ -108,6 +108,15 @@ Szyfrowanie partycji (ang. *partition*) jest podobne do wspomnianego wyżej szyf
 To podejście zapewnia większą elastyczność, ponieważ możemy zdecydować, które dane rzeczywiście muszą być zaszyfrowane, a które nie. Jest to szczególnie użyteczne w przypadku, gdy na jednej maszynie mamy zainstalowane co najmniej dwa systemy operacyjne (np. Linux obok systemu Windows), czyli tzw. konfiguracja *dual boot*.
 
 Warto też wspomnieć, że ta elastyczność wiąże się z niższym poziomem ochrony, ponieważ inne, niezaszyfrowane partycje mogą stanowić potencjalny wektor ataku.
+### File
+Jak sama nazwa wskazuje, **ten poziom szyfrowania obejmuje pojedyncze pliki** (ang. *file-level encryption*), zamiast całych partycji czy dysków.
+
+Szyfrowanie plików jest zazwyczaj prostsze do wdrożenia i zarządzania niż FDE (np. łatwiej jest wysłać pojedyncze, zaszyfrowane pliki przez sieć), ale jego skuteczne stosowanie wymaga większej uwagi (np. można omyłkowo pominąć istotne pliki, przez co nie będą w żaden sposób chronione).
+
+Przykładowe narzędzia umożliwiające szyfrowanie pojedynczych plików:
+- [GnuPG](https://www.gnupg.org/) - otwarto-źródłowa implementacja standardu OpenPGP, która wspiera nie tylko szyfrowanie, ale również podpisywanie dokumentów ([[#Digital signatures]]).
+- [7-Zip](https://www.7-zip.org/) - aplikacja służy głównie do archiwizacji i kompresji plików, ale opcjonalnie umożliwia zabezpieczenie utworzonego archiwum hasłem (szyfrowanie symetryczne odbywa się wtedy przy okazji kompresji).
+- [OpenSSL](https://www.openssl.org/) - zestaw narzędzi i biblioteka *open source*, która implementuje protokoły SSL/TLS, wraz z algorytmami kryptograficznymi umożliwiającymi szyfrowanie danych. Trzeba jednak mieć na uwadze, że jest to raczej narzędzie niskopoziomowe, którego skuteczne używanie wymaga odpowiedniej wiedzy technicznej. Więcej informacji o szyfrowaniu plików z wykorzystaniem OpenSSL można znaleźć w tym niedługim opracowaniu: [Encrypting and decrypting files with OpenSSL](https://opensource.com/article/21/4/encryption-decryption-openssl).
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
