@@ -103,7 +103,7 @@ To rozwiązanie ma również pewne wady. **Jeśli system jest uruchomiony i uży
 
 Szyfrowanie pełno-dyskowe może być realizowane **programowo** (np. [BitLocker](https://support.microsoft.com/pl-pl/windows/om%C3%B3wienie-funkcji-bitlocker-44c0c61c-989d-4a69-8822-b95cd49b1bbf), [FileVault](https://support.apple.com/pl-pl/guide/deployment/dep82064ec40/web), [VeraCrypt](https://veracrypt.io/en/Home.html)) lub **sprzętowo**. W drugim przypadku, mamy często na myśli **dyski SED** (*Self-Encrypting Drive*), czyli urządzenia, w których szyfrowanie odbywa się na poziomie firmware’u, a klucz kryptograficzny jest generowany i przechowywany wewnętrznie. Często dostęp do tego klucza jest chroniony hasłem lub PIN-em, co zapobiega automatycznemu odszyfrowaniu danych po podłączeniu dysku. Nie jest to jednak rozwiązanie wolne od wad, o których więcej można się dowiedzieć z artykułu dostępnego w serwisie *Open Security*: [Bezpieczeństwo dysków SED (self encrypted drive)](https://opensecurity.pl/bezpieczenstwo-dyskow-sed-self-encrypted-drive/).
 ### Partition
-Szyfrowanie partycji (ang. *partition*) jest podobne do wspomnianego wyżej szyfrowania FDE, ale **zamiast całego dysku, operacja jest przeprowadzana tylko na określonej partycji** (wydzielony, logiczny obszar dysku).
+Szyfrowanie partycji (ang. *partition*) jest podobne do wspomnianego wyżej szyfrowania FDE, ale **zamiast całego dysku, operacja jest przeprowadzana tylko na określonej partycji, czyli wydzielonym, logicznym obszarze dysku o określonej wielkości.** Pojęcie *logiczny*  w tym kontekście oznacza warstwę abstrakcyjną (tj. w jaki sposób dysk jest przedstawiony w systemie operacyjnym), ponieważ na samym dysku nie ma żadnego fizycznego podziału.
 
 To podejście zapewnia większą elastyczność, ponieważ możemy zdecydować, które dane rzeczywiście muszą być zaszyfrowane, a które nie. Jest to szczególnie użyteczne w przypadku, gdy na jednej maszynie mamy zainstalowane co najmniej dwa systemy operacyjne (np. Linux obok systemu Windows), czyli tzw. konfiguracja *dual boot*.
 
@@ -117,6 +117,17 @@ Przykładowe narzędzia umożliwiające szyfrowanie pojedynczych plików:
 - [GnuPG](https://www.gnupg.org/) - otwarto-źródłowa implementacja standardu OpenPGP, która wspiera nie tylko szyfrowanie, ale również [podpisywanie dokumentów](#digital-signatures).
 - [7-Zip](https://www.7-zip.org/) - aplikacja służy głównie do archiwizacji i kompresji plików, ale opcjonalnie umożliwia zabezpieczenie utworzonego archiwum hasłem (szyfrowanie symetryczne odbywa się wtedy przy okazji kompresji).
 - [OpenSSL](https://www.openssl.org/) - zestaw narzędzi i biblioteka *open source*, która implementuje protokoły SSL/TLS, wraz z algorytmami kryptograficznymi umożliwiającymi szyfrowanie danych. Trzeba jednak mieć na uwadze, że jest to raczej narzędzie niskopoziomowe, którego skuteczne używanie wymaga odpowiedniej wiedzy technicznej. Więcej informacji o szyfrowaniu plików z wykorzystaniem OpenSSL można znaleźć w tym niedługim opracowaniu: [Encrypting and decrypting files with OpenSSL](https://opensource.com/article/21/4/encryption-decryption-openssl).
+### Volume
+Zanim przejdziemy do szyfrowania woluminów (ang. *volumes*), warto najpierw zrozumieć, czym różni się od wspomnianej wcześniej partycji (ang. *partition*).
+
+Zacznijmy od podobieństwa: **zarówno partycja, jak i wolumin są logicznymi (fizyczna struktura sprzętowa dysku pozostaje bez zmian), wydzielonymi obszarami pamięci masowej**. Jednakże samo utworzenie partycji na dysku nie oznacza, że użytkownik automatycznie będzie miał do niej dostęp. Aby to nastąpiło, **partycja musi zostać najpierw sformatowana z użyciem określonego systemu plików (ang. *file system*), czyli sposobu organizacji i przechowywania danych, a następnie *zamontowana* (ang. *mounted*) w systemie operacyjnym. Dopiero wtedy użytkownik będzie w stanie zobaczyć w systemie logiczny nośnik danych, do którego ma teraz dostęp - jest to przykład woluminu bazującego na partycji.**
+
+Powyższy przykład uwidacznia różnicę pomiędzy partycją oraz woluminem, ale należy przy okazji zaznaczyć, że **wolumin jest pojęciem o wyższym poziomie abstrakcji** i nie zawsze reprezentuje pojedynczą partycję. Na przykład:
+- Pojedynczy wolumin może zostać utworzony z wielu partycji, a nawet dysków (np. [macierze RAID](https://centrumodzyskiwaniadanych.pl/blog/204-macierze-raid-informacje)).
+- Wolumin może reprezentować nośniki, które w ogóle nie posiadają partycji (w przedstawionym sensie). Są to m.in. dyski optyczne CD/DVD czy też stare dyskietki (ang. *floppy disks*).
+- Woluminem mogą też być pojedyncze pliki znajdujące się na innym woluminie, takie jak obrazy ISO lub wirtualne dyski.
+
+Po tym dość długim wstępie, szyfrowanie na poziomie woluminów (ang. *volume encryption*) powinno się wydawać intuicyjne. **Jest to kompromis pomiędzy szyfrowaniem całego dysku, a szyfrowaniem pojedynczych plików**. Jeśli posiadamy dużą ilość danych, które są w jakiś logiczny sposób wydzielone, szyfrowanie na poziomie woluminu wydaje się bardzo użyteczne.
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
@@ -182,6 +193,7 @@ W związku z powyższym, aktualnie zaleca się stosowanie **funkcji z rodziny P
 - [IBM Tech Talk: What is Public Key Infrastructure (PKI)?](https://www.youtube.com/watch?v=0ctat6RBrFo)
 - [Open Security: Bezpieczeństwo dysków SED (self encrypted drive)](https://opensecurity.pl/bezpieczenstwo-dyskow-sed-self-encrypted-drive/)
 - [Sekurak: Czym jest VeraCrypt? Kompleksowy poradnik dotyczący szyfrowania dysków](https://sekurak.pl/czym-jest-veracrypt-kompleksowy-poradnik-dotyczacy-szyfrowania-dyskow/)
+- [Explaining Devices, Disks, Drives, Partitions & Volumes](https://www.youtube.com/watch?v=AeR4E8O5ljg)
 - [Hash vs. Checksum: Understanding the Difference and Their Role in Cybersecurity](https://medium.com/@mustafa_kamal/hash-vs-checksum-understanding-the-difference-and-their-role-in-cybersecurity-95c6c4a2aff3)
 - [CISA: Understanding Digital Signatures](https://www.cisa.gov/news-events/news/understanding-digital-signatures)
 - [StackOverflow: Digital signature for a file using openssl](https://stackoverflow.com/questions/10782826/digital-signature-for-a-file-using-openssl)
