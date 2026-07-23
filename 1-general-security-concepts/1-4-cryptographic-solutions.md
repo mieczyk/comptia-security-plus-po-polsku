@@ -128,6 +128,31 @@ Powyższy przykład uwidacznia różnicę pomiędzy partycją oraz woluminem, al
 - Woluminem mogą też być pojedyncze pliki znajdujące się na innym woluminie, takie jak obrazy ISO lub wirtualne dyski.
 
 Po tym dość długim wstępie, szyfrowanie na poziomie woluminów (ang. *volume encryption*) powinno się wydawać intuicyjne. **Jest to kompromis pomiędzy szyfrowaniem całego dysku, a szyfrowaniem pojedynczych plików**. Jeśli posiadamy dużą ilość danych, które są w jakiś logiczny sposób wydzielone, szyfrowanie na poziomie woluminu wydaje się bardzo użyteczne.
+### Database
+W wielu rozwiązaniach IT dane są przechowywane w specjalnych systemach bazodanowych, które są zoptymalizowane pod kątem wydajnego przechowywania informacji, a także zapewniają sprawny i szybki dostęp do tych informacji.
+
+W zależności od potrzeb stosuje się różne systemy zarządzania bazami danych. Najpopularniejsze są relacyjne bazy danych (ang. *relational databases*) oparte na tabelach, nazywanych w tym przypadku relacjami. Kolumny takiej tabeli stanowią atrybuty przechowywanego obiektu, a pojedynczy wiersz (zwany również krotką) zawiera wartości tych atrybutów. Dodatkowo tabele również mogą być ze sobą powiązane za pomocą tzw. klucza obcego (ang. *foreign key*). Poniżej znajduje się przykład bardzo prostego schematu relacyjnej bazy danych:
+
+![[1-4-encryption-level-db-rel.png]]
+Źródło: opracowanie własne.
+
+Oprócz baz relacyjnych, które charakteryzują się *sztywnymi* schematami (zanim zaczniemy wypełniać tabele danymi, najpierw musimy zdefiniować strukturę tych tabel i ich powiązań), istnieją również bazy nierelacyjne (tzw. [NoSQL](https://www.oracle.com/pl/database/nosql/what-is-nosql/)), które przechowują dane w formacie innym niż tabele (np. bazy dokumentowe, grafowe). Oczywiście nie oznacza to, że bazy NoSQL w ogóle nie umożliwiają definiowania schematów, jednak są w tej kwestii bardziej elastyczne.
+
+Zdarza się, że **istotne i wrażliwe dane przechowywane w bazie danych również chcemy zaszyfrować**, np. w przypadku wycieku zawartości bazy. Nie chcemy jednak zabezpieczać całego dysku bądź woluminu, a *czyste* szyfrowanie na poziomie plików byłoby trudne do wdrożenia, ze względu na sposób, w jaki silniki bazodanowe operują na przechowywanych danych (częste modyfikacje, dzienniki transakcyjne, własne formaty przechowywania danych).
+
+Na szczęście wiele nowoczesnych baz danych umożliwia szyfrowanie przechowywanych informacji. Do najpopularniejszych **metod szyfrowania bazodanowego** należą:
+- ***Transparent Data Encryption* (TDE)** - mechanizm szyfrowania **całej** bazy danych, który działa w sposób niewidoczny z perspektywy użytkownika. Jeśli użytkownik ma uprawnienia do korzystania z bazy danych, silnik automatycznie szyfruje i odszyfrowuje dane podczas ich odczytu i zapisu.
+- ***Column-level Encryption* (CLE)** - jak sama nazwa wskazuje, **umożliwia szyfrowanie tylko pojedynczej kolumny**, zamiast całej bazy danych. Na powyższym przykładzie możemy chcieć zaszyfrować tylko kolumnę zawierającą numer ubezpieczenia (`security_number`) - pozostałe kolumny są zapisywane w postaci jawnej. W odróżnieniu od TDE, szyfrowanie pojedynczych kolumn może być wydajniejsze (mniej danych do przetworzenia, ale to też zależy od sposobu użycia).
+### Record
+Polega na **szyfrowaniu pojedynczych rekordów przechowywanych w bazie danych, co zapewnia bardziej szczegółową kontrolę nad tym, co konkretnie jest szyfrowane**. Warto jednak zaznaczyć, że większość relacyjnych baz danych nie oferuje wbudowanego mechanizmu umożliwiającego takie szyfrowanie. Wiąże się to z tym, że trudno byłoby coś takiego uzyskać, nie tracąc przy okazji części atutów związanych z wykorzystywaniem systemu relacyjnego (przede wszystkim wydajności oraz możliwości efektywnego wyszukiwania i indeksowania danych).
+
+Oczywiście można osiągnąć taki efekt, jeśli naprawdę tego potrzebujemy, jednak zwykle wiąże się to z koniecznością wdrożenia odpowiednich mechanizmów w aplikacji klienckiej. Takie podejście ma trochę więcej sensu w przypadku baz [NoSQL](https://www.oracle.com/pl/database/nosql/what-is-nosql/) (np. dokumentowych), gdzie dane dotyczące jednego obiektu są często przechowywane razem w jednym rekordzie, zamiast być rozdzielone pomiędzy wiele powiązanych tabel. Inną istotną kwestią, która utrudnia efektywne wykorzystanie tego poziomu szyfrowania, jest zarządzanie dużą liczbą kluczy, jeśli chcemy, żeby każdy rekord miał swój własny.
+
+Przychodzą mi do głowy dwa scenariusze (choć są one dość specyficzne), gdzie można byłoby pomyśleć o takim rozwiązaniu:
+1. Każdy rekord ma osobny klucz szyfrowania, co umożliwia szybkie i skuteczne uniemożliwienie dostępu do danych poprzez zniszczenie klucza powiązanego z danym rekordem (tzw. *crypto-shredding*).
+2. Jeśli potrzebujemy bardzo szczegółowo kontrolować, którzy użytkownicy mają dostęp do wybranych informacji.
+
+W mojej ocenie jest to rozwiązanie, które w praktyce stosuje się stosunkowo rzadko. Nawet w przedstawionych powyżej scenariuszach często można znaleźć prostsze rozwiązania. W pierwszym przypadku lepiej jest zastosować zwykłe usunięcie danych bądź nadpisanie ich nieznaczącymi informacjami. Drugi scenariusz może natomiast sugerować, że warto ponownie przemyśleć projekt bazy danych i model kontroli dostępu, zamiast wdrażać bardzo skomplikowane mechanizmy szyfrowania.
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
