@@ -133,7 +133,7 @@ W wielu rozwiązaniach IT dane są przechowywane w specjalnych systemach bazodan
 
 W zależności od potrzeb stosuje się różne systemy zarządzania bazami danych. Najpopularniejsze są relacyjne bazy danych (ang. *relational databases*) oparte na tabelach, nazywanych w tym przypadku relacjami. Kolumny takiej tabeli stanowią atrybuty przechowywanego obiektu, a pojedynczy wiersz (zwany również krotką) zawiera wartości tych atrybutów. Dodatkowo tabele również mogą być ze sobą powiązane za pomocą tzw. klucza obcego (ang. *foreign key*). Poniżej znajduje się przykład bardzo prostego schematu relacyjnej bazy danych:
 
-![[1-4-encryption-level-db-rel.png]]
+![Relational db example](../media/1-4-encryption-level-db-rel.png)
 Źródło: opracowanie własne.
 
 Oprócz baz relacyjnych, które charakteryzują się *sztywnymi* schematami (zanim zaczniemy wypełniać tabele danymi, najpierw musimy zdefiniować strukturę tych tabel i ich powiązań), istnieją również bazy nierelacyjne (tzw. [NoSQL](https://www.oracle.com/pl/database/nosql/what-is-nosql/)), które przechowują dane w formacie innym niż tabele (np. bazy dokumentowe, grafowe). Oczywiście nie oznacza to, że bazy NoSQL w ogóle nie umożliwiają definiowania schematów, jednak są w tej kwestii bardziej elastyczne.
