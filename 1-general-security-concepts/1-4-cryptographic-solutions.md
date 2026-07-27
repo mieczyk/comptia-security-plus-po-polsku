@@ -153,6 +153,28 @@ Przychodzą mi do głowy dwa scenariusze (choć są one dość specyficzne), gdz
 2. Jeśli potrzebujemy bardzo szczegółowo kontrolować, którzy użytkownicy mają dostęp do wybranych informacji.
 
 W mojej ocenie jest to rozwiązanie, które w praktyce stosuje się stosunkowo rzadko. Nawet w przedstawionych powyżej scenariuszach często można znaleźć prostsze rozwiązania. W pierwszym przypadku lepiej jest zastosować zwykłe usunięcie danych bądź nadpisanie ich nieznaczącymi informacjami. Drugi scenariusz może natomiast sugerować, że warto ponownie przemyśleć projekt bazy danych i model kontroli dostępu, zamiast wdrażać bardzo skomplikowane mechanizmy szyfrowania.
+## Transport/communication
+296 - 361
+# Obfuscation
+- Proces transformacji danych, w rezultacie którego oryginalna treść staje się niezrozumiała dla człowieka, ale zachowuje pierwotne znaczenie oraz funkcję dla systemu.
+## Steganography
+## Tokenization
+- W dobie LLM, ma to też inne znaczenie, ale w tym kontekście chodzi o ukrywanie danych.
+- Polega na zamianie wrażliwych informacji na unikatowe identyfikatory (tzw. tokeny - nie mylić z tokenami w kontekście LLM-ów), które nie reprezentują żadnej istotnej informacji. Proces powinien być odwracalny, dlatego powiązanie tokenów z nadpisanymi danymi są przeważnie przechowywane w odpowiednio zabezpieczonej tablicy przeszukiwań (ang. *lookup table*).
+- Przykład:
+	- **Tekst źródłowy:** `Pracownik Łukasz Mieczkowski o numerze telefonu 555 444 123 jest zatrudniony w dziale sprzedaży.`
+	- **Tekst po tokenizacji:** `Pracownik [full_name_1] o numerze telefonu [phone_1] jest zatrudniony w dziale sprzedaży.`
+	- *Lookup table*, która powinna być odpowiednio zabezpieczona (przykład anonimizacji przed wysłaniem do LLM). 
+
+| Token         | Informacja         |
+| ------------- | ------------------ |
+| `full_name_1` | Łukasz Mieczkowski |
+| `phone_1`     | 555 444 123        |
+- Przykład narzędzia od Microsoft, który wykorzystuje m.in. tokenizację: https://github.com/data-privacy-stack/presidio
+- Tokeny mogą być dowolne, może to być nawet jakiś losowy ciąg znaków.
+## Data masking
+- Proces ukrywania wrażliwych informacji tekstowych poprzez zastępowanie wybranych lub wszystkich znaków, znakami neutralnymi, jak na przykład *gwiazdka* `*` (ang. *asterisk*), *krzyżyk* `#` (ang. *hash*) lub zwykły `x`.
+- Przykładem są hasła (często widoczne tylko w postaci gwiazdek `*`) albo numer karty kredytowej, gdzie na stronach z potwierdzeniem płatności widoczne są tylko cztery ostatnie cyfry, a reszta jest ukryta.
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
