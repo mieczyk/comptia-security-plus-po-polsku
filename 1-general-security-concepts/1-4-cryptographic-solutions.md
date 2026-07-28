@@ -90,6 +90,14 @@ Oczywiście sam fakt zaszyfrowania danych nie oznacza, że są one w pełni zabe
 Dobierając odpowiednie rozwiązania kryptograficzne, należy również uwzględnić, że w wielu specjalistycznych zastosowaniach moc obliczeniowa i energia mogą być ograniczone. W takim przypadku można zastosować tzw. **kryptografię lekką** (ang. *lightweight cryptography*). W środowiskach, gdzie pobór mocy musi być silnie ograniczony ze względu na źródła energii o niewielkiej pojemności (np. satelity, zdalne czujniki, karty inteligentne), często stosuje się specjalistyczne rozwiązania sprzętowe wspierające kryptografię lekką. Innym przypadkiem, gdzie lekkie algorytmy są kluczowe, jest wymaganie niskich opóźnień podczas przesyłania danych (ang. *low latency*).
 
 W ramach ciekawostki warto wspomnieć o tzw. **szyfrowaniu homomorficznym** (ang. *homomorphic encryption*), które pozwala wykonywać operacje bezpośrednio na zaszyfrowanych danych, bez konieczności uprzedniego ich odszyfrowania.
+
+TODO:
+- Kryptologia = kryptografia + kryptoanaliza
+- Kiedy chcemy zapewnić poufność danych poprzez szyfrowanie musimy brać pod uwagę 3 stany przechowywania danych i odpowiednio dobrać rozwiązanie:
+	- **Dane w spoczynku** (ang. *data at rest*) - przechowywane w pamięci trwałej, oczekujące, aż użytkownik uzyska do nich dostęp. Główne zagrożenie: nieuprawniony dostęp, kradzież urządzenia (np. dysku).
+	- **Dane przesyłane** (ang. *data in transit*) - przesyłane przez sieć. Główne zagrożenie: podsłuchiwanie/przejęcie ruchu sieciowego.
+	- **Dane w użyciu** (ang. *data in use*) - znajdują się w pamięci operacyjnej i procesy działające w systemie mają do nich bezpośredni dostęp. Zagrożenie: dostęp przez nieautoryzowane procesy, kiedy system nie zapewnia odpowiedniej izolacji (proces powinien mieć dostęp tylko do swojego obszaru pamięci i nie może czytać z obszarów przydzielonych innym procesom); narzędzia diagnostyczne umożliwiają wykonanie zrzutu pamięci (*memory dump*), w której znajdują się aktualnie wrażliwe dane.
+		- Homomorficzne szyfrowanie jako ciekawostka.
 ## Level
 Szyfrowanie danych w spoczynku (ang. *at-rest*) może odbywać się na **różnych poziomach** (ang. *levels*) - od pojedynczej komórki w tabeli bazodanowej, przez pliki, po całe nośniki danych. Poszczególne poziomy szyfrowania, obowiązujące na egzaminie, zostały pokrótce opisane poniżej.
 ### Full-disk
@@ -154,10 +162,26 @@ Przychodzą mi do głowy dwa scenariusze (choć są one dość specyficzne), gdz
 
 W mojej ocenie jest to rozwiązanie, które w praktyce stosuje się stosunkowo rzadko. Nawet w przedstawionych powyżej scenariuszach często można znaleźć prostsze rozwiązania. W pierwszym przypadku lepiej jest zastosować zwykłe usunięcie danych bądź nadpisanie ich nieznaczącymi informacjami. Drugi scenariusz może natomiast sugerować, że warto ponownie przemyśleć projekt bazy danych i model kontroli dostępu, zamiast wdrażać bardzo skomplikowane mechanizmy szyfrowania.
 ## Transport/communication
-296 - 361
+TODO:
+- Dane przesyłane przez sieć pomiędzy dwoma systemami. Dane mogą być przesyłane w ramach wewnętrznych sieci firmowych czy przez Internet. Dotyczy sieci przewodowych, bezprzewodowych, bluetooth itp.
+- Najpopularniejszą metodą ochrony wrażliwych danych w tranzycie jest wykorzystanie protokołu TLS (*Transport Layer Security*) - dawniej SSL (*Secure Sockets Layer*).
+	- SSL jest przestarzały i uznawany za niebezpieczny, choć cały czas spotykam się z używaniem ich zamiennie (np. certyfikaty SSL).
+	- https://www.youtube.com/watch?v=0TLDTodL7Lc - Co to jest TLS
+- Szczególnie w transporcie istotne jest zapewnienie integralności danych, która może zostać naruszona intencjonalnie (złośliwa zmiana danych bądź częściowe usunięcie) lub nieintencjonalnie (błędy podczas transmisji danych i utrata pakietów). W tym celu wykorzystuje się podpisy cyfrowe (opis poniżej).
+- Uwierzytelnienie na przykładzie TLS Handshake:
+	- https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/
+	- https://www.youtube.com/watch?v=86cQJ0MMses
+## Asymmetric
+TODO:
+- Każdy z użytkowników takiego systemu ma parę kluczy (publiczny i prywatny) - zostało to już opisane w PKI
+## Symmetric
+TODO:
+- W Symetrycznych systemach kryptograficznych wszyscy użytkownicy używają jednego, współdzielonego klucza. Zostało to już poruszone w PKI.
 # Obfuscation
+TODO:
 - Proces transformacji danych, w rezultacie którego oryginalna treść staje się niezrozumiała dla człowieka, ale zachowuje pierwotne znaczenie oraz funkcję dla systemu.
 ## Steganography
+TODO:
 - Steganografia polega na ukrywaniu tajnych informacji w plikach (przeważnie multimedialnych, z tego względu, że są duże i oferują sporo miejsca do ukrycia), które z pozoru wydają się mało istotne. Steganografia, w odróżnieniu od kryptografii, ukrywa sam fakt komunikacji (postronny odbiorca nawet nie wie, że w pliku znajduje się jakaś ukryta informacja).
 	- Technicznie polega to zazwyczaj na podmianie [najmniej znaczących bitów](https://pl.wikipedia.org/wiki/Najmniej_znacz%C4%85cy_bit) (ang. *least significant bit*, LSB) w plikach, które składają się z ogromnej ilości takich bitów. Operując tylko na bitach LSB mamy pewność, że plik nie zostanie w żaden sposób uszkodzony, a zmiany są tak niewielkie, że są bardzo trudne do wyłapania przez człowieka.
 - Można oczywiście umieścić zaszyfrowaną wiadomość. Wtedy nawet gdy osoba postronna wykryje fakt komunikacji, to i tak nie będzie w stanie odczytać wiadomości bez klucza.
@@ -165,6 +189,7 @@ W mojej ocenie jest to rozwiązanie, które w praktyce stosuje się stosunkowo r
 - Steganografia może kojarzyć się z techniką pozwalającą na ukrycie niecnych intencji, ale jest też często wykorzystywana do czynności w pełni zgodnych z prawem. Przykładem są niewidoczne, cyfrowe znaki wodne (ang. *digital watermarks*). Twórca, który sprzedaje e-booki może każdemu klientowi udostępnić kopię z niewidocznym, unikatowym znakiem wodnym. Jeśli w nielegalnej kopii, krążącej po internecie znajdziemy ten znak wodny, można będzie dojść do *źródła wycieku* (zakładając, że każda legalnie kupiona kopia ma swój unikatowy znacznik). Choć pewnie w dobie LLM-ów takie zabezpieczenie może okazać się nie do końca skuteczne.
 - Przykład darmowego służącego do ukrywania treści w plikach, również z opcją szyfrowania: [OpenStego](https://www.openstego.com/).
 ## Tokenization
+TODO:
 - W dobie LLM, ma to też inne znaczenie, ale w tym kontekście chodzi o ukrywanie danych.
 - Polega na zamianie wrażliwych informacji na unikatowe identyfikatory (tzw. tokeny - nie mylić z tokenami w kontekście LLM-ów), które nie reprezentują żadnej istotnej informacji. Proces powinien być odwracalny, dlatego powiązanie tokenów z nadpisanymi danymi są przeważnie przechowywane w odpowiednio zabezpieczonej tablicy przeszukiwań (ang. *lookup table*).
 - Przykład:
@@ -179,6 +204,7 @@ W mojej ocenie jest to rozwiązanie, które w praktyce stosuje się stosunkowo r
 - Przykład narzędzia od Microsoft, który wykorzystuje m.in. tokenizację: https://github.com/data-privacy-stack/presidio
 - Tokeny mogą być dowolne, może to być nawet jakiś losowy ciąg znaków.
 ## Data masking
+TODO:
 - Proces ukrywania wrażliwych informacji tekstowych poprzez zastępowanie wybranych lub wszystkich znaków, znakami neutralnymi, jak na przykład *gwiazdka* `*` (ang. *asterisk*), *krzyżyk* `#` (ang. *hash*) lub zwykły `x`.
 - Przykładem są hasła (często widoczne tylko w postaci gwiazdek `*`) albo numer karty kredytowej, gdzie na stronach z potwierdzeniem płatności widoczne są tylko cztery ostatnie cyfry, a reszta jest ukryta.
 # Hashing
