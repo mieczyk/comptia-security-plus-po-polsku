@@ -173,10 +173,58 @@ TODO:
 	- https://www.youtube.com/watch?v=86cQJ0MMses
 ## Asymmetric
 TODO:
-- Każdy z użytkowników takiego systemu ma parę kluczy (publiczny i prywatny) - zostało to już opisane w PKI
+- Każdy z użytkowników takiego systemu ma parę kluczy (publiczny i prywatny) - zostało to już opisane w PKI.
+- Proces szyfrowania asymetrycznego w skrócie:
+	1. Generujemy parę kluczy (publiczny i prywatny). Prywatny zachowujemy dla siebie, a publicznym dzielimy się z znajomymi.
+	2. Znajomy, który chce wysłać nam wiadomość, używa w naszego klucza publicznego do jej zaszyfrowania.
+	3. Otrzymujemy zaszyfrowaną wiadomość (*ciphertext*).
+	4. Używamy klucza prywatnego, który jest powiązany z kluczem publicznym celem odszyfrowania wiadomości i odczytania oryginalnego komunikatu.
+	5. Jeśli będziemy odpowiedzieć zaszyfrowaną wiadomością, będziemy oczywiście potrzebować klucza publicznego należącego do naszego znajomego.
+- Nawet jeśli ktoś przechwyci zaszyfrowaną wiadomość, nie będzie w stanie odczytać oryginalnej informacji bez naszego klucza prywatnego (dlatego nigdy nie powinniśmy go ujawniać).
+- Typowy przykład szyfrowania asymetrycznego: zawsze jeden z kluczy służy do zaszyfrowania wiadomości, a drugi do odszyfrowania. Jeśli wiadomość zostanie zaszyfrowana kluczem publicznym odbiorcy, to bez jej/jego klucza prywatnego, odszyfrowanie wiadomości będzie niemożliwe (nawet nadawca nie będzie w stanie tego zrobić).
+- Oprócz szyfrowania wiadomości, klucze asymetryczne umożliwiają stosowanie podpisów cyfrowych, co zostało dokładniej opisane w innym opracowaniu [CompTIA Security+ SY0-701: Digital signatures (PL)](https://vilya.pl/comptia-security-sy0-701-digital-signatures-pl/). 
+- Główne zalety:
+	- Dodanie nowego użytkownika wymaga jedynie wygenerowania nowej pary kluczy.
+	- Usunięcie użytkownika z systemu jest prostsze, ponieważ po wycofaniu pary kluczy usuniętego użytkownika pozostałe pary kluczy pozostają bez zmian.
+	- Wygenerowanie nowej pary kluczy jest wymagane tylko w przypadku *wycieku* klucza prywatnego jednego z użytkowników.
+	- Zakładając, że klucze prywatne są dobrze chronione przez swoich właścicieli, szyfrowanie asymetryczne zapewnia dodatkowo spójność, uwierzytelnienie oraz niezaprzeczalność (poprzez podpisy elektroniczne).
+	- Banalnie prosta wymiana kluczy (ang. *key exchange*): nowy użytkownik po prostu wysyła innym swój klucz publiczny.
+- Główną wadą jest wolne działanie, dlatego jeśli zachodzi konieczność przesłania dużej ilości danych, stosuje się podejście hybrydowe. To znaczy, najpierw nawiązywana jest poufna sesja komunikacji za pomocą szyfrowania asymetrycznego, która następnie służy do bezpiecznej wymiany współdzielonego klucza prywatnego (utworzonego na potrzeby komunikacji, a nie tego z pary należącej do użytkowników).  Dalsza komunikacja odbywa się już z zastosowaniem szyfrowania symetrycznego.
 ## Symmetric
 TODO:
 - W Symetrycznych systemach kryptograficznych wszyscy użytkownicy używają jednego, współdzielonego klucza. Zostało to już poruszone w PKI.
+- **Algorytmy opierające się na kluczu symetrycznym**:
+	- Ten sam klucz prywatny, nazywany również w tym przypadku kluczem współdzielonym (ang. *shared key*) jest używany w operacji szyfrowania i deszyfrowania, więc wszyscy uczestnicy komunikacji muszą posiadać ten sam klucz.
+	- W przypadku długich kluczy, sam szyfr jest praktycznie niemożliwy do złamania, ale problemem stanowi tutaj zachowanie wartości klucza w tajemnicy. Taki klucz musi być bezpiecznie rozprowadzany wśród uczestników komunikacji, co jest nie lada wyzwaniem w sytuacji, w której tych uczestników jest pokaźna liczba.
+	- Ze względu na szybkość działania, algorytmy symetryczne są wykorzystywane do masowego szyfrowania i odszyfrowywania danych celem zapewnienia poufności komunikacji.
+	- Wady algorytmów symetrycznych:
+		- Dystrybucja klucza jest niemałym wyzwaniem. Bez bezpiecznego kanału komunikacji cyfrowej, trzeba to zrobić w sposób offline. Im więcej uczestników, tym większe wyzwanie.
+		- Symetryczna kryptografia nie zapewnia niezaprzeczalności, a jedynie poufność - wiadomość mogła przyjść od każdego, kto posiada współdzielony klucz, nawet jeśli ten dostał się w niepowołane ręce.
+		- Brak skalowalności, ale nie chodzi tutaj o sam algorytm, ale o liczbę uczestników komunikacji - im większa grupa, tym większa szansa na wyciek klucza (tak jak z przekazywaniem jakiejś tajemnicy w zaufaniu. Jak wielu ludzi pozna sekret, to przestaje być sekretem).
+		- Konieczność częstej generacji nowych kluczy i ponownej dystrybucji - jeśli choć jeden z członków grupy odejdzie lub jego klucz wycieknie, ten klucz przestaje być bezpieczny,
+	- Zalety algorytmów symetrycznych:
+		- Głównie bardzo duża szybkość jego działania, szczególnie w porównaniu do algorytmów asymetrycznych. Ze względu na naturę operacji matematycznych, algorytmy symetryczne doskonale sprawdzają się jako rozwiązania czysto sprzętowe, co może jeszcze bardziej przyspieszyć ich działanie.
+	- Przykłady: DES, 3DES, AES.
+	- Jednakże pomimo swoich wad, szyfrowanie symetryczne dalej bywa wykorzystywane obok szyfrowania asymetrycznego ze względu na szybkość działania.
+## Algorithms
+TODO:
+- Nie będziemy tutaj omawiać dokładnych zasad działania poszczególnych algorytmów, ponieważ znacznie wykracza to poza zakres egzaminu.
+- Algorytmy **symetryczne** szyfrujące/deszyfrujące (ang. *ciphers*) można przydzielić do jednej z dwóch głównych kategorii szyfrowania symetrycznego:
+	- **Szyfry blokowe** (ang. *block ciphers*) - ogólna grupa algorytmów, które dzielą wiadomość na bloki (kawałki) i przeprowadzają operację szyfrowania na każdym bloku osobno. Większość nowoczesnych algorytmów implementuje jakąś odmianą szyfru blokowego.
+	- **Szyfry strumieniowe** (ang. *stream ciphers*) - operują na pojedynczym znaku lub bicie wiadomości (lub strumienia danych). Mogą funkcjonować również jako odmiana szyfrów blokowych - w tym przypadku dane są najpierw buforowane, szyfrowane w ramach bufora i dopiero wtedy wysyłane do odbiorcy.
+- Ciphers (operation modes): https://www.youtube.com/watch?v=bEOrdqLB1Io
+- Trzy popularne algorytmy szyfrowania symetrycznego:
+	- **DES** (*Data Encryption Standard*) - opublikowany w roku 1977 przez rząd Stanów Zjednoczonych jako standard używany w rządowej komunikacji. Zastąpiony przez algorytm AES w 2001 roku, jest dziś uważany za przestarzały nie nadający się do zapewnienia bezpiecznej komunikacji, ze względu na wady w samym algorytmie.
+	- **3DES** (*Triple DES*) - w 1981 roku, jeszcze przed AES, została opublikowana udoskonalona wersja DES, która polegała na zastosowaniu identycznego algorytmu trzykrotnie, ale z użyciem 3 różnych kluczy. Nie jest uważany za bezpieczny - oficjalnie uznany za przestarzały (ang. *deprecated*) w grudniu 2023.
+	- **AES** (*Advanced Encryption Standard*) - szyfrowanie blokowe, oparte na [algorytmie *Rijndael*](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf) (nazwa wzięła się od kombinacji nazwisk dwóch belgijskich kryptografów, którzy są autorami algorytmu: Joan Daemen oraz Vincent Rijmen). Zezwala na wybór rozmiaru bloku, dopasowanego do długości klucza, który jest w 3 wariantach: 128 bitów, 192 bity lub 256 bitów. Do dziś jest uznawany za bezpieczny i zalecany standard szyfrowania danych wrażliwych, który jest szeroko stosowany m.in. do bezpiecznej komunikacji bezprzewodowej, w protokole TLS czy szyfrowania danych w spoczynku.
+## Key length
+TODO:
+- Bardzo istotną kwestią, świadczącą o sile algorytmu kryptograficznego, jest **długość klucza** (ang. *key length*), czyli z ilu bitów (0 lub 1) składa się dany klucz. **Przestrzeń klucza** (ang. *key space*), to po prostu zakres wartości, jakie może przyjąć klucz dane długości. Mówiąc bardziej obrazowo: ile możliwych kombinacji 0 i 1 można zapisać dla danej ilości bitów. Przykładowo, dla klucza 2-bitowego, mamy tylko 4 możliwości: 00, 01, 10, 11 (oczywiście jest to tylko przykład poglądowy, bo wartość takiego klucza byłoby szalenie łatwo odgadnąć). Przestrzeń klucza rośnie wraz z jego długością, co można opisać prostą zależnością matematyczną $2^n$, gdzie `n` to długość klucza. Podsumowując: im dłuższy klucz, tym lepiej.
+- UWAGA: dłuższy klucz nie zawsze oznacza, że szyfrowanie jest bezpieczniesze (od pewnej granicy):
+	- README: https://blog.cloudflare.com/why-are-some-keys-small/
+	- README: https://crypto.stackexchange.com/questions/19632/is-it-true-the-longer-the-key-length-is-the-more-secure-the-encryption
+- Dzisiejsze systemy kryptograficzne opierają się na złożonych algorytmach korzystających z długich kluczy, żeby zapewnić fundamentalne cele bezpieczeństwa (triada CIA oraz zasada niezaprzeczalności).
+- Wraz z wzrostem mocy obliczeniowej, standardowa długość klucza, uznawana za bezpieczną, również musi się zwiększać. Nadejście komputerów kwantowych może nieźle namieszać w kryptologii, a szczególnie w algorytmach opierających się na dużych liczbach pierwszych, ale na razie są to rozważania teoretyczne.
 # Obfuscation
 TODO:
 - Proces transformacji danych, w rezultacie którego oryginalna treść staje się niezrozumiała dla człowieka, ale zachowuje pierwotne znaczenie oraz funkcję dla systemu.
