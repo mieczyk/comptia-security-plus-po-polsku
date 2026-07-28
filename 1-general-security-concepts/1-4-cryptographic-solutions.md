@@ -206,6 +206,20 @@ TODO:
 		- Głównie bardzo duża szybkość jego działania, szczególnie w porównaniu do algorytmów asymetrycznych. Ze względu na naturę operacji matematycznych, algorytmy symetryczne doskonale sprawdzają się jako rozwiązania czysto sprzętowe, co może jeszcze bardziej przyspieszyć ich działanie.
 	- Przykłady: DES, 3DES, AES.
 	- Jednakże pomimo swoich wad, szyfrowanie symetryczne dalej bywa wykorzystywane obok szyfrowania asymetrycznego ze względu na szybkość działania.
+## Key exchange
+TODO:
+- Bardzo istotnym elementem zarządzania kluczami symetrycznymi jest ich **wymiana** (ang. *key exchange*), która jest również podstawowym problemem w szyfrowaniu symetrycznym. Trzy główne metody to:
+	- Dystrybucja offline (fizyczna: kartka, klucz sprzętowy; cyfrowy: mail, telefon). Zawsze istnieje ryzyko przejęcia tej informacji, niezależnie od medium.
+	- Wykorzystanie szyfrowania asymetrycznego do utworzenia bezpiecznego kanału komunikacji i wymiany klucza prywatnego (szyfrowanie symetryczne jest znacznie szybsze niż asymetryczne).
+	- Algorytm Diffie-Hellman. W skrócie: uczestnicy komunikacji wymieniają się tylko częściami klucza, żeby ostatecznie zbudować ten sam klucz po obu stronach.
+		- Wyjaśnienie intuicyjne (na kolorach): https://www.youtube.com/watch?v=NmM9HA2MQGI
+		- Wyjaśnienie matematyczne: https://www.youtube.com/watch?v=Yjrfm_oRO0w
+- **Diffie-Hellman** - wykorzystywany, kiedy brakuje infrastruktury PKI. Przyszedł na świat w 1976 roku i jest wykorzystywany do dziś. Algorytm:
+	1. Obie strony ustalają między sobą dwie duże liczby: liczbę pierwszą `p` oraz liczbę całkowitą `g`, takie, że `1 < g < p`.
+	2. Strona A wybiera losowo dowolną, dużą liczbę całkowitą `a` i wykonuje następujące działanie: $$A = g^a\:mod\:p$$, gdzie `mod` to operacja wyznaczania reszty z dzielenia - przykład `5 mod 2 = 1`.
+	3. Strona B również losowo wybiera dowolną dużą liczbę całkowitą `b` i wykonuje na niej następujące działanie $$B = g^b\:mod\:p$$
+	4. Obie strony wymieniają się teraz obliczonymi wartościami `A` oraz `B`. Teraz mogą wyznaczyć **identyczną** wartość klucz `K` niezależnie: $$K = A^b\:mod\:p$$ oraz $$K = B^a\:mod\:p$$
+	5. Obie strony mają teraz dokładnie ten sam klucz `K`, a cała sztuczka polega na tym, że tylko część danych potrzebna do zbudowania klucza jest wymieniana pomiędzy stronami (wartości `a` oraz `b` nie są wysyłane), więc atakujący i tak nie będzie w stanie bez nich zbudować prawidłowej wartości klucza.
 ## Algorithms
 TODO:
 - Nie będziemy tutaj omawiać dokładnych zasad działania poszczególnych algorytmów, ponieważ znacznie wykracza to poza zakres egzaminu.
