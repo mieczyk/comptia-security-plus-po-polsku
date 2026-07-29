@@ -166,11 +166,12 @@ TODO:
 - Dane przesyłane przez sieć pomiędzy dwoma systemami. Dane mogą być przesyłane w ramach wewnętrznych sieci firmowych czy przez Internet. Dotyczy sieci przewodowych, bezprzewodowych, bluetooth itp.
 - Najpopularniejszą metodą ochrony wrażliwych danych w tranzycie jest wykorzystanie protokołu TLS (*Transport Layer Security*) - dawniej SSL (*Secure Sockets Layer*).
 	- SSL jest przestarzały i uznawany za niebezpieczny, choć cały czas spotykam się z używaniem ich zamiennie (np. certyfikaty SSL).
-	- https://www.youtube.com/watch?v=0TLDTodL7Lc - Co to jest TLS
+	- https://www.youtube.com/watch?v=0TLDTodL7Lc - Co to jest TLS?
 - Szczególnie w transporcie istotne jest zapewnienie integralności danych, która może zostać naruszona intencjonalnie (złośliwa zmiana danych bądź częściowe usunięcie) lub nieintencjonalnie (błędy podczas transmisji danych i utrata pakietów). W tym celu wykorzystuje się podpisy cyfrowe (opis poniżej).
 - Uwierzytelnienie na przykładzie TLS Handshake:
 	- https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/
 	- https://www.youtube.com/watch?v=86cQJ0MMses
+- Bardziej szczegółowa analiza pakietów (przykład na starej wersji, ale ciekawy): https://www.moserware.com/2009/06/first-few-milliseconds-of-https.html
 ## Asymmetric
 TODO:
 - Każdy z użytkowników takiego systemu ma parę kluczy (publiczny i prywatny) - zostało to już opisane w PKI.
@@ -194,7 +195,7 @@ TODO:
 - Praktyki, których warto się trzymać:
 	1. Wybierz odpowiedni algorytm, który jest uznawany za bezpieczny i spełnia Twoje potrzeby. Unikaj systemów, które stosują zasadę ochrony przez niejawność (*security through obscurity*) i polegają na tajności samego algorytmu zamiast klucza.
 	2. Wygeneruj klucz, który jest odpowiedniej długość, biorąc pod uwagę również potrzeby wydajnościowe (dłuższy klucz jest bezpieczniejszy, ale też wpływa negatywnie na szybkość operacji szyfrowania i deszyfrowania). 
-		1. Dodatkowo, upewnij się, że klucz został rzeczywiście wygenerowany losowo (posługując się kryptograficznym żargonem: czy entropia tego klucza jest wystarczająca). Im większa nieprzewidywalność, tym trudniej jest odgadnąć prawidłowy klucz podczas kryptoanalizy.
+		1. Dodatkowo, upewnij się, że klucz został rzeczywiście wygenerowany losowo (posługując się kryptograficznym żargonem: czy entropia tego klucza jest wystarczająca). Im większa nieprzewidywalność, tym trudniej jest odgadnąć prawidłowy klucz podczas kryptoanalizy. Jako ciekawostka: jak Cloudflare zwiększa entropię: https://blog.cloudflare.com/randomness-101-lavarand-in-production/
 	3. Klucze prywatne mają być tajne! Nawet jednorazowy i krótkotrwały wyciek (np. umieszczenie takiego klucza w repozytorium kodu) powinien skutkować jego wycofaniem i wygenerowaniem nowej pary kluczy.
 	4. Niektórzy twierdzą, że dobrze jest co jakiś czas zmieniać klucze. Taka strategia może się przydać podczas wycieku klucza - wtedy nieuprawniony posiadacz może uzyskać dostęp tylko do tego wycinka danych, zaszyfrowanych tym kluczem. 
 		1. Oczywiście wymiana kluczy szyfrujących (ang. *encryption keys*) stwarza dodatkowe problemy, więc musimy sobie odpowiedzieć na pytanie czy takie podejście rzeczywiście nam się opłaci.
