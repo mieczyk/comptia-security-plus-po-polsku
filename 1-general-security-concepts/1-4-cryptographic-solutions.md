@@ -222,7 +222,7 @@ TODO:
 	5. Obie strony mają teraz dokładnie ten sam klucz `K`, a cała sztuczka polega na tym, że tylko część danych potrzebna do zbudowania klucza jest wymieniana pomiędzy stronami (wartości `a` oraz `b` nie są wysyłane), więc atakujący i tak nie będzie w stanie bez nich zbudować prawidłowej wartości klucza.
 ## Algorithms
 TODO:
-- Nie będziemy tutaj omawiać dokładnych zasad działania poszczególnych algorytmów, ponieważ znacznie wykracza to poza zakres egzaminu.
+- Nie będziemy tutaj omawiać dokładnych zasad działania poszczególnych algorytmów, ponieważ znacznie wykracza to poza zakres egzaminu. Trzeba tylko wiedzieć, które są aktualnie standardami, a które są przestarzałe.
 - Algorytmy **symetryczne** szyfrujące/deszyfrujące (ang. *ciphers*) można przydzielić do jednej z dwóch głównych kategorii szyfrowania symetrycznego:
 	- **Szyfry blokowe** (ang. *block ciphers*) - ogólna grupa algorytmów, które dzielą wiadomość na bloki (kawałki) i przeprowadzają operację szyfrowania na każdym bloku osobno. Większość nowoczesnych algorytmów implementuje jakąś odmianą szyfru blokowego.
 	- **Szyfry strumieniowe** (ang. *stream ciphers*) - operują na pojedynczym znaku lub bicie wiadomości (lub strumienia danych). Mogą funkcjonować również jako odmiana szyfrów blokowych - w tym przypadku dane są najpierw buforowane, szyfrowane w ramach bufora i dopiero wtedy wysyłane do odbiorcy.
@@ -231,14 +231,28 @@ TODO:
 	- **DES** (*Data Encryption Standard*) - opublikowany w roku 1977 przez rząd Stanów Zjednoczonych jako standard używany w rządowej komunikacji. Zastąpiony przez algorytm AES w 2001 roku, jest dziś uważany za przestarzały nie nadający się do zapewnienia bezpiecznej komunikacji, ze względu na wady w samym algorytmie.
 	- **3DES** (*Triple DES*) - w 1981 roku, jeszcze przed AES, została opublikowana udoskonalona wersja DES, która polegała na zastosowaniu identycznego algorytmu trzykrotnie, ale z użyciem 3 różnych kluczy. Nie jest uważany za bezpieczny - oficjalnie uznany za przestarzały (ang. *deprecated*) w grudniu 2023.
 	- **AES** (*Advanced Encryption Standard*) - szyfrowanie blokowe, oparte na [algorytmie *Rijndael*](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf) (nazwa wzięła się od kombinacji nazwisk dwóch belgijskich kryptografów, którzy są autorami algorytmu: Joan Daemen oraz Vincent Rijmen). Zezwala na wybór rozmiaru bloku, dopasowanego do długości klucza, który jest w 3 wariantach: 128 bitów, 192 bity lub 256 bitów. Do dziś jest uznawany za bezpieczny i zalecany standard szyfrowania danych wrażliwych, który jest szeroko stosowany m.in. do bezpiecznej komunikacji bezprzewodowej, w protokole TLS czy szyfrowania danych w spoczynku.
+- Popularne algorytmy szyfrowania asymetrycznego:
+	- **RSA** (*Rivest - Shamir - Adleman*, od nazwisk twórców) - zaproponowany w 1977 roku i wykorzystywany jako powszechny standard do dziś. Algorytm szyfrowania asymetrycznego, bazujący na  tym, że rozkład dużych liczb pierwszych na czynniki pierwsze jest złożony obliczeniowo.
+	- **ECC** (*Elliptic Curve Cryptography*) - kryptografia krzywych eliptycznych określa grupę asymetrycznych algorytmów kryptograficznych, które wykorzystują matematyczne właściwości krzywych eliptycznych, czyli funkcji opisanych równaniem: $$y^2 = x^3 + ax + b$$
+		- Zastosowanie w bezpieczeństwie opiera się na założeniu, że nie istnieje żaden wydajny algorytm, który jest w stanie rozwiązać [problem dyskretnego logarytmu krzywej eliptycznej](https://pl.eitca.org/bezpiecze%C5%84stwo-cybernetyczne/eitc-to-zaawansowana-kryptografia-klasyczna/kryptografia-krzywych-eliptycznych/wprowadzenie-do-krzywych-eliptycznych/przegl%C4%85d-egzamin%C3%B3w-wprowadzenie-do-krzywych-eliptycznych/co-to-jest-dyskretny-problem-logarytmu-krzywej-eliptycznej-ecdlp-i-dlaczego-jest-trudny-do-rozwi%C4%85zania/), w skrócie ECDLP (*Elliptic Curve Discrete Logarithm Problem*), w rozsądnym czasie.
+		- Konkretne zastosowania:
+			- **ECDHE** (*Elliptic Curve Diffie-Hellman Ephemeral*) - odmiana protokołu Diffie-Hellman, służącego do uzgadniania kluczy (opisanego powyżej), który opiera się na krzywych eliptycznych.
+			- **ECDSA** (*Elliptic Curve Digital Signature Algorithm*) - algorytm kryptograficzny wykorzystywany w podpisach cyfrowych, wykorzystujący (jak nazwa wskazuje) krzywe eliptyczne. Więcej informacji:
+				- https://cyberwiedza.pl/ecdsa-algorytm-podpisu-cyfrowego-krzywej-eliptycznej/
+				- https://www.ssl.com/pl/artyku%C5%82/por%C3%B3wnanie-ecdsa-vs-rsa-prosty-przewodnik/ - różnica pomiędzy ECDSA i RSA.
+		- Więcej informacji: https://www.ssl.com/pl/artyku%C5%82/czym-jest-kryptografia-krzywej-eliptycznej-ecc/
 ## Key length
 TODO:
 - Bardzo istotną kwestią, świadczącą o sile algorytmu kryptograficznego, jest **długość klucza** (ang. *key length*), czyli z ilu bitów (0 lub 1) składa się dany klucz. **Przestrzeń klucza** (ang. *key space*), to po prostu zakres wartości, jakie może przyjąć klucz dane długości. Mówiąc bardziej obrazowo: ile możliwych kombinacji 0 i 1 można zapisać dla danej ilości bitów. Przykładowo, dla klucza 2-bitowego, mamy tylko 4 możliwości: 00, 01, 10, 11 (oczywiście jest to tylko przykład poglądowy, bo wartość takiego klucza byłoby szalenie łatwo odgadnąć). Przestrzeń klucza rośnie wraz z jego długością, co można opisać prostą zależnością matematyczną $2^n$, gdzie `n` to długość klucza. Podsumowując: im dłuższy klucz, tym lepiej.
-- UWAGA: dłuższy klucz nie zawsze oznacza, że szyfrowanie jest bezpieczniesze (od pewnej granicy):
+- UWAGA: dłuższy klucz nie zawsze oznacza, że szyfrowanie jest bezpieczniejsze, bo to również zależy od użytego systemu kryptograficznego (np. 1024-bitowy klucz w RSA oferuje w przybliżeniu ten sam poziom bezpieczeństwa co 160-bitowy klucz w ECC):
 	- README: https://blog.cloudflare.com/why-are-some-keys-small/
 	- README: https://crypto.stackexchange.com/questions/19632/is-it-true-the-longer-the-key-length-is-the-more-secure-the-encryption
 - Dzisiejsze systemy kryptograficzne opierają się na złożonych algorytmach korzystających z długich kluczy, żeby zapewnić fundamentalne cele bezpieczeństwa (triada CIA oraz zasada niezaprzeczalności).
-- Wraz z wzrostem mocy obliczeniowej, standardowa długość klucza, uznawana za bezpieczną, również musi się zwiększać. Nadejście komputerów kwantowych może nieźle namieszać w kryptologii, a szczególnie w algorytmach opierających się na dużych liczbach pierwszych, ale na razie są to rozważania teoretyczne.
+- Wraz z wzrostem mocy obliczeniowej, standardowa długość klucza, uznawana za bezpieczną, również musi się zwiększać.
+	- Ten aspekt należy brać pod uwagę podczas dobierania odpowiedniego rozwiązania - jeśli dziś atak siłowy może zająć 10 lat, to przy dynamicznym rozwoju komputerów, za 5 lat może okazać się, że przy tych samych parametrach czas ataku będzie wynosił już tylko 3 miesiące.
+	- Pojawiają się usługi chmurowe oraz wykorzystanie znacznie wydajniejszych (w kontekście masowych, równoległych obliczeń) procesorów graficznych GPU. 
+	- Nadejście komputerów kwantowych może nieźle namieszać w kryptologii, a szczególnie w algorytmach opierających się na dużych liczbach pierwszych, ale na razie są to rozważania teoretyczne.
+- Przy wyborze algorytmu i długości klucza należy brać pod uwagę również uwagę wydajność rozwiązania - im bardziej złożony klucz, tym więcej mocy obliczeniowej będzie potrzeba do zaszyfrowania/deszyfrowania danych, co jest szczególnie istotną kwestią przy zabezpieczaniu danych w tranzycie.
 # Obfuscation
 TODO:
 - Proces transformacji danych, w rezultacie którego oryginalna treść staje się niezrozumiała dla człowieka, ale zachowuje pierwotne znaczenie oraz funkcję dla systemu.
