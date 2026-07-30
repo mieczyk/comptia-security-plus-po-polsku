@@ -74,30 +74,29 @@ Dostęp do kopii zapasowych kluczy powinien być ściśle chroniony. Dlatego fir
 
 **Podsumowując:** *key escrow* to system przechowywania i odzyskiwania kluczy prywatnych, do których dostęp - w razie potrzeby - posiadają wyłącznie uprawnione osoby.
 # Encryption
-**Szyfrowanie (ang. *encryption*) to operacja kryptograficzna wykorzystująca matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Procesem odwrotnym jest **deszyfrowanie (ang. *decryption*), czyli transformacja zaszyfrowanego tekstu (ang. *ciphertext*) do postaci tekstu jawnego (ang. *plaintext*)**. Wykorzystywane przy tym zasady matematyczne sprawiają, że **praktycznie niewykonalne jest odszyfrowanie danych bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
+**Szyfrowanie (ang. *encryption*) to operacja kryptograficzna wykorzystująca matematyczne algorytmy do przekształcenia czytelnych informacji w formę nieczytelną i niezrozumiałą dla osób postronnych**. Procesem odwrotnym jest **deszyfrowanie (ang. *decryption*), czyli transformacja zaszyfrowanego tekstu (ang. *ciphertext*) do postaci tekstu jawnego (ang. *plaintext*)**. Wykorzystywane przy tym zasady matematyczne sprawiają, że przy obecnych możliwościach obliczeniowych, **praktycznie niewykonalne jest odszyfrowanie danych bez znajomości właściwego klucza deszyfrującego (ang. *decryption key*)**.
 
-Bardziej ogólnym terminem jest **kryptografia** (ang. *cryptography*), która stanowi szeroką dziedzinę informatyki obejmującą m.in. wspomniane procesy szyfrowania oraz deszyfrowania. Jednym z najważniejszych zadań kryptografii jest **zapewnienie poufności danych** (ang. *confidentiality*). To właśnie tutaj szyfrowanie jest wykorzystywane najczęściej, ponieważ jednym z filarów triady bezpieczeństwa IT jest ochrona przed niepowołanym dostępem - zarówno **danych przesyłanych przez sieć** (ang. *in transit*), jak i **składowanych na nośnikach danych** (ang. *at rest*). Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
+**Kryptografia** (ang. *cryptography*) stanowi szeroką dziedzinę informatyki obejmującą m.in. wspomniane procesy szyfrowania oraz deszyfrowania. Jednym z najważniejszych zadań kryptografii jest **zapewnienie poufności danych** (ang. *confidentiality*). To właśnie tutaj szyfrowanie jest wykorzystywane najczęściej, ponieważ jednym z filarów triady bezpieczeństwa IT jest ochrona przed niepowołanym dostępem - zarówno **danych przesyłanych przez sieć** (ang. *in transit*), jak i **składowanych na nośnikach danych** (ang. *at rest*). Nawet jeśli atakującemu uda się w jakiś sposób przechwycić zaszyfrowane informacje, nie będzie w stanie ich odczytać bez znajomości odpowiedniego klucza.
 
 Pozostałe zadania kryptografii, które są równie istotne, to:
 - **Zapewnienie spójności danych** (ang. *integrity*), czyli gwarancja, że nie zostały zmienione przez osoby nieuprawnione.
 - **Weryfikacja tożsamości** (ang. *authentication*).
 - **Zapewnienie niezaprzeczalności** (ang. *non-repudiation*), czyli uniemożliwienie nadawcy wyparcia się wysłania danej wiadomości.
 
-Oczywiście sam fakt zaszyfrowania danych nie oznacza, że są one w pełni zabezpieczone. Działa tu zasada podobna do stosowania silnych (długich i trudnych do odgadnięcia) oraz słabych haseł (krótkich wyrazów ze słownika). W przypadku kryptografii o skuteczności rozwiązania stanowią dwa czynniki:
+> Można się jeszcze spotkać z takimi terminami jak **kryptologia** (ang. *cryptology*) oraz **kryptoanaliza** (ang. *cryptanalysis*), dlatego wyjaśnijmy sobie tę kwestię, żeby nie było nieporozumień. **Kryptologia to nauka o zabezpieczeniu informacji, która dzieli się na dwie główne gałęzie: kryptografię (tworzenie mechanizmów szyfrujących) oraz kryptoanalizę (badanie szyfrów i szukanie sposobów na ich złamanie)**.
+
+Oczywiście sam fakt zaszyfrowania danych nie oznacza, że są one w pełni zabezpieczone. Działa tu zasada podobna do stosowania silnych (długich i trudnych do odgadnięcia) oraz słabych haseł (krótkich wyrazów ze słownika). W przypadku kryptografii o skuteczności rozwiązania decydują dwa czynniki:
 - **Algorytm szyfrujący/deszyfrujący** (ang. *cipher*) - zawsze należy stosować algorytmy powszechnie uznawane za bezpieczne i unikać tych, w których znaleziono i udokumentowano luki. Opracowanie skutecznego algorytmu, którego nie sposób złamać w rozsądnym czasie, wymaga solidnej wiedzy matematycznej, dlatego lepiej unikać tworzenia własnych rozwiązań i korzystać z gotowych standardów.
 - **Wartość klucza** - nawet najlepszy algorytm na nic się nie zda, jeśli zastosujemy klucz łatwy do odgadnięcia (podobnie jak w przypadku stosowania słabego hasła).
 
+Gdy naszym celem jest zapewnienie poufności danych za pomocą szyfrowania, powinniśmy wziąć pod uwagę trzy stany, w jakich mogą znajdować się dane, żeby zastosować odpowiednie mechanizmy:
+- **Dane w spoczynku** (ang. *data at rest*) - dotyczy informacji przechowywanych w pamięci trwałej, oczekujących, aż użytkownik uzyska do nich dostęp. Głównym zagrożeniem dla poufności jest tutaj nieuprawniony dostęp do nośnika (np. poprzez kradzież całego laptopa z dyskiem).
+- **Dane przesyłane** (ang. *data in transit*) - chodzi tutaj głównie o informacje przesyłane przez sieć. Głównym zagrożeniem dla ich poufności jest podsłuchiwanie bądź przejęcie ruchu sieciowego.
+- **Dane w użyciu** (ang. *data in use*) - informacje znajdują się w pamięci operacyjnej i procesy działające w systemie mają do nich bezpośredni dostęp. Zagrożeniem jest w tym przypadku dostęp do wrażliwych danych znajdujących się w pamięci, przez nieautoryzowane procesy, kiedy system nie zapewnia odpowiedniej izolacji (pamiętajmy, że w nowoczesnych systemach proces powinien mieć dostęp tylko do swojego obszaru pamięci i nie może czytać z obszarów przydzielonych innym procesom).
+
 Dobierając odpowiednie rozwiązania kryptograficzne, należy również uwzględnić, że w wielu specjalistycznych zastosowaniach moc obliczeniowa i energia mogą być ograniczone. W takim przypadku można zastosować tzw. **kryptografię lekką** (ang. *lightweight cryptography*). W środowiskach, gdzie pobór mocy musi być silnie ograniczony ze względu na źródła energii o niewielkiej pojemności (np. satelity, zdalne czujniki, karty inteligentne), często stosuje się specjalistyczne rozwiązania sprzętowe wspierające kryptografię lekką. Innym przypadkiem, gdzie lekkie algorytmy są kluczowe, jest wymaganie niskich opóźnień podczas przesyłania danych (ang. *low latency*).
 
-W ramach ciekawostki warto wspomnieć o tzw. **szyfrowaniu homomorficznym** (ang. *homomorphic encryption*), które pozwala wykonywać operacje bezpośrednio na zaszyfrowanych danych, bez konieczności uprzedniego ich odszyfrowania.
-
-TODO:
-- Kryptologia = kryptografia + kryptoanaliza
-- Kiedy chcemy zapewnić poufność danych poprzez szyfrowanie musimy brać pod uwagę 3 stany przechowywania danych i odpowiednio dobrać rozwiązanie:
-	- **Dane w spoczynku** (ang. *data at rest*) - przechowywane w pamięci trwałej, oczekujące, aż użytkownik uzyska do nich dostęp. Główne zagrożenie: nieuprawniony dostęp, kradzież urządzenia (np. dysku).
-	- **Dane przesyłane** (ang. *data in transit*) - przesyłane przez sieć. Główne zagrożenie: podsłuchiwanie/przejęcie ruchu sieciowego.
-	- **Dane w użyciu** (ang. *data in use*) - znajdują się w pamięci operacyjnej i procesy działające w systemie mają do nich bezpośredni dostęp. Zagrożenie: dostęp przez nieautoryzowane procesy, kiedy system nie zapewnia odpowiedniej izolacji (proces powinien mieć dostęp tylko do swojego obszaru pamięci i nie może czytać z obszarów przydzielonych innym procesom); narzędzia diagnostyczne umożliwiają wykonanie zrzutu pamięci (*memory dump*), w której znajdują się aktualnie wrażliwe dane.
-		- Homomorficzne szyfrowanie jako ciekawostka.
+W ramach ciekawostki warto wspomnieć o tzw. **szyfrowaniu homomorficznym** (ang. *homomorphic encryption*), które pozwala wykonywać operacje bezpośrednio na zaszyfrowanych danych, bez konieczności uprzedniego ich odszyfrowania. Ten mechanizm może być użyteczny w sytuacji gdy bardzo zależy nam na ekstremalnej poufności wspomnianych wcześniej danych będących w użyciu.
 ## Level
 Szyfrowanie danych w spoczynku (ang. *at-rest*) może odbywać się na **różnych poziomach** (ang. *levels*) - od pojedynczej komórki w tabeli bazodanowej, przez pliki, po całe nośniki danych. Poszczególne poziomy szyfrowania, obowiązujące na egzaminie, zostały pokrótce opisane poniżej.
 ### Full-disk
@@ -166,12 +165,13 @@ TODO:
 - Dane przesyłane przez sieć pomiędzy dwoma systemami. Dane mogą być przesyłane w ramach wewnętrznych sieci firmowych czy przez Internet. Dotyczy sieci przewodowych, bezprzewodowych, bluetooth itp.
 - Najpopularniejszą metodą ochrony wrażliwych danych w tranzycie jest wykorzystanie protokołu TLS (*Transport Layer Security*) - dawniej SSL (*Secure Sockets Layer*).
 	- SSL jest przestarzały i uznawany za niebezpieczny, choć cały czas spotykam się z używaniem ich zamiennie (np. certyfikaty SSL).
-	- https://www.youtube.com/watch?v=0TLDTodL7Lc - Co to jest TLS?
 - Szczególnie w transporcie istotne jest zapewnienie integralności danych, która może zostać naruszona intencjonalnie (złośliwa zmiana danych bądź częściowe usunięcie) lub nieintencjonalnie (błędy podczas transmisji danych i utrata pakietów). W tym celu wykorzystuje się podpisy cyfrowe (opis poniżej).
 - Uwierzytelnienie na przykładzie TLS Handshake:
 	- https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/
-	- https://www.youtube.com/watch?v=86cQJ0MMses
 - Bardziej szczegółowa analiza pakietów (przykład na starej wersji, ale ciekawy): https://www.moserware.com/2009/06/first-few-milliseconds-of-https.html
+- Dodatkowe materiały:
+	- [Transport Layer Security (TLS) - Computerphile](https://www.youtube.com/watch?v=0TLDTodL7Lc) - historia protokołu TLS oraz główne założenia (dlaczego nie IPSec)
+	- [TLS Handshake Explained - Computerphile](https://www.youtube.com/watch?v=86cQJ0MMses)
 ## Asymmetric
 TODO:
 - Każdy z użytkowników takiego systemu ma parę kluczy (publiczny i prywatny) - zostało to już opisane w PKI.
