@@ -161,17 +161,11 @@ Przychodzą mi do głowy dwa scenariusze (choć są one dość specyficzne), gdz
 
 W mojej ocenie jest to rozwiązanie, które w praktyce stosuje się stosunkowo rzadko. Nawet w przedstawionych powyżej scenariuszach często można znaleźć prostsze rozwiązania. W pierwszym przypadku lepiej jest zastosować zwykłe usunięcie danych bądź nadpisanie ich nieznaczącymi informacjami. Drugi scenariusz może natomiast sugerować, że warto ponownie przemyśleć projekt bazy danych i model kontroli dostępu, zamiast wdrażać bardzo skomplikowane mechanizmy szyfrowania.
 ## Transport/communication
-TODO:
-- Dane przesyłane przez sieć pomiędzy dwoma systemami. Dane mogą być przesyłane w ramach wewnętrznych sieci firmowych czy przez Internet. Dotyczy sieci przewodowych, bezprzewodowych, bluetooth itp.
-- Najpopularniejszą metodą ochrony wrażliwych danych w tranzycie jest wykorzystanie protokołu TLS (*Transport Layer Security*) - dawniej SSL (*Secure Sockets Layer*).
-	- SSL jest przestarzały i uznawany za niebezpieczny, choć cały czas spotykam się z używaniem ich zamiennie (np. certyfikaty SSL).
-- Szczególnie w transporcie istotne jest zapewnienie integralności danych, która może zostać naruszona intencjonalnie (złośliwa zmiana danych bądź częściowe usunięcie) lub nieintencjonalnie (błędy podczas transmisji danych i utrata pakietów). W tym celu wykorzystuje się podpisy cyfrowe (opis poniżej).
-- Uwierzytelnienie na przykładzie TLS Handshake:
-	- https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/
-- Bardziej szczegółowa analiza pakietów (przykład na starej wersji, ale ciekawy): https://www.moserware.com/2009/06/first-few-milliseconds-of-https.html
-- Dodatkowe materiały:
-	- [Transport Layer Security (TLS) - Computerphile](https://www.youtube.com/watch?v=0TLDTodL7Lc) - historia protokołu TLS oraz główne założenia (dlaczego nie IPSec)
-	- [TLS Handshake Explained - Computerphile](https://www.youtube.com/watch?v=86cQJ0MMses)
+W czasach, kiedy coraz więcej wrażliwych i poufnych danych jest przesyłanych przez różnego rodzaju sieci, zarówno wewnętrzne, jak i przez Internet, bardzo istotna jest ich ochrona. Niezależnie od technologii komunikacji (sieci przewodowe, Wi-Fi, Bluetooth), **poufność** (ang. *confidentiality*) oraz **integralność** (ang. *integrity*) przesyłanych informacji **mogą być zagrożone przez podsłuchiwanie transmisji, jej przechwycenie lub modyfikację** (zamierzoną bądź przypadkową).
+
+Najpopularniejsze mechanizmy ochrony danych w tranzycie opierają się na dwóch protokołach, które zapewniają poufność, integralność oraz uwierzytelnienie, ale różnią się zakresem działania i zastosowaniem:
+- **TLS** (*Transport Layer Security*) - protokół działa na poziomie pomiędzy warstwą aplikacji i warstwą transportową [modelu OSI](https://innasiec.pl/model-referencyjny-iso-osi/) oraz zabezpiecza konkretne połączenie pomiędzy klientem (np. przeglądarka internetowa czy klient poczty) a serwerem. Wszystkie istotne parametry połączenia są ustalane podczas procedury o nazwie *TLS handshake*: [wymiana klucza](../1-general-security-concepts/1-4-cryptographic-solutions.md#key-exchange) pomiędzy uczestnikami komunikacji do szyfrowania symetrycznego (poufność); otrzymanie certyfikatu przez klienta, na podstawie którego można potwierdzić tożsamość serwera (uwierzytelnienie) oraz uzgodnienie algorytmów kryptograficznych zapewniających integralność danych. TLS jest następcą przestarzałego protokołu SSL (*Secure Sockets Layer*), który nie powinien być już stosowany, ze względu na znane podatności. Aktualna, zalecana wersja protokołu to **TLS 1.3**.
+- **IPSec** (*Internet Protocol Security*) - protokół działa na niższym poziomie modelu OSI, a mianowicie na warstwie sieciowej, i zabezpiecza całe pakiety IP. Dzięki temu jest w stanie chronić całą komunikację między hostami lub sieciami, niezależnie od aplikacji, co sprawia, że jest powszechnie stosowany w wirtualnych prywatnych sieciach VPN.
 ## Asymmetric
 TODO:
 - Każdy z użytkowników takiego systemu ma parę kluczy (publiczny i prywatny) - zostało to już opisane w PKI.
@@ -375,3 +369,4 @@ W związku z powyższym, aktualnie zaleca się stosowanie **funkcji z rodziny P
 - [StackOverflow: Digital signature for a file using openssl](https://stackoverflow.com/questions/10782826/digital-signature-for-a-file-using-openssl)
 - [Okta: How HMAC Works](https://www.okta.com/identity-101/hmac/)
 - [SY0-601: Metody łamania haseł](https://vilya.pl/sy0-601-metody-lamania-hasel/)
+- [Transport Layer Security (TLS) - Computerphile](https://www.youtube.com/watch?v=0TLDTodL7Lc)
