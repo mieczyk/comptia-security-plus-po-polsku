@@ -111,7 +111,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
         - [Volume](1-general-security-concepts/1-4-cryptographic-solutions.md#volume)
         - [Database](1-general-security-concepts/1-4-cryptographic-solutions.md#database)
         - [Record](1-general-security-concepts/1-4-cryptographic-solutions.md#record)
-- [Transport/communication](1-general-security-concepts/1-4-cryptographic-solutions.md#transport-communication)
+	- [Transport/communication](1-general-security-concepts/1-4-cryptographic-solutions.md#transportcommunication)
 - [Hashing](1-general-security-concepts/1-4-cryptographic-solutions.md#hashing)
 - [Salting](1-general-security-concepts/1-4-cryptographic-solutions.md#salting)
 - [Digital signatures](1-general-security-concepts/1-4-cryptographic-solutions.md#digital-signatures)
