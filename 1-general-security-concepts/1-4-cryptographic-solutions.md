@@ -180,7 +180,7 @@ Najważniejsze **zalety szyfrowania asymetrycznego**:
 - Zakładając, że klucze prywatne są dobrze chronione przez swoich właścicieli, szyfrowanie asymetryczne zapewnia dodatkowo spójność, uwierzytelnienie oraz niezaprzeczalność (poprzez podpisy elektroniczne).
 - Stosunkowo prosta wymiana kluczy (ang. *key exchange*): nowy użytkownik po prostu wysyła innym swój klucz publiczny.
 
-Oczywiście nic nie jest doskonałe, więc i w tym przypadku znajdzie się kilka minusów. Chyba największą **wadą szyfrowania asymetrycznego**, jest jego wolne działanie, ze względu na złożoność wymaganych obliczeń. W związku z tym, jeśli zachodzi konieczność przesłania dużej ilości danych, stosuje się **podejście hybrydowe**: najpierw nawiązywana jest poufna sesja komunikacji za pomocą szyfrowania asymetrycznego, która następnie służy do bezpiecznej wymiany współdzielonego klucza symetrycznego, utworzonego na potrzeby tej konkretnej komunikacji. Dalsza wymiana danych (w ramach sesji) odbywa się już z zastosowaniem wielokrotnie szybszego szyfrowania symetrycznego.
+Oczywiście nic nie jest doskonałe, więc i w tym przypadku znajdzie się kilka minusów. Chyba największą **wadą szyfrowania asymetrycznego**, jest jego wolne działanie, ze względu na złożoność wymaganych obliczeń. W związku z tym, jeśli zachodzi konieczność przesłania dużej liczby danych, stosuje się **podejście hybrydowe**: najpierw nawiązywana jest poufna sesja komunikacji za pomocą szyfrowania asymetrycznego, która następnie służy do bezpiecznej wymiany współdzielonego klucza symetrycznego, utworzonego na potrzeby tej konkretnej komunikacji. Dalsza wymiana danych (w ramach sesji) odbywa się już z zastosowaniem wielokrotnie szybszego szyfrowania symetrycznego.
 
 Pracując nad systemem opartym o kryptografię asymetryczną, warto trzymać się kilku zasad:
 1. **Wybierz odpowiedni algorytm, który jest powszechnie uznawany za bezpieczny** i spełnia Twoje potrzeby. Unikaj systemów, które stosują zasadę ochrony przez niejawność (*security through obscurity*) i polegają na tajności samego algorytmu zamiast klucza.
@@ -190,21 +190,19 @@ Pracując nad systemem opartym o kryptografię asymetryczną, warto trzymać si�
 5. **Trzymaj kopie zapasowe kluczy prywatnych**. Jeśli klucz zostanie utracony (np. wskutek uszkodzenia nośnika), a mamy dostęp tylko do zaszyfrowanych danych, to tak jakbyśmy padli ofiarą *ransomware*. Do bezpiecznego deponowania kluczy można użyć systemów [key escrow](../1-general-security-concepts/1-4-cryptographic-solutions.md#key-escrow).
 6. **Warto używać sprzętowych rozwiązań typu HSM** (*Hardware Security Module*), które bezpiecznie przechowują i zarządzają kluczami w taki sposób, że ich wykorzystanie staje się dla zwykłego użytkownika transparentne. Prostym przykładem urządzenia opartego o HSM są klucze USB, takie jak np. [YubiKey](https://www.yubico.com/). Aby uzyskać dostęp do chronionych danych, musimy włożyć taki klucz do portu USB lub przyłożyć do urządzenia mobilnego (komunikacja NFC).
 ## Symmetric
-TODO:
-- W Symetrycznych systemach kryptograficznych wszyscy użytkownicy używają jednego, współdzielonego klucza. Zostało to już poruszone w PKI.
-- **Algorytmy opierające się na kluczu symetrycznym**:
-	- Ten sam klucz prywatny, nazywany również w tym przypadku kluczem współdzielonym (ang. *shared key*) jest używany w operacji szyfrowania i deszyfrowania, więc wszyscy uczestnicy komunikacji muszą posiadać ten sam klucz.
-	- W przypadku długich kluczy, sam szyfr jest praktycznie niemożliwy do złamania, ale problemem stanowi tutaj zachowanie wartości klucza w tajemnicy. Taki klucz musi być bezpiecznie rozprowadzany wśród uczestników komunikacji, co jest nie lada wyzwaniem w sytuacji, w której tych uczestników jest pokaźna liczba.
-	- Ze względu na szybkość działania, algorytmy symetryczne są wykorzystywane do masowego szyfrowania i odszyfrowywania danych celem zapewnienia poufności komunikacji.
-	- Wady algorytmów symetrycznych:
-		- Dystrybucja klucza jest niemałym wyzwaniem. Bez bezpiecznego kanału komunikacji cyfrowej, trzeba to zrobić w sposób offline. Im więcej uczestników, tym większe wyzwanie.
-		- Symetryczna kryptografia nie zapewnia niezaprzeczalności, a jedynie poufność - wiadomość mogła przyjść od każdego, kto posiada współdzielony klucz, nawet jeśli ten dostał się w niepowołane ręce.
-		- Brak skalowalności, ale nie chodzi tutaj o sam algorytm, ale o liczbę uczestników komunikacji - im większa grupa, tym większa szansa na wyciek klucza (tak jak z przekazywaniem jakiejś tajemnicy w zaufaniu. Jak wielu ludzi pozna sekret, to przestaje być sekretem).
-		- Konieczność częstej generacji nowych kluczy i ponownej dystrybucji - jeśli choć jeden z członków grupy odejdzie lub jego klucz wycieknie, ten klucz przestaje być bezpieczny,
-	- Zalety algorytmów symetrycznych:
-		- Głównie bardzo duża szybkość jego działania, szczególnie w porównaniu do algorytmów asymetrycznych. Ze względu na naturę operacji matematycznych, algorytmy symetryczne doskonale sprawdzają się jako rozwiązania czysto sprzętowe, co może jeszcze bardziej przyspieszyć ich działanie.
-	- Przykłady: DES, 3DES, AES.
-	- Jednakże pomimo swoich wad, szyfrowanie symetryczne dalej bywa wykorzystywane obok szyfrowania asymetrycznego ze względu na szybkość działania.
+**W symetrycznych (ang. *symmetric*) systemach kryptograficznych każdy z użytkowników używa tego samego, współdzielonego klucza (ang. *shared key*), zarówno do operacji szyfrowania, jak i deszyfrowania**, co zostało już tutaj wspomniane przy okazji omawiania [infrastruktury klucza publicznego (PKI)](../1-general-security-concepts/1-4-cryptographic-solutions.md#public-key-infrastructure-pki).
+
+Jeśli zastosowano algorytmy symetryczne powszechnie uznawane za bezpieczne oraz odpowiednią długość klucza, to można przyjąć, że zaszyfrowane dane są prawidłowo zabezpieczone. Problem w tym przypadku może jednak okazać się zachowanie wartości klucza w tajemnicy. Pamiętajmy, że taki klucz musi zostać bezpiecznie rozprowadzony wśród wszystkich uczestników komunikacji, co może być nie lada wyzwaniem przy większej liczbie członków konwersacji. Poza tym, im większa ilość osób posiada ten sam klucz, tym większe prawdopodobieństwo wycieku (to tak jak z przekazywaniem jakiejś tajemnicy w zaufaniu - jak zbyt wielu ludzi ją pozna, to przestaje być tajemnicą).
+
+Ważną **zaletą systemów symetrycznych** jest ich **szybkość działania**, co jest istotne przy operowaniu na dużej liczbie danych czy w sytuacjach, gdy dane muszą być natychmiastowo szyfrowane i deszyfrowane *w locie* (np. podczas komunikacji HTTPS, po wcześniejszym ustanowieniu połączenia TLS). Dodatkowo, ze względu na naturę operacji matematycznych stosowanych w algorytmach symetrycznych, ten rodzaj kryptografii doskonale **sprawdza się w rozwiązaniach wykorzystujących akcelerację sprzętową**, co może jeszcze bardziej przyspieszyć ich działanie.
+
+Najważniejsze **wady** rozwiązań opartych o kryptografię symetryczną:
+- **Dystrybucja współdzielonego klucza może być problematyczna**, szczególnie przy braku bezpiecznego kanału komunikacji cyfrowej. W takim przypadku zdarza się, że trzeba to zrobić *offline*, w bezpieczny sposób, co przy większej liczbie użytkowników może okazać się trudnym przedsięwzięciem.
+- **Symetryczna kryptografia nie zapewnia niezaprzeczalności** (ang. *non-repudiation*), a jedynie poufność (ang. *confidentiality*) i integralność (ang. *integrity*). Zaszyfrowana wiadomość mogła przyjść od każdego, kto posiada współdzielony klucz, nawet jeśli ten dostał się w niepowołane ręce.
+- **Brak skalowalności** - nie chodzi tutaj o sam algorytm, ale o liczbę uczestników komunikacji. Załóżmy, że mamy system z określoną liczbą użytkowników i chcemy, żeby komunikacja jeden-na-jeden zawsze odbywała się w pełnej tajemnicy przed pozostałymi użytkownikami. W tej sytuacji każda para uczestników komunikacji powinna używać innego klucza symetrycznego, co daje nam `n(n-1)/2` niezbędnych kluczy (`n` to liczba użytkowników). Zostając w tym scenariuszu, załóżmy, że mamy aktualnie 10 użytkowników i chcemy dodać kolejnego do systemu - musimy wygenerować 10 nowych kluczy.
+- **Konieczność częstej generacji nowych kluczy i ponownej dystrybucji** - jeśli choć jeden z członków grupy odejdzie lub jego klucz wycieknie, ten klucz przestaje być bezpieczny.
+
+Jednakże pomimo swoich wad, szyfrowanie symetryczne nadal jest powszechnie stosowane obok szyfrowania asymetrycznego, ze względu na swoją szybkość działania.
 ## Key exchange
 TODO:
 - Bardzo istotnym elementem zarządzania kluczami symetrycznymi jest ich **wymiana** (ang. *key exchange*), która jest również podstawowym problemem w szyfrowaniu symetrycznym. Trzy główne metody to:

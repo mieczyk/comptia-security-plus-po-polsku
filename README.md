@@ -113,6 +113,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
         - [Record](1-general-security-concepts/1-4-cryptographic-solutions.md#record)
 	- [Transport/communication](1-general-security-concepts/1-4-cryptographic-solutions.md#transportcommunication)
 	- [Asymmetric](1-general-security-concepts/1-4-cryptographic-solutions.md#asymmetric)
+	- [Symmetric](1-general-security-concepts/1-4-cryptographic-solutions.md#symmetric)
 - [Hashing](1-general-security-concepts/1-4-cryptographic-solutions.md#hashing)
 - [Salting](1-general-security-concepts/1-4-cryptographic-solutions.md#salting)
 - [Digital signatures](1-general-security-concepts/1-4-cryptographic-solutions.md#digital-signatures)
