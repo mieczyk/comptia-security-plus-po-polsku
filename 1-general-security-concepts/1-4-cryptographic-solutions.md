@@ -192,7 +192,7 @@ Pracując nad systemem opartym o kryptografię asymetryczną, warto trzymać si�
 ## Symmetric
 **W symetrycznych (ang. *symmetric*) systemach kryptograficznych każdy z użytkowników używa tego samego, współdzielonego klucza (ang. *shared key*), zarówno do operacji szyfrowania, jak i deszyfrowania**, co zostało już tutaj wspomniane przy okazji omawiania [infrastruktury klucza publicznego (PKI)](../1-general-security-concepts/1-4-cryptographic-solutions.md#public-key-infrastructure-pki).
 
-Jeśli zastosowano algorytmy symetryczne powszechnie uznawane za bezpieczne oraz odpowiednią długość klucza, to można przyjąć, że zaszyfrowane dane są prawidłowo zabezpieczone. Problem w tym przypadku może jednak okazać się zachowanie wartości klucza w tajemnicy. Pamiętajmy, że taki klucz musi zostać bezpiecznie rozprowadzony wśród wszystkich uczestników komunikacji, co może być nie lada wyzwaniem przy większej liczbie członków konwersacji. Poza tym, im większa ilość osób posiada ten sam klucz, tym większe prawdopodobieństwo wycieku (to tak jak z przekazywaniem jakiejś tajemnicy w zaufaniu - jak zbyt wielu ludzi ją pozna, to przestaje być tajemnicą).
+Jeśli zastosowano algorytmy symetryczne powszechnie uznawane za bezpieczne oraz odpowiednią długość klucza, to można przyjąć, że zaszyfrowane dane są prawidłowo zabezpieczone. Problem w tym przypadku może jednak okazać się zachowanie wartości klucza w tajemnicy. Pamiętajmy, że taki klucz musi zostać bezpiecznie rozprowadzony wśród wszystkich uczestników komunikacji, co może być poważnym wyzwaniem przy większej liczbie członków konwersacji. Poza tym, im większa ilość osób posiada ten sam klucz, tym większe prawdopodobieństwo wycieku (to tak jak z przekazywaniem jakiejś tajemnicy w zaufaniu - jak zbyt wielu ludzi ją pozna, to przestaje być tajemnicą).
 
 Ważną **zaletą systemów symetrycznych** jest ich **szybkość działania**, co jest istotne przy operowaniu na dużej liczbie danych czy w sytuacjach, gdy dane muszą być natychmiastowo szyfrowane i deszyfrowane *w locie* (np. podczas komunikacji HTTPS, po wcześniejszym ustanowieniu połączenia TLS). Dodatkowo, ze względu na naturę operacji matematycznych stosowanych w algorytmach symetrycznych, ten rodzaj kryptografii doskonale **sprawdza się w rozwiązaniach wykorzystujących akcelerację sprzętową**, co może jeszcze bardziej przyspieszyć ich działanie.
 
@@ -204,19 +204,45 @@ Najważniejsze **wady** rozwiązań opartych o kryptografię symetryczną:
 
 Jednakże pomimo swoich wad, szyfrowanie symetryczne nadal jest powszechnie stosowane obok szyfrowania asymetrycznego, ze względu na swoją szybkość działania.
 ## Key exchange
-TODO:
-- Bardzo istotnym elementem zarządzania kluczami symetrycznymi jest ich **wymiana** (ang. *key exchange*), która jest również podstawowym problemem w szyfrowaniu symetrycznym. Trzy główne metody to:
-	- Dystrybucja offline (fizyczna: kartka, klucz sprzętowy; cyfrowy: mail, telefon). Zawsze istnieje ryzyko przejęcia tej informacji, niezależnie od medium.
-	- Wykorzystanie szyfrowania asymetrycznego do utworzenia bezpiecznego kanału komunikacji i wymiany klucza prywatnego (szyfrowanie symetryczne jest znacznie szybsze niż asymetryczne).
-	- Algorytm Diffie-Hellman. W skrócie: uczestnicy komunikacji wymieniają się tylko częściami klucza, żeby ostatecznie zbudować ten sam klucz po obu stronach.
-		- Wyjaśnienie intuicyjne (na kolorach): https://www.youtube.com/watch?v=NmM9HA2MQGI
-		- Wyjaśnienie matematyczne: https://www.youtube.com/watch?v=Yjrfm_oRO0w
-- **Diffie-Hellman** - wykorzystywany, kiedy brakuje infrastruktury PKI. Przyszedł na świat w 1976 roku i jest wykorzystywany do dziś. Algorytm:
-	1. Obie strony ustalają między sobą dwie duże liczby: liczbę pierwszą `p` oraz liczbę całkowitą `g`, takie, że `1 < g < p`.
-	2. Strona A wybiera losowo dowolną, dużą liczbę całkowitą `a` i wykonuje następujące działanie: $$A = g^a\ mod\ p$$, gdzie `mod` to operacja wyznaczania reszty z dzielenia - przykład `5 mod 2 = 1`.
-	3. Strona B również losowo wybiera dowolną dużą liczbę całkowitą `b` i wykonuje na niej następujące działanie $$B = g^b\ mod\ p$$
-	4. Obie strony wymieniają się teraz obliczonymi wartościami `A` oraz `B`. Teraz mogą wyznaczyć **identyczną** wartość klucz `K` niezależnie: $$K = A^b\ mod\ p$$ oraz $$K = B^a\ mod\ p$$
-	5. Obie strony mają teraz dokładnie ten sam klucz `K`, a cała sztuczka polega na tym, że tylko część danych potrzebna do zbudowania klucza jest wymieniana pomiędzy stronami (wartości `a` oraz `b` nie są wysyłane), więc atakujący i tak nie będzie w stanie bez nich zbudować prawidłowej wartości klucza.
+Zasadniczym elementem zarządzania **kluczami symetrycznymi** jest **wymiana** (ang. *key exchange*). Pamiętamy również, że w przypadku kryptografii asymetrycznej dystrybucja klucza publicznego jest prostsza, ponieważ może on być jawnie udostępniony (choć nadal jednak konieczna jest weryfikacja jego autentyczności). Tutaj jest trochę trudniej.
+
+Główne metody dystrybucji tajnego klucza symetrycznego:
+- **Dystrybucja offline**  - w wersji fizycznej może to być kartka bądź klucz sprzętowy, a w wersji cyfrowej mail, telefon itp.  Należy mieć jednak na uwadze, że zawsze istnieje ryzyko przejęcia tej informacji, niezależnie od medium.
+- **Wykorzystanie szyfrowania asymetrycznego do utworzenia bezpiecznego kanału komunikacji i wymiany tajnego klucza symetrycznego** - jest to często stosowana technika.
+- **Zbudowanie tajnego klucza na podstawie współdzielonych danych** - jest to ciekawy przypadek, bo wykorzystując odpowiednie reguły matematyczne, obie strony komunikacji mogą sobie zbudować identyczny klucz, wymieniając się tylko cząstkowymi informacjami (nawet ich przejęcie przez atakującego na niewiele się zda). Najpopularniejszym algorytmem, bardzo szeroko wykorzystywanym w różnego rodzaju komunikacji sieciowej, jest **protokół Diffie-Hellman**, o którym powiemy sobie nieco więcej.
+
+Klasyczny algorytm **Diffie-Hellman** został opublikowany w 1976 roku i jest wykorzystywany do dziś, choć przeważnie w różnych wariantach. Teraz jednak skupimy się na jego podstawowej wersji, która opiera się na potęgowaniu modularnym oraz trudności rozwiązania problemu logarytmu dyskretnego.
+
+Algorytm wygląda następująco:
+1. Obie strony komunikacji (A i B) ustalają między sobą dwie liczby, które mogą być jawne: odpowiednio dużą liczbę pierwszą `p` oraz liczbę całkowitą `g`, które spełniają zależność `1 < g < p`.  Tutaj należy zaznaczyć, że liczba `g` nie może być dowolna, ale musi być dobrana w taki sposób, żeby po wielokrotnym potęgowaniu i wyliczeniu reszty z dzielenia przez `p`, potrafiła wygenerować bardzo dużą część możliwych wyników - dlatego jest też nazywana *generatorem*.
+2. Strona A ustala tajną liczbę całkowitą o wartości `a` i wykonuje następujące działanie: $$A = g^a\ mod\ p$$, gdzie `mod` to operacja wyznaczania reszty z dzielenia - przykład `5 mod 2 = 1`.
+3.  Strona B również wybiera sobie tajną liczbę całkowitą `b` i wykonuje na niej następujące działanie: $$B = g^b\ mod\ p$$
+4. Obie strony wymieniają się teraz obliczonymi wartościami `A` oraz `B`. I tutaj uwydatnia się bardzo istotna cecha tego algorytmu: nie da się w łatwy sposób odgadnąć wartości `a` oraz `b`, posiadając jedynie wyniki w postaci wartości `A` oraz `B`, które z tego powodu mogą być przesłane w sposób jawny.
+5. Teraz obie strony komunikacji mogą sobie obliczyć **identyczną** wartość klucza niezależnie za pomocą działań: 
+	1. Strona A: $$K = B^a\ mod\ p$$
+	2. Strona B: $$K = A^b\ mod\ p$$
+
+Obie strony mają teraz dokładnie ten sam klucz `K`, a cała sztuczka polega na tym, że **tylko część danych potrzebna do zbudowania klucza jest wymieniana pomiędzy stronami** (wartości `a` oraz `b` są tajne i nie muszą być wysyłane), więc atakujący i tak nie będzie w stanie zbudować prawidłowej wartości klucza bez nich. Poniżej znajduje się grafika ilustrująca, które dane mogą trafić do przestrzeni publicznej, a które są tajne: 
+
+![Diffie-Hellman](../media/1-4-diffie-hellman.png)
+Źródło: opracowanie własne
+
+Przeanalizujmy teraz działanie na prostym przykładzie (oczywiście jest to tylko przykład poglądowy, na niedużych liczbach) i przyjmijmy następujące wartości:
+```
+Wartości publiczne:
+p = 23
+g = 5
+
+Wartości tajne:
+a = 3
+b = 4
+```
+$$A = 5^3\ mod\ 23 = 10$$
+$$B = 5^4\ mod\ 23 = 4$$
+$$K_a = 4^3\ mod\ 23 = 18$$
+$$K_b = 10^4\ mod\ 23 = 18$$
+
+Warto wspomnieć na koniec, że klasyczny *Diffie-Hellman* sam w sobie nie zapewnia uwierzytelnienia stron komunikacji, dlatego w praktyce stosuje się go razem z mechanizmami uwierzytelniania (np. certyfikatami w TLS).
 ## Algorithms
 TODO:
 - Nie będziemy tutaj omawiać dokładnych zasad działania poszczególnych algorytmów, ponieważ znacznie wykracza to poza zakres egzaminu. Trzeba tylko wiedzieć, które są aktualnie standardami, a które są przestarzałe.
@@ -361,3 +387,5 @@ W związku z powyższym, aktualnie zaleca się stosowanie **funkcji z rodziny P
 - [Okta: How HMAC Works](https://www.okta.com/identity-101/hmac/)
 - [SY0-601: Metody łamania haseł](https://vilya.pl/sy0-601-metody-lamania-hasel/)
 - [Transport Layer Security (TLS) - Computerphile](https://www.youtube.com/watch?v=0TLDTodL7Lc)
+- [Secret Key Exchange (Diffie-Hellman) - Computerphile](https://www.youtube.com/watch?v=NmM9HA2MQGI)
+- [Diffie Hellman -the Mathematics bit- Computerphile](https://www.youtube.com/watch?v=Yjrfm_oRO0w)
