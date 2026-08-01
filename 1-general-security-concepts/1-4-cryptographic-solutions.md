@@ -277,12 +277,13 @@ TODO:
 	- Nadejście komputerów kwantowych może nieźle namieszać w kryptologii, a szczególnie w algorytmach opierających się na dużych liczbach pierwszych, ale na razie są to rozważania teoretyczne.
 - Przy wyborze algorytmu i długości klucza należy brać pod uwagę również uwagę wydajność rozwiązania - im bardziej złożony klucz, tym więcej mocy obliczeniowej będzie potrzeba do zaszyfrowania/deszyfrowania danych, co jest szczególnie istotną kwestią przy zabezpieczaniu danych w tranzycie.
 # Obfuscation
-TODO:
-- Proces transformacji danych, w rezultacie którego oryginalna treść staje się niezrozumiała dla człowieka, ale zachowuje pierwotne znaczenie oraz funkcję dla systemu.
+*Zaciemnianie* (ang. *obfuscation*) to **proces transformacji danych, w wyniku którego stają się one niezrozumiałe dla człowieka, ale nadal zachowują swoją funkcjonalność dla systemu.**
+
+W odróżnieniu od szyfrowania, dane nadal są prawidłowo interpretowane przez komputer - stają się nieczytelne (lub bardzo trudne do zrozumienia) jedynie dla człowieka. Należy więc pamiętać, że obfuskacja nie jest mechanizmem kryptograficznym i **służy głównie utrudnieniu analizy danych lub kodu**.
 ## Steganography
 TODO:
 - Steganografia polega na ukrywaniu tajnych informacji w plikach (przeważnie multimedialnych, z tego względu, że są duże i oferują sporo miejsca do ukrycia), które z pozoru wydają się mało istotne. Steganografia, w odróżnieniu od kryptografii, ukrywa sam fakt komunikacji (postronny odbiorca nawet nie wie, że w pliku znajduje się jakaś ukryta informacja).
-	- Technicznie polega to zazwyczaj na podmianie [najmniej znaczących bitów](https://pl.wikipedia.org/wiki/Najmniej_znacz%C4%85cy_bit) (ang. *least significant bit*, LSB) w plikach, które składają się z ogromnej ilości takich bitów. Operując tylko na bitach LSB mamy pewność, że plik nie zostanie w żaden sposób uszkodzony, a zmiany są tak niewielkie, że są bardzo trudne do wyłapania przez człowieka.
+	- Technicznie polega to zazwyczaj na podmianie [najmniej znaczących bitów](https://pl.wikipedia.org/wiki/Najmniej_znacz%C4%85cy_bit) (ang. *least significant bit*, czyli w skrócie) w plikach, które składają się z ogromnej ilości takich bitów. Operując tylko na bitach LSB mamy pewność, że plik nie zostanie w żaden sposób uszkodzony, a zmiany są tak niewielkie, że są bardzo trudne do wyłapania przez człowieka.
 - Można oczywiście umieścić zaszyfrowaną wiadomość. Wtedy nawet gdy osoba postronna wykryje fakt komunikacji, to i tak nie będzie w stanie odczytać wiadomości bez klucza.
 - Ukryć można dowolną informację, nie tylko tekst. Może to być inny obraz, nagranie audio itp. Oczywiście im więcej informacji tym trudniej i wiadomość będąca kontenerem również musi być odpowiednio duża.
 - Steganografia może kojarzyć się z techniką pozwalającą na ukrycie niecnych intencji, ale jest też często wykorzystywana do czynności w pełni zgodnych z prawem. Przykładem są niewidoczne, cyfrowe znaki wodne (ang. *digital watermarks*). Twórca, który sprzedaje e-booki może każdemu klientowi udostępnić kopię z niewidocznym, unikatowym znakiem wodnym. Jeśli w nielegalnej kopii, krążącej po internecie znajdziemy ten znak wodny, można będzie dojść do *źródła wycieku* (zakładając, że każda legalnie kupiona kopia ma swój unikatowy znacznik). Choć pewnie w dobie LLM-ów takie zabezpieczenie może okazać się nie do końca skuteczne.
