@@ -277,17 +277,21 @@ TODO:
 	- Nadejście komputerów kwantowych może nieźle namieszać w kryptologii, a szczególnie w algorytmach opierających się na dużych liczbach pierwszych, ale na razie są to rozważania teoretyczne.
 - Przy wyborze algorytmu i długości klucza należy brać pod uwagę również uwagę wydajność rozwiązania - im bardziej złożony klucz, tym więcej mocy obliczeniowej będzie potrzeba do zaszyfrowania/deszyfrowania danych, co jest szczególnie istotną kwestią przy zabezpieczaniu danych w tranzycie.
 # Obfuscation
-*Zaciemnianie* (ang. *obfuscation*) to **proces transformacji danych, w wyniku którego stają się one niezrozumiałe dla człowieka, ale nadal zachowują swoją funkcjonalność dla systemu.**
+***Zaciemnianie* (ang. *obfuscation*) to proces transformacji danych, w wyniku którego stają się one niezrozumiałe dla człowieka, ale nadal zachowują swoją funkcjonalność dla systemu.**
 
 W odróżnieniu od szyfrowania, dane nadal są prawidłowo interpretowane przez komputer - stają się nieczytelne (lub bardzo trudne do zrozumienia) jedynie dla człowieka. Należy więc pamiętać, że obfuskacja nie jest mechanizmem kryptograficznym i **służy głównie utrudnieniu analizy danych lub kodu**.
 ## Steganography
-TODO:
-- Steganografia polega na ukrywaniu tajnych informacji w plikach (przeważnie multimedialnych, z tego względu, że są duże i oferują sporo miejsca do ukrycia), które z pozoru wydają się mało istotne. Steganografia, w odróżnieniu od kryptografii, ukrywa sam fakt komunikacji (postronny odbiorca nawet nie wie, że w pliku znajduje się jakaś ukryta informacja).
-	- Technicznie polega to zazwyczaj na podmianie [najmniej znaczących bitów](https://pl.wikipedia.org/wiki/Najmniej_znacz%C4%85cy_bit) (ang. *least significant bit*, czyli w skrócie) w plikach, które składają się z ogromnej ilości takich bitów. Operując tylko na bitach LSB mamy pewność, że plik nie zostanie w żaden sposób uszkodzony, a zmiany są tak niewielkie, że są bardzo trudne do wyłapania przez człowieka.
-- Można oczywiście umieścić zaszyfrowaną wiadomość. Wtedy nawet gdy osoba postronna wykryje fakt komunikacji, to i tak nie będzie w stanie odczytać wiadomości bez klucza.
-- Ukryć można dowolną informację, nie tylko tekst. Może to być inny obraz, nagranie audio itp. Oczywiście im więcej informacji tym trudniej i wiadomość będąca kontenerem również musi być odpowiednio duża.
-- Steganografia może kojarzyć się z techniką pozwalającą na ukrycie niecnych intencji, ale jest też często wykorzystywana do czynności w pełni zgodnych z prawem. Przykładem są niewidoczne, cyfrowe znaki wodne (ang. *digital watermarks*). Twórca, który sprzedaje e-booki może każdemu klientowi udostępnić kopię z niewidocznym, unikatowym znakiem wodnym. Jeśli w nielegalnej kopii, krążącej po internecie znajdziemy ten znak wodny, można będzie dojść do *źródła wycieku* (zakładając, że każda legalnie kupiona kopia ma swój unikatowy znacznik). Choć pewnie w dobie LLM-ów takie zabezpieczenie może okazać się nie do końca skuteczne.
-- Przykład darmowego służącego do ukrywania treści w plikach, również z opcją szyfrowania: [OpenStego](https://www.openstego.com/).
+**Steganografia (ang. *steganography*) polega na ukrywaniu tajnych informacji w plikach, które na pierwszy rzut oka wyglądają niepozornie**. Najczęściej wykorzystuje się w tym celu pliki multimedialne, ze względu na ich względnie duży rozmiar (oferują więcej miejsca do ukrycia danych).
+
+Z technicznego punktu widzenia, proces ten polega zazwyczaj na podmianie [najmniej znaczących bitów](https://pl.wikipedia.org/wiki/Najmniej_znacz%C4%85cy_bit) (ang. *least significant bit*, w skrócie LSB) w plikach, które składają się z dużej ilości takich bitów. Operując tylko na bitach LSB, zazwyczaj nie powodujemy zauważalnych zmian w pliku, a modyfikacje są trudne do wyłapania dla człowieka.
+
+Ukryć można różne rodzaje informacji, nie tylko tekst. Może to być inny obraz, nagranie audio, wideo itp. Oczywiście im więcej informacji chcemy ukryć, tym trudniejsze się to staje, ponieważ plik będący *kontenerem* również musi być odpowiednio duży.
+
+**Steganografia, w odróżnieniu od kryptografii, ukrywa sam fakt komunikacji**. Jeśli wiadomość zostanie prawidłowo ukryta, postronny obserwator nie powinien wiedzieć, że w pliku znajduje się jakaś niejawna informacja. Oczywiście nic nie stoi na przeszkodzie, żeby zaszyfrować wiadomość przed ukryciem - wtedy nawet w razie jej wykrycia, nie będzie można jej odczytać bez odpowiedniego klucza.
+
+Steganografia może kojarzyć się z techniką pozwalającą na ukrycie nieczystych intencji, ale jest też często wykorzystywana do czynności w pełni zgodnych z prawem. Przykładem są niewidoczne, cyfrowe znaki wodne (ang. *digital watermarks*). Przykładowo twórca, który sprzedaje e-booki, może każdemu klientowi udostępnić kopię z niewidocznym, unikatowym znakiem wodnym. Jeśli w nielegalnej kopii krążącej po Internecie znajdziemy ten znak wodny, można będzie dojść do *źródła wycieku* (zakładając, że każda legalnie kupiona kopia ma swój unikatowy znacznik). Warto jednak pamiętać, że takie zabezpieczenia nie są niezawodne i mogą zostać usunięte lub zmodyfikowane.
+
+Przykład darmowego narzędzia służącego do ukrywania treści w plikach, również z opcją szyfrowania: [OpenStego](https://www.openstego.com/).
 ## Tokenization
 TODO:
 - W dobie LLM, ma to też inne znaczenie, ale w tym kontekście chodzi o ukrywanie danych.

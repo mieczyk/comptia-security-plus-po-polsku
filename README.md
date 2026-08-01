@@ -116,6 +116,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 	- [Symmetric](1-general-security-concepts/1-4-cryptographic-solutions.md#symmetric)
 	- [Key exchange](1-general-security-concepts/1-4-cryptographic-solutions.md#key-exchange)
 - [Obfuscation](1-general-security-concepts/1-4-cryptographic-solutions.md#obfuscation)
+	- [Steganography](1-general-security-concepts/1-4-cryptographic-solutions.md#steganography)
 - [Hashing](1-general-security-concepts/1-4-cryptographic-solutions.md#hashing)
 - [Salting](1-general-security-concepts/1-4-cryptographic-solutions.md#salting)
 - [Digital signatures](1-general-security-concepts/1-4-cryptographic-solutions.md#digital-signatures)
