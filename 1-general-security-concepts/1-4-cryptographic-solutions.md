@@ -295,7 +295,7 @@ Przykład darmowego narzędzia służącego do ukrywania treści w plikach, rów
 ## Tokenization
 > Termin *tokenizacja* w tym kontekście nie ma nic wspólnego z tokenami związanymi z wykorzystaniem LLM-ów czy też technologii *blockchain*.
 
-Tokenizacja (ang. *tokenization*) polega na zamianie wrażliwych informacji na unikatowe identyfikatory, które są neutralne i reprezentują wrażliwe informacje (tzw. *placeholders*). Te unikatowe identyfikatory (tokeny) mogą przyjmować dowolną wartość (np. jakiś losowy ciąg znaków), choć dla zwiększenia czytelności stosuje się opisowe nazwy.
+**Tokenizacja (ang. *tokenization*) polega na zamianie wrażliwych informacji na unikatowe identyfikatory, które są neutralne i reprezentują te wrażliwe informacje** (tzw. *placeholders*). Te unikatowe identyfikatory (tokeny) mogą przyjmować dowolną wartość (np. jakiś losowy ciąg znaków), choć dla zwiększenia czytelności stosuje się opisowe nazwy.
 
 Proces ten jest zazwyczaj odwracalny, dlatego powiązania tokenów z oryginalnymi danymi są przeważnie przechowywane w odpowiednio zabezpieczonej tabeli mapowań (ang. *lookup table*).
 
@@ -305,7 +305,7 @@ Przykład:
 
 **Tekst po tokenizacji:** `Pracownik [full_name_1] o numerze telefonu [phone_1] jest zatrudniony w dziale sprzedaży.`
 
-Mapowanie identyfikatorów na realne dane:
+**Mapowanie identyfikatorów na realne dane:**
 
 | Token         | Informacja         |
 | ------------- | ------------------ |
@@ -316,9 +316,13 @@ Ta technika jest szczególnie użyteczna, gdy chcemy skorzystać z dużych model
 
 Oczywiście nie musimy robić tego ręcznie i możemy skorzystać z gotowych narzędzi automatyzujących. Jednym z przykładów jest otwarta aplikacja [Presidio](https://github.com/data-privacy-stack/presidio), stworzona przez Microsoft.
 ## Data masking
-TODO:
-- Proces ukrywania wrażliwych informacji tekstowych poprzez zastępowanie wybranych lub wszystkich znaków, znakami neutralnymi, jak na przykład *gwiazdka* `*` (ang. *asterisk*), *krzyżyk* `#` (ang. *hash*) lub zwykły `x`.
-- Przykładem są hasła (często widoczne tylko w postaci gwiazdek `*`) albo numer karty kredytowej, gdzie na stronach z potwierdzeniem płatności widoczne są tylko cztery ostatnie cyfry, a reszta jest ukryta.
+**Maskowanie danych (ang. *data masking*) to proces ukrywania wrażliwych danych poprzez ich modyfikację lub zastąpienie wartościami zastępczymi w taki sposób, aby uniemożliwić identyfikację oryginalnych informacji, przy jednoczesnym zachowaniu użyteczności danych.**
+
+Maskowanie może polegać na częściowym ujawnieniu danych (np. wyświetleniu tylko fragmentu wartości) lub całkowitym ich ukryciu, na przykład poprzez zastąpienie znaków symbolami takimi jak `*`, `#` lub `x`.
+
+W przeciwieństwie do tokenizacji, maskowanie danych zazwyczaj nie jest procesem odwracalnym, a jego celem jest ochrona informacji podczas ich prezentacji, testowania lub przetwarzania, bez konieczności odzyskiwania oryginalnych wartości.
+
+Przykładem maskowania danych są hasła (często widoczne tylko w postaci gwiazdek `*`) albo numer karty kredytowej, gdzie na stronach z potwierdzeniem płatności widoczne są tylko cztery ostatnie cyfry, a reszta jest ukryta.
 # Hashing
 Skrót (ang. *hash, hash-code, fingerprint*) jest to **nieuporządkowany ciąg znaków o stałej długości, wygenerowany za pomocą specjalnej funkcji matematycznej na podstawie wejściowego ciągu znaków o dowolnej długości**. Proces obliczania skrótu (ang. *hashing*): dane wejściowe dowolnej długości -> funkcja hashująca -> tekstowy łańcuch znaków (ang. *string*) o stałej długości, zależnej od rodzaju zastosowanej funkcji.
 
