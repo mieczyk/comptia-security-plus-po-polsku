@@ -311,6 +311,7 @@ Mapowanie identyfikatorów na realne dane:
 | ------------- | ------------------ |
 | `full_name_1` | Łukasz Mieczkowski |
 | `phone_1`     | 555 444 123        |
+
 Ta technika jest szczególnie użyteczna, gdy chcemy skorzystać z dużych modeli językowych działających w chmurze do przetwarzania niektórych dokumentów i nie naruszyć przepisów GDPR (RODO w Polsce). W tej sytuacji pozbywamy się danych wrażliwych z dokumentu z wykorzystaniem wspomnianej tokenizacji i dopiero tak przetworzony dokument wysyłamy do chmury. Tabela mapowań jest przechowywana tylko lokalnie i po otrzymaniu odpowiedzi z modelu LLM, używamy jej do przywrócenia oryginalnych danych.
 
 Oczywiście nie musimy robić tego ręcznie i możemy skorzystać z gotowych narzędzi automatyzujących. Jednym z przykładów jest otwarta aplikacja [Presidio](https://github.com/data-privacy-stack/presidio), stworzona przez Microsoft.
