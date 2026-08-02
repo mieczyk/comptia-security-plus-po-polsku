@@ -293,20 +293,27 @@ Steganografia może kojarzyć się z techniką pozwalającą na ukrycie nieczyst
 
 Przykład darmowego narzędzia służącego do ukrywania treści w plikach, również z opcją szyfrowania: [OpenStego](https://www.openstego.com/).
 ## Tokenization
-TODO:
-- W dobie LLM, ma to też inne znaczenie, ale w tym kontekście chodzi o ukrywanie danych.
-- Polega na zamianie wrażliwych informacji na unikatowe identyfikatory (tzw. tokeny - nie mylić z tokenami w kontekście LLM-ów), które nie reprezentują żadnej istotnej informacji. Proces powinien być odwracalny, dlatego powiązanie tokenów z nadpisanymi danymi są przeważnie przechowywane w odpowiednio zabezpieczonej tablicy przeszukiwań (ang. *lookup table*).
-- Przykład:
-	- **Tekst źródłowy:** `Pracownik Łukasz Mieczkowski o numerze telefonu 555 444 123 jest zatrudniony w dziale sprzedaży.`
-	- **Tekst po tokenizacji:** `Pracownik [full_name_1] o numerze telefonu [phone_1] jest zatrudniony w dziale sprzedaży.`
-	- *Lookup table*, która powinna być odpowiednio zabezpieczona (przykład anonimizacji przed wysłaniem do LLM). 
+> Termin *tokenizacja* w tym kontekście nie ma nic wspólnego z tokenami związanymi z wykorzystaniem LLM-ów czy też technologii *blockchain*.
+
+Tokenizacja (ang. *tokenization*) polega na zamianie wrażliwych informacji na unikatowe identyfikatory, które są neutralne i reprezentują wrażliwe informacje (tzw. *placeholders*). Te unikatowe identyfikatory (tokeny) mogą przyjmować dowolną wartość (np. jakiś losowy ciąg znaków), choć dla zwiększenia czytelności stosuje się opisowe nazwy.
+
+Proces ten jest zazwyczaj odwracalny, dlatego powiązania tokenów z oryginalnymi danymi są przeważnie przechowywane w odpowiednio zabezpieczonej tabeli mapowań (ang. *lookup table*).
+
+Przykład:
+
+**Tekst źródłowy:** `Pracownik Łukasz Mieczkowski o numerze telefonu 555 444 123 jest zatrudniony w dziale sprzedaży.`
+
+**Tekst po tokenizacji:** `Pracownik [full_name_1] o numerze telefonu [phone_1] jest zatrudniony w dziale sprzedaży.`
+
+Mapowanie identyfikatorów na realne dane:
 
 | Token         | Informacja         |
 | ------------- | ------------------ |
 | `full_name_1` | Łukasz Mieczkowski |
 | `phone_1`     | 555 444 123        |
-- Przykład narzędzia od Microsoft, który wykorzystuje m.in. tokenizację: https://github.com/data-privacy-stack/presidio
-- Tokeny mogą być dowolne, może to być nawet jakiś losowy ciąg znaków.
+Ta technika jest szczególnie użyteczna, gdy chcemy skorzystać z dużych modeli językowych działających w chmurze do przetwarzania niektórych dokumentów i nie naruszyć przepisów GDPR (RODO w Polsce). W tej sytuacji pozbywamy się danych wrażliwych z dokumentu z wykorzystaniem wspomnianej tokenizacji i dopiero tak przetworzony dokument wysyłamy do chmury. Tabela mapowań jest przechowywana tylko lokalnie i po otrzymaniu odpowiedzi z modelu LLM, używamy jej do przywrócenia oryginalnych danych.
+
+Oczywiście nie musimy robić tego ręcznie i możemy skorzystać z gotowych narzędzi automatyzujących. Jednym z przykładów jest otwarta aplikacja [Presidio](https://github.com/data-privacy-stack/presidio), stworzona przez Microsoft.
 ## Data masking
 TODO:
 - Proces ukrywania wrażliwych informacji tekstowych poprzez zastępowanie wybranych lub wszystkich znaków, znakami neutralnymi, jak na przykład *gwiazdka* `*` (ang. *asterisk*), *krzyżyk* `#` (ang. *hash*) lub zwykły `x`.
