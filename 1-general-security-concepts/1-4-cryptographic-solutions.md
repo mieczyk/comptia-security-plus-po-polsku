@@ -225,7 +225,7 @@ Algorytm wygląda następująco:
 Obie strony mają teraz dokładnie ten sam klucz `K`, a cała sztuczka polega na tym, że **tylko część danych potrzebna do zbudowania klucza jest wymieniana pomiędzy stronami** (wartości `a` oraz `b` są tajne i nie muszą być wysyłane), więc atakujący i tak nie będzie w stanie zbudować prawidłowej wartości klucza bez nich. Poniżej znajduje się grafika ilustrująca, które dane mogą trafić do przestrzeni publicznej, a które są tajne: 
 
 ![Diffie-Hellman](../media/1-4-diffie-hellman.png)
-Źródło: opracowanie własne
+Źródło: opracowanie własne.
 
 Przeanalizujmy teraz działanie na prostym przykładzie (oczywiście jest to tylko przykład poglądowy, na niedużych liczbach) i przyjmijmy następujące wartości:
 ```
@@ -244,16 +244,67 @@ $$K_b = 10^4\ mod\ 23 = 18$$
 
 Warto wspomnieć na koniec, że klasyczny *Diffie-Hellman* sam w sobie nie zapewnia uwierzytelnienia stron komunikacji, dlatego w praktyce stosuje się go razem z mechanizmami uwierzytelniania (np. certyfikatami w TLS).
 ## Algorithms
+Poniżej znajduje się krótkie omówienie popularnych algorytmów wykorzystywanych w szyfrowaniu symetrycznym i asymetrycznym. Nie będziemy omawiać szczegółowych mechanizmów działania, ponieważ wykracza to poza zakres egzaminu, ale skupimy się na ogólnych zasadach oraz praktycznym zastosowaniu.
+### Symetryczne
+Algorytmy szyfrowania symetrycznego można podzielić na dwie główne kategorie:
+- **Szyfry strumieniowe (ang. *stream ciphers*)** operują na strumieniu danych o dowolnej długości, przetwarzając je na bieżąco (np. bajt po bajcie). W praktyce polega to na generowaniu pseudolosowego strumienia klucza (ang. *keystream*), czyli porcji danych na podstawie tajnego klucza, która jest następnie łączona z danymi do zaszyfrowania (najczęściej za pomocą operacji XOR), dając zaszyfrowany wynik. Takie podejście zapewnia niskie opóźnienia i dobrze sprawdza się w komunikacji ciągłej (np. transmisje w czasie rzeczywistym).
+- **Szyfry blokowe (ang. *block ciphers*)** działają na blokach danych o stałym rozmiarze (np. 128 bitów w przypadku algorytmu AES). W praktyce większe dane są dzielone na bloki (kawałki), a sposób ich przetwarzania zależy od tzw. **trybu pracy** (ang. _mode of operation_). Tryby te mogą łączyć bloki ze sobą lub przetwarzać dane w sposób przypominający szyfrowanie strumieniowe.
+
+Żeby lepiej zrozumieć zasadę działania wspomnianych szyfrów symetrycznych, najpierw wyjaśnijmy sobie na czym polega **operacja różnicy symetrycznej XOR** (*eXclusive OR*). Jest to **podstawowa operacja bitowa, która porównuje dwa bity i zwraca 1, gdy bity są różne, oraz 0, gdy są takie same**:
+
+| a   | b   | a XOR b <br>(a ⊕ b) |
+| --- | --- | ------------------- |
+| 0   | 0   | 0                   |
+| 1   | 1   | 0                   |
+| 0   | 1   | 1                   |
+| 1   | 0   | 1                   |
+XOR jest **operacją odwracalną**, co sprawia, że jest tak szeroko wykorzystywana w kryptografii (głównie symetrycznej). W uproszczeniu: jeśli zaszyfrujemy dane wykonując XOR z kluczem `szyfrogram = dane ⊕ klucz`, to odszyfrowanie polega na zastosowaniu operacji XOR na zaszyfrowanych danych z kluczem: `dane = klucz ⊕ szyfrogram`. Tutaj warto pamiętać, że **siła tej operacji w kontekście szyfrowania zależy przede wszystkim od jakości i losowości klucza.**
+#### Strumieniowe
+Ogólny algorytm szyfrowania strumieniowego:
+1. Kiedy mamy porcję danych do zaszyfrowania, musimy najpierw wygenerować wspomniany już wcześniej tzw. **strumień klucza** (ang. *keystream*). Jest to pseudolosowy zestaw danych zbudowany na podstawie **tajnego klucza** oraz **unikatowej, przeważnie losowo wygenerowanej liczby, która może zostać użyta tylko raz**, dlatego nazywa się ją po prostu ***nonce*** (*number used once*). Bardzo ważne jest, żeby nigdy nie używać tej samej kombinacji *klucz-nonce* . Ponowne użycie tej samej kombinacji spowodowałoby wygenerowanie identycznego strumienia klucza dla różnych danych. W takiej sytuacji atakujący może porównać szyfrogramy (wykorzystując właściwości funkcji XOR) i uzyskać informacje o zależnościach między oryginalnymi wiadomościami, co może prowadzić do złamania poufności danych.
+2. Kolejnym krokiem jest jest **wykonanie operacji XOR pomiędzy danymi wejściowymi oraz wygenerowanym strumieniem klucza**. Tutaj warto zaznaczyć, że długość wygenerowanego strumienia klucza musi być wystarczająca, aby pokryć całą szyfrowaną wiadomość.
+3. Odszyfrowanie, jak można się łatwo domyślić, polega na tym, że **odbiorca posiadający identyczny *keystream*, wykonuje operację XOR na szyfrogramie, uzyskując w ten sposób oryginalną wiadomość**. W tym momencie może pojawić się pytanie: w jaki sposób odbiorca zaszyfrowanej wiadomości jest w stanie wygenerować identyczny strumień klucza? Odpowiedź jest prosta: klucz tajny powinien już posiadać, a wartość *nonce* może zostać przekazana jawnie bądź odtworzona automatycznie już po stronie odbiorcy, na podstawie ustalonej procedury (np. na podstawie numerów sekwencyjnych przychodzących wiadomości).
+
+![Stream cipher](../media/1-4-stream-cipher.png)
+Uproszczony schemat szyfrowania strumieniowego (synchronicznego). Źródło: opracowanie własne.
+
+Szyfry strumieniowe dzielą się na dwa typy w zależności od tego, jak generowany jest strumień klucza (*keystream*):
+- **Synchroniczne** (ang. *synchronous*) - klucz strumieniowy jest generowany niezależnie od tekstu jawnego czy szyfrogramu i powstaje wyłącznie na bazie klucza oraz wewnętrznego stanu generatora.
+- **Samosynchronizujące** (ang. *self-synchronizing*) - klucz strumieniowy zależy nie tylko od klucza, ale też od pewnej liczby wcześniejszych bitów szyfrogramu.
+
+Przykłady popularnych algorytmów szyfrowania strumieniowego:
+- **RC4** (*Rivest Cipher 4*) - opracowany w 1987 roku przez Rona Rivesta (twórcę m.in. algorytmu RSA), pierwotnie jako tajemnica handlowa firmy RSA Security. Został ujawniony publicznie dopiero w 1994 roku. Ze względu na udowodnione podatności, **nie jest już uznawany za bezpieczny**. Wcześniej był szeroko wykorzystywany w takich protokołach jak SSL/TLS, czy tych zabezpieczających sieci Wi-Fi (WEP).
+- **A5/1** - opracowany w 1987 roku jako podstawowy algorytm szyfrujący w sieciach komórkowych GSM (2G). Wykorzystywany do szyfrowania połączeń głosowych i transmisji danych w klasycznych sieciach GSM. Choć można się z nim jeszcze spotkać w starych sieciach 2G, to **aktualnie jest uznawany za podatny na ataki** umożliwiające odzyskanie klucza sesyjnego.
+- **ChaCha20** - opracowany w 2008 roku przez Daniela J. Bernsteina jako udoskonalona wersja jego wcześniejszego algorytmu **Salsa20**. Do dziś jest **uznawany za bezpieczny** i wykorzystywany m.in. w TLS 1.3. Co ciekawe, starszy Salsa20 nadal jest uznawany za bezpieczny, jednak ChaCha20 zapewnia lepszą wydajność i jest obecnie znacznie szerzej stosowany w praktycznych implementacjach.
+#### Blokowe
+Szyfry blokowe, w odróżnieniu od szyfrów strumieniowych, mają trochę więcej wariantów. **To w jaki sposób zachowa się algorytm, jest zależne od trybu pracy algorytmu** (ang. *mode of operation*). Poniżej znajdziemy opisu kilku z nich (tych najpopularniejszych).
+
+**ECB (*Electronic Code Book*)** - każdy blok danych szyfrowany jest całkowicie niezależnie, tym samym kluczem, bez żadnego powiązania z pozostałymi blokami.
+
+Jest dosyć szybki, ponieważ umożliwia równoległe szyfrowanie fragmentów (bloków) danych, ale ma jedną, bardzo poważną wadę: identyczne bloki danych zawsze dadzą na wyjściu identyczne bloki szyfrogramu. Bardzo dobrym przykładem, który obrazuje ten problem jest tzw. [Pingwin ECB](https://words.filippo.io/the-ecb-penguin/) - patrząc na obrazek po zaszyfrowaniu jesteśmy w stanie nawet gołym okiem odgadnąć, że dane oryginalne przedstawiały maskotkę Linuksa. W związku z tym ten tryb jest uznawany za niebezpieczny i odradzany w praktyce.
+
+![ECB](../media/1-4-block-ciphers-ecb.png)
+ECB (*Electronic Code Book*). Źródło: opracowanie własne.
+
+**CBC (*Cipher Block Chaining*)** - w tym trybie każdy kolejny blok danych jawnych, jeszcze przed zaszyfrowaniem, jest łączony (za pomocą operacji XOR, oczywiście) z wcześniej zaszyfrowanym blokiem. Dzięki temu znika problem powtarzających się wzorców, które zaobserwowaliśmy w ECB.
+
+Może się tylko pojawić pytanie: co w przypadku pierwszego bloku? Otóż, pierwszy blok jest XOR-owany z tzw. **wektorem inicjującym IV** (ang. *Initialization vector*), czyli losową lub pseudolosową wartością startową dla algorytmu - można umownie przyjąć, że jest to odpowiednik wartości *nonce* , charakterystyczniej dla szyfrów strumieniowych (oczywiście odbiorca również potrzebuje tej wartości IV do odszyfrowania danych, więc nie musi być ona tajna).
+
+Wadą tego szyfrowania jest jego sekwencyjna natura (każdy kolejny blok wymaga zaszyfrowania poprzedniego), przez co tracimy szansę na zrównoleglenie całej operacji. Dodatkowo, błąd lub utrata jednego szyfrogramu znacząco wpływa na kolejne, więc jest wrażliwy nawet na nieduże *zawirowania*.
+
+![ECB](../media/1-4-block-ciphers-cbc.png)
+CBC (*Cipher Block Chaining*). Źródło: opracowanie własne.
+
+- **CFB (*Cipher Feedback*)**
+- **CTM/CTR (*Counter Mode*)**
+- **GCM (*Galois Counter Mode*)**
 TODO:
-- Nie będziemy tutaj omawiać dokładnych zasad działania poszczególnych algorytmów, ponieważ znacznie wykracza to poza zakres egzaminu. Trzeba tylko wiedzieć, które są aktualnie standardami, a które są przestarzałe.
-- Algorytmy **symetryczne** szyfrujące/deszyfrujące (ang. *ciphers*) można przydzielić do jednej z dwóch głównych kategorii szyfrowania symetrycznego:
-	- **Szyfry blokowe** (ang. *block ciphers*) - ogólna grupa algorytmów, które dzielą wiadomość na bloki (kawałki) i przeprowadzają operację szyfrowania na każdym bloku osobno. Większość nowoczesnych algorytmów implementuje jakąś odmianą szyfru blokowego.
-	- **Szyfry strumieniowe** (ang. *stream ciphers*) - operują na pojedynczym znaku lub bicie wiadomości (lub strumienia danych). Mogą funkcjonować również jako odmiana szyfrów blokowych - w tym przypadku dane są najpierw buforowane, szyfrowane w ramach bufora i dopiero wtedy wysyłane do odbiorcy.
-- Ciphers (operation modes): https://www.youtube.com/watch?v=bEOrdqLB1Io
-- Trzy popularne algorytmy szyfrowania symetrycznego:
+-  Trzy popularne algorytmy szyfrowania symetrycznego blokowego:
 	- **DES** (*Data Encryption Standard*) - opublikowany w roku 1977 przez rząd Stanów Zjednoczonych jako standard używany w rządowej komunikacji. Zastąpiony przez algorytm AES w 2001 roku, jest dziś uważany za przestarzały nie nadający się do zapewnienia bezpiecznej komunikacji, ze względu na wady w samym algorytmie.
 	- **3DES** (*Triple DES*) - w 1981 roku, jeszcze przed AES, została opublikowana udoskonalona wersja DES, która polegała na zastosowaniu identycznego algorytmu trzykrotnie, ale z użyciem 3 różnych kluczy. Nie jest uważany za bezpieczny - oficjalnie uznany za przestarzały (ang. *deprecated*) w grudniu 2023.
 	- **AES** (*Advanced Encryption Standard*) - szyfrowanie blokowe, oparte na [algorytmie *Rijndael*](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf) (nazwa wzięła się od kombinacji nazwisk dwóch belgijskich kryptografów, którzy są autorami algorytmu: Joan Daemen oraz Vincent Rijmen). Zezwala na wybór rozmiaru bloku, dopasowanego do długości klucza, który jest w 3 wariantach: 128 bitów, 192 bity lub 256 bitów. Do dziś jest uznawany za bezpieczny i zalecany standard szyfrowania danych wrażliwych, który jest szeroko stosowany m.in. do bezpiecznej komunikacji bezprzewodowej, w protokole TLS czy szyfrowania danych w spoczynku.
+### Asymetryczne
+TODO:
 - Popularne algorytmy szyfrowania asymetrycznego:
 	- **RSA** (*Rivest - Shamir - Adleman*, od nazwisk twórców) - zaproponowany w 1977 roku i wykorzystywany jako powszechny standard do dziś. Algorytm szyfrowania asymetrycznego, bazujący na  tym, że rozkład dużych liczb pierwszych na czynniki pierwsze jest złożony obliczeniowo.
 	- **ECC** (*Elliptic Curve Cryptography*) - kryptografia krzywych eliptycznych określa grupę asymetrycznych algorytmów kryptograficznych, które wykorzystują matematyczne właściwości krzywych eliptycznych, czyli funkcji opisanych równaniem: $$y^2 = x^3 + ax + b$$
@@ -407,3 +458,5 @@ W związku z powyższym, aktualnie zaleca się stosowanie **funkcji z rodziny P
 - [Transport Layer Security (TLS) - Computerphile](https://www.youtube.com/watch?v=0TLDTodL7Lc)
 - [Secret Key Exchange (Diffie-Hellman) - Computerphile](https://www.youtube.com/watch?v=NmM9HA2MQGI)
 - [Diffie Hellman -the Mathematics bit- Computerphile](https://www.youtube.com/watch?v=Yjrfm_oRO0w)
+- [Block Cipher vs Stream Cipher: What They Are & How They Work](https://www.thesslstore.com/blog/block-cipher-vs-stream-cipher/)
+- [Modes of Operation - Computerphile](https://www.youtube.com/watch?v=Rk0NIQfEXBA)
