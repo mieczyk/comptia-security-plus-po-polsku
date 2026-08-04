@@ -277,32 +277,52 @@ Przykłady popularnych algorytmów szyfrowania strumieniowego:
 - **A5/1** - opracowany w 1987 roku jako podstawowy algorytm szyfrujący w sieciach komórkowych GSM (2G). Wykorzystywany do szyfrowania połączeń głosowych i transmisji danych w klasycznych sieciach GSM. Choć można się z nim jeszcze spotkać w starych sieciach 2G, to **aktualnie jest uznawany za podatny na ataki** umożliwiające odzyskanie klucza sesyjnego.
 - **ChaCha20** - opracowany w 2008 roku przez Daniela J. Bernsteina jako udoskonalona wersja jego wcześniejszego algorytmu **Salsa20**. Do dziś jest **uznawany za bezpieczny** i wykorzystywany m.in. w TLS 1.3. Co ciekawe, starszy Salsa20 nadal jest uznawany za bezpieczny, jednak ChaCha20 zapewnia lepszą wydajność i jest obecnie znacznie szerzej stosowany w praktycznych implementacjach.
 #### Blokowe
-Szyfry blokowe, w odróżnieniu od szyfrów strumieniowych, mają trochę więcej wariantów. **To w jaki sposób zachowa się algorytm, jest zależne od trybu pracy algorytmu** (ang. *mode of operation*). Poniżej znajdziemy opisu kilku z nich (tych najpopularniejszych).
+Szyfry blokowe, w odróżnieniu od szyfrów strumieniowych, mają kilka różnych wariantów działania. **To, w jaki sposób zachowa się algorytm, zależy od trybu pracy algorytmu** (ang. *mode of operation*). Poniżej znajdziemy opis kilku najpopularniejszych trybów.
 
-**ECB (*Electronic Code Book*)** - każdy blok danych szyfrowany jest całkowicie niezależnie, tym samym kluczem, bez żadnego powiązania z pozostałymi blokami.
+**ECB (*Electronic Code Book*)**  każdy blok danych jest szyfrowany całkowicie niezależnie, tym samym kluczem, bez żadnego powiązania z pozostałymi blokami.
 
-Jest dosyć szybki, ponieważ umożliwia równoległe szyfrowanie fragmentów (bloków) danych, ale ma jedną, bardzo poważną wadę: identyczne bloki danych zawsze dadzą na wyjściu identyczne bloki szyfrogramu. Bardzo dobrym przykładem, który obrazuje ten problem jest tzw. [Pingwin ECB](https://words.filippo.io/the-ecb-penguin/) - patrząc na obrazek po zaszyfrowaniu jesteśmy w stanie nawet gołym okiem odgadnąć, że dane oryginalne przedstawiały maskotkę Linuksa. W związku z tym ten tryb jest uznawany za niebezpieczny i odradzany w praktyce.
+Jest to szybki tryb, ponieważ umożliwia równoległe szyfrowanie poszczególnych bloków danych, ale ma jedną bardzo poważną wadę: identyczne bloki danych zawsze dadzą na wyjściu identyczne bloki szyfrogramu. Bardzo dobrym przykładem obrazującym ten problem jest tzw. [Pingwin ECB](https://words.filippo.io/the-ecb-penguin/) - patrząc na obrazek po zaszyfrowaniu, jesteśmy w stanie nawet gołym okiem odgadnąć, że oryginalne dane przedstawiały maskotkę Linuksa. Z tego powodu tryb ECB jest uznawany za niebezpieczny i nie powinien być stosowany w praktyce.
 
 ![ECB](../media/1-4-block-ciphers-ecb.png)
 ECB (*Electronic Code Book*). Źródło: opracowanie własne.
 
-**CBC (*Cipher Block Chaining*)** - w tym trybie każdy kolejny blok danych jawnych, jeszcze przed zaszyfrowaniem, jest łączony (za pomocą operacji XOR, oczywiście) z wcześniej zaszyfrowanym blokiem. Dzięki temu znika problem powtarzających się wzorców, które zaobserwowaliśmy w ECB.
+**CBC (*Cipher Block Chaining*)** - w tym trybie każdy kolejny blok danych jawnych, jeszcze przed zaszyfrowaniem, jest łączony (za pomocą operacji XOR) z poprzednim blokiem szyfrogramu.
 
-Może się tylko pojawić pytanie: co w przypadku pierwszego bloku? Otóż, pierwszy blok jest XOR-owany z tzw. **wektorem inicjującym IV** (ang. *Initialization vector*), czyli losową lub pseudolosową wartością startową dla algorytmu - można umownie przyjąć, że jest to odpowiednik wartości *nonce* , charakterystyczniej dla szyfrów strumieniowych (oczywiście odbiorca również potrzebuje tej wartości IV do odszyfrowania danych, więc nie musi być ona tajna).
+Dzięki temu znika problem powtarzających się wzorców, który występował w ECB.
 
-Wadą tego szyfrowania jest jego sekwencyjna natura (każdy kolejny blok wymaga zaszyfrowania poprzedniego), przez co tracimy szansę na zrównoleglenie całej operacji. Dodatkowo, błąd lub utrata jednego szyfrogramu znacząco wpływa na kolejne, więc jest wrażliwy nawet na nieduże *zawirowania*.
+Może pojawić się pytanie: co w przypadku pierwszego bloku? Otóż pierwszy blok jest XOR-owany z tzw. **wektorem inicjującym IV** (ang. *Initialization Vector*), czyli wartością startową wykorzystywaną przez algorytm. IV powinien być losowy lub pseudolosowy i nie musi być utrzymywany w tajemnicy, gdyż odbiorca również potrzebuje tej wartości do prawidłowego odszyfrowania danych.
 
-![ECB](../media/1-4-block-ciphers-cbc.png)
+Wadą CBC jest jego sekwencyjna natura - każdy kolejny blok zależy od poprzedniego, przez co nie można w pełni wykorzystać równoległego przetwarzania podczas szyfrowania. Dodatkowo uszkodzenie jednego bloku szyfrogramu wpływa na poprawność odszyfrowania tego bloku oraz kolejnego.
+
+![CBC](../media/1-4-block-ciphers-cbc.png)
 CBC (*Cipher Block Chaining*). Źródło: opracowanie własne.
 
-- **CFB (*Cipher Feedback*)**
-- **CTM/CTR (*Counter Mode*)**
-- **GCM (*Galois Counter Mode*)**
-TODO:
--  Trzy popularne algorytmy szyfrowania symetrycznego blokowego:
-	- **DES** (*Data Encryption Standard*) - opublikowany w roku 1977 przez rząd Stanów Zjednoczonych jako standard używany w rządowej komunikacji. Zastąpiony przez algorytm AES w 2001 roku, jest dziś uważany za przestarzały nie nadający się do zapewnienia bezpiecznej komunikacji, ze względu na wady w samym algorytmie.
-	- **3DES** (*Triple DES*) - w 1981 roku, jeszcze przed AES, została opublikowana udoskonalona wersja DES, która polegała na zastosowaniu identycznego algorytmu trzykrotnie, ale z użyciem 3 różnych kluczy. Nie jest uważany za bezpieczny - oficjalnie uznany za przestarzały (ang. *deprecated*) w grudniu 2023.
-	- **AES** (*Advanced Encryption Standard*) - szyfrowanie blokowe, oparte na [algorytmie *Rijndael*](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf) (nazwa wzięła się od kombinacji nazwisk dwóch belgijskich kryptografów, którzy są autorami algorytmu: Joan Daemen oraz Vincent Rijmen). Zezwala na wybór rozmiaru bloku, dopasowanego do długości klucza, który jest w 3 wariantach: 128 bitów, 192 bity lub 256 bitów. Do dziś jest uznawany za bezpieczny i zalecany standard szyfrowania danych wrażliwych, który jest szeroko stosowany m.in. do bezpiecznej komunikacji bezprzewodowej, w protokole TLS czy szyfrowania danych w spoczynku.
+**CFB (*Cipher Feedback*)** - jest to przykład trybu pracy szyfru blokowego, który zachowuje się podobnie do szyfru strumieniowego. W tym trybie szyfrowany jest poprzedni blok szyfrogramu (dla pierwszego bloku używany jest wektor IV). Następnie wynik działania szyfru jest łączony za pomocą operacji XOR z danymi jawnymi, tworząc kolejny blok szyfrogramu.
+
+CFB pozwala przetwarzać dane w mniejszych jednostkach niż pełny rozmiar bloku, dzięki czemu eliminuje konieczność stosowania *paddingu* (dopełnienia danych do pełnego rozmiaru bloku). Wynika to z faktu, że do operacji XOR wykorzystywana jest tylko taka liczba bitów lub bajtów, jaka jest potrzebna do przetworzenia aktualnej części danych.
+
+![CFB](../media/1-4-block-ciphers-cfb.png)
+CFB (*Cipher Feedback*). Źródło: opracowanie własne.
+
+**CTR (*Counter Mode*)** - jest to kolejny przykład trybu pracy, który powoduje, że szyfr blokowy zachowuje się podobnie do szyfru strumieniowego. Jego dodatkową istotną zaletą jest **niezależność szyfrowania poszczególnych bloków**, co umożliwia wykonywanie operacji równolegle i znacząco przyspiesza cały proces.
+
+Zamiast szyfrować bezpośrednio dane jawne, szyfrowany jest rosnący licznik (ang. _counter_), który składa się z wartości *nonce* oraz numeru kolejnego bloku. Wynik szyfrowania licznika jest następnie łączony za pomocą operacji XOR z blokiem danych jawnych, tworząc końcowy szyfrogram.
+
+W tym przypadku również należy pamiętać, że wartość _nonce_ nie może zostać ponownie wykorzystana z tym samym kluczem, ponieważ może to doprowadzić do ujawnienia informacji o szyfrowanych danych.
+
+> **Uwaga:** ten tryb jest powszechnie znany pod skrótem **CTR**, ale w rozpisce egzaminacyjnej CompTIA Security+ SY0-701, pojawia się również pod skrótem **CTM**.
+
+![CTR](../media/1-4-block-ciphers-ctr.png)
+CTR (*Counter Mode*). Źródło: opracowanie własne.
+
+**GCM (*Galois Counter Mode*)** - jest to odmiana trybu CTR (niezależne szyfrowanie bloków oparte na licznikach), która **oprócz poufności zapewnia również integralność oraz uwierzytelnienie danych**. Osiąga to poprzez dołączenie do szyfrogramu specjalnego tagu uwierzytelniającego GMAC (_Galois Message Authentication Code_). Dzięki temu odbiorca wiadomości może zweryfikować, czy dane nie zostały zmodyfikowane podczas transmisji.
+
+GCM jest obecnie uznawany za bezpieczny i powszechnie stosowany, między innymi w protokole TLS 1.3.
+
+Trzy popularne algorytmy szyfrowania blokowego:
+- **DES (*Data Encryption Standard*)** - opublikowany w 1977 roku przez rząd Stanów Zjednoczonych jako standard szyfrowania stosowany w komunikacji rządowej. Został zastąpiony przez AES i jest **obecnie uznawany za przestarzały** ze względu na zbyt małą długość klucza, która umożliwia przeprowadzenie ataków metodą *brute force*.
+- **3DES (*Triple DES*)** - rozszerzenie algorytmu DES polegające na trzykrotnym zastosowaniu operacji szyfrowania DES, zwykle z wykorzystaniem dwóch lub trzech różnych kluczy. Zapewniało większe bezpieczeństwo niż pojedynczy DES, ale **obecnie jest uznawane za przestarzałe** (_deprecated_) i nie powinno być stosowane w nowych systemach.
+- **AES (*Advanced Encryption Standard*)** - szyfr blokowy oparty na  [algorytmie *Rijndael*](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf) (nazwa pochodzi od nazwisk belgijskich kryptografów: Joan Daemen oraz Vincent Rijmen, którzy stworzyli ten algorytm). AES wykorzystuje **stały rozmiar bloku wynoszący 128 bitów** oraz umożliwia zastosowanie kluczy o długości **128, 192 lub 256 bitów**. AES jest obecnie uznawany za bezpieczny i zalecany standard szyfrowania danych wrażliwych. Jest szeroko stosowany między innymi w bezpiecznej komunikacji bezprzewodowej, protokole TLS oraz do szyfrowania danych przechowywanych w spoczynku.
 ### Asymetryczne
 TODO:
 - Popularne algorytmy szyfrowania asymetrycznego:
