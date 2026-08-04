@@ -258,6 +258,7 @@ Algorytmy szyfrowania symetrycznego można podzielić na dwie główne kategorie
 | 1   | 1   | 0                   |
 | 0   | 1   | 1                   |
 | 1   | 0   | 1                   |
+
 XOR jest **operacją odwracalną**, co sprawia, że jest tak szeroko wykorzystywana w kryptografii (głównie symetrycznej). W uproszczeniu: jeśli zaszyfrujemy dane wykonując XOR z kluczem `szyfrogram = dane ⊕ klucz`, to odszyfrowanie polega na zastosowaniu operacji XOR na zaszyfrowanych danych z kluczem: `dane = klucz ⊕ szyfrogram`. Tutaj warto pamiętać, że **siła tej operacji w kontekście szyfrowania zależy przede wszystkim od jakości i losowości klucza.**
 #### Strumieniowe
 Ogólny algorytm szyfrowania strumieniowego:
@@ -266,6 +267,7 @@ Ogólny algorytm szyfrowania strumieniowego:
 3. Odszyfrowanie, jak można się łatwo domyślić, polega na tym, że **odbiorca posiadający identyczny *keystream*, wykonuje operację XOR na szyfrogramie, uzyskując w ten sposób oryginalną wiadomość**. W tym momencie może pojawić się pytanie: w jaki sposób odbiorca zaszyfrowanej wiadomości jest w stanie wygenerować identyczny strumień klucza? Odpowiedź jest prosta: klucz tajny powinien już posiadać, a wartość *nonce* może zostać przekazana jawnie bądź odtworzona automatycznie już po stronie odbiorcy, na podstawie ustalonej procedury (np. na podstawie numerów sekwencyjnych przychodzących wiadomości).
 
 ![Stream cipher](../media/1-4-stream-cipher.png)
+
 Uproszczony schemat szyfrowania strumieniowego (synchronicznego). Źródło: opracowanie własne.
 
 Szyfry strumieniowe dzielą się na dwa typy w zależności od tego, jak generowany jest strumień klucza (*keystream*):
@@ -284,6 +286,7 @@ Szyfry blokowe, w odróżnieniu od szyfrów strumieniowych, mają kilka różnyc
 Jest to szybki tryb, ponieważ umożliwia równoległe szyfrowanie poszczególnych bloków danych, ale ma jedną bardzo poważną wadę: identyczne bloki danych zawsze dadzą na wyjściu identyczne bloki szyfrogramu. Bardzo dobrym przykładem obrazującym ten problem jest tzw. [Pingwin ECB](https://words.filippo.io/the-ecb-penguin/) - patrząc na obrazek po zaszyfrowaniu, jesteśmy w stanie nawet gołym okiem odgadnąć, że oryginalne dane przedstawiały maskotkę Linuksa. Z tego powodu tryb ECB jest uznawany za niebezpieczny i nie powinien być stosowany w praktyce.
 
 ![ECB](../media/1-4-block-ciphers-ecb.png)
+
 ECB (*Electronic Code Book*). Źródło: opracowanie własne.
 
 **CBC (*Cipher Block Chaining*)** - w tym trybie każdy kolejny blok danych jawnych, jeszcze przed zaszyfrowaniem, jest łączony (za pomocą operacji XOR) z poprzednim blokiem szyfrogramu.
@@ -295,6 +298,7 @@ Może pojawić się pytanie: co w przypadku pierwszego bloku? Otóż pierwszy bl
 Wadą CBC jest jego sekwencyjna natura - każdy kolejny blok zależy od poprzedniego, przez co nie można w pełni wykorzystać równoległego przetwarzania podczas szyfrowania. Dodatkowo uszkodzenie jednego bloku szyfrogramu wpływa na poprawność odszyfrowania tego bloku oraz kolejnego.
 
 ![CBC](../media/1-4-block-ciphers-cbc.png)
+
 CBC (*Cipher Block Chaining*). Źródło: opracowanie własne.
 
 **CFB (*Cipher Feedback*)** - jest to przykład trybu pracy szyfru blokowego, który zachowuje się podobnie do szyfru strumieniowego. W tym trybie szyfrowany jest poprzedni blok szyfrogramu (dla pierwszego bloku używany jest wektor IV). Następnie wynik działania szyfru jest łączony za pomocą operacji XOR z danymi jawnymi, tworząc kolejny blok szyfrogramu.
@@ -302,6 +306,7 @@ CBC (*Cipher Block Chaining*). Źródło: opracowanie własne.
 CFB pozwala przetwarzać dane w mniejszych jednostkach niż pełny rozmiar bloku, dzięki czemu eliminuje konieczność stosowania *paddingu* (dopełnienia danych do pełnego rozmiaru bloku). Wynika to z faktu, że do operacji XOR wykorzystywana jest tylko taka liczba bitów lub bajtów, jaka jest potrzebna do przetworzenia aktualnej części danych.
 
 ![CFB](../media/1-4-block-ciphers-cfb.png)
+
 CFB (*Cipher Feedback*). Źródło: opracowanie własne.
 
 **CTR (*Counter Mode*)** - jest to kolejny przykład trybu pracy, który powoduje, że szyfr blokowy zachowuje się podobnie do szyfru strumieniowego. Jego dodatkową istotną zaletą jest **niezależność szyfrowania poszczególnych bloków**, co umożliwia wykonywanie operacji równolegle i znacząco przyspiesza cały proces.
@@ -313,6 +318,7 @@ W tym przypadku również należy pamiętać, że wartość _nonce_ nie może zo
 > **Uwaga:** ten tryb jest powszechnie znany pod skrótem **CTR**, ale w rozpisce egzaminacyjnej CompTIA Security+ SY0-701, pojawia się również pod skrótem **CTM**.
 
 ![CTR](../media/1-4-block-ciphers-ctr.png)
+
 CTR (*Counter Mode*). Źródło: opracowanie własne.
 
 **GCM (*Galois Counter Mode*)** - jest to odmiana trybu CTR (niezależne szyfrowanie bloków oparte na licznikach), która **oprócz poufności zapewnia również integralność oraz uwierzytelnienie danych**. Osiąga to poprzez dołączenie do szyfrogramu specjalnego tagu uwierzytelniającego GMAC (_Galois Message Authentication Code_). Dzięki temu odbiorca wiadomości może zweryfikować, czy dane nie zostały zmodyfikowane podczas transmisji.
