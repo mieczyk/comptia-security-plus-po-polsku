@@ -350,17 +350,25 @@ Na bazie ECC powstały dwa konkretne rozwiązania:
 - **ECDHE** (*Elliptic Curve Diffie-Hellman Ephemeral*) - jest to odmiana protokołu *Diffie-Hellman* służącego do bezpiecznego uzgadniania wspólnego klucza sesyjnego pomiędzy dwiema stronami, oparta na matematyce krzywych eliptycznych. Kluczowe jest tutaj słowo *ephemeral* (tymczasowy), ponieważ dla każdej nowej sesji generowana jest nowa, jednorazowa para kluczy. Dzięki temu ujawnienie długoterminowego klucza prywatnego nie pozwala odszyfrować wcześniej przechwyconych sesji, co zapewnia tzw. *Perfect Forward Secrecy* (PFS). ECDHE jest obecnie standardowym mechanizmem wymiany kluczy w protokole TLS 1.3.
 - **ECDSA** (*Elliptic Curve Digital Signature Algorithm*) - jest to algorytm wykorzystywany do tworzenia i weryfikacji podpisów cyfrowych, oparty - jak sama nazwa wskazuje - na krzywych eliptycznych. W odróżnieniu od klasycznego RSA przy porównywalnym poziomie bezpieczeństwa ECDSA generuje krótsze podpisy i wykonuje operacje szybciej, dzięki czemu jest coraz częściej wykorzystywany w certyfikatach TLS oraz systemach o ograniczonych zasobach. Mimo to RSA nadal pozostaje szeroko stosowany ze względu na swoją dojrzałość oraz powszechną kompatybilność.
 ## Key length
-TODO:
-- Bardzo istotną kwestią, świadczącą o sile algorytmu kryptograficznego, jest **długość klucza** (ang. *key length*), czyli z ilu bitów (0 lub 1) składa się dany klucz. **Przestrzeń klucza** (ang. *key space*), to po prostu zakres wartości, jakie może przyjąć klucz dane długości. Mówiąc bardziej obrazowo: ile możliwych kombinacji 0 i 1 można zapisać dla danej ilości bitów. Przykładowo, dla klucza 2-bitowego, mamy tylko 4 możliwości: 00, 01, 10, 11 (oczywiście jest to tylko przykład poglądowy, bo wartość takiego klucza byłoby szalenie łatwo odgadnąć). Przestrzeń klucza rośnie wraz z jego długością, co można opisać prostą zależnością matematyczną $2^n$, gdzie `n` to długość klucza. Podsumowując: im dłuższy klucz, tym lepiej.
-- UWAGA: dłuższy klucz nie zawsze oznacza, że szyfrowanie jest bezpieczniejsze, bo to również zależy od użytego systemu kryptograficznego (np. 1024-bitowy klucz w RSA oferuje w przybliżeniu ten sam poziom bezpieczeństwa co 160-bitowy klucz w ECC):
-	- README: https://blog.cloudflare.com/why-are-some-keys-small/
-	- README: https://crypto.stackexchange.com/questions/19632/is-it-true-the-longer-the-key-length-is-the-more-secure-the-encryption
-- Dzisiejsze systemy kryptograficzne opierają się na złożonych algorytmach korzystających z długich kluczy, żeby zapewnić fundamentalne cele bezpieczeństwa (triada CIA oraz zasada niezaprzeczalności).
-- Wraz z wzrostem mocy obliczeniowej, standardowa długość klucza, uznawana za bezpieczną, również musi się zwiększać.
-	- Ten aspekt należy brać pod uwagę podczas dobierania odpowiedniego rozwiązania - jeśli dziś atak siłowy może zająć 10 lat, to przy dynamicznym rozwoju komputerów, za 5 lat może okazać się, że przy tych samych parametrach czas ataku będzie wynosił już tylko 3 miesiące.
-	- Pojawiają się usługi chmurowe oraz wykorzystanie znacznie wydajniejszych (w kontekście masowych, równoległych obliczeń) procesorów graficznych GPU. 
-	- Nadejście komputerów kwantowych może nieźle namieszać w kryptologii, a szczególnie w algorytmach opierających się na dużych liczbach pierwszych, ale na razie są to rozważania teoretyczne.
-- Przy wyborze algorytmu i długości klucza należy brać pod uwagę również uwagę wydajność rozwiązania - im bardziej złożony klucz, tym więcej mocy obliczeniowej będzie potrzeba do zaszyfrowania/deszyfrowania danych, co jest szczególnie istotną kwestią przy zabezpieczaniu danych w tranzycie.
+Jednym z najważniejszych czynników wpływających na bezpieczeństwo systemu kryptograficznego jest **długość klucza** (ang. *key length*), czyli liczba bitów (0 i 1), z których składa się klucz kryptograficzny.
+
+Z długością klucza bezpośrednio związane jest pojęcie **przestrzeni klucza** (ang. *key space*), oznaczające liczbę wszystkich możliwych wartości, jakie może przyjąć klucz o określonej długości. Innymi słowy, określa ono liczbę wszystkich możliwych kombinacji bitów. Przykładowo klucz o długości 2 bitów może przyjąć jedynie cztery wartości: `00`, `01`, `10`, `11`. Oczywiście jest to wyłącznie przykład poglądowy, ponieważ taki klucz zostałby złamany praktycznie natychmiast metodą siłową (ang. *brute force*).
+
+Liczbę możliwych kombinacji opisuje prosty wzór: $$2^n$$, gdzie `n` oznacza długość klucza wyrażoną w bitach.
+
+Oznacza to, że **każdy dodatkowy bit podwaja liczbę możliwych kluczy**, przez co atakujący musi sprawdzić dwukrotnie więcej kombinacji podczas próby złamania szyfru metodą siłową. Z tego powodu wzrost długości klucza powoduje wykładniczy wzrost przestrzeni klucza.
+
+Na pierwszy rzut oka można więc dojść do wniosku, że **im dłuższy klucz, tym bezpieczniejsze szyfrowanie.** W praktyce nie zawsze jest to jednak prawdą, ponieważ **długość klucza należy zawsze rozpatrywać w kontekście zastosowanego algorytmu kryptograficznego.**
+
+Różne systemy kryptograficzne wykorzystują odmienne problemy matematyczne, dlatego klucze o tej samej długości mogą zapewniać zupełnie różny poziom bezpieczeństwa, co zostało już wspomniane w kontekście algorytmów RSA oraz ECC. Przykładowo: klucz **RSA 3072-bitowy** zapewnia bezpieczeństwo porównywalne z **256-bitowym kluczem ECC**.
+
+Należy również pamiętać, że **długość kluczy uznawana za bezpieczną zmienia się wraz z postępem technologicznym**. Wzrost mocy obliczeniowej komputerów sprawia, że ataki metodą *brute force* stają się coraz szybsze. Wpływ na to mają między innymi: coraz wydajniejsze procesory, możliwość wykorzystania wielu procesorów graficznych (GPU) do równoległych obliczeń czy łatwy dostęp do ogromnej mocy obliczeniowej w usługach chmurowych.
+
+Może się więc okazać, że klucz uznawany dziś za wystarczająco bezpieczny za kilka lub kilkanaście lat nie będzie już zapewniał odpowiedniego poziomu ochrony.
+
+Coraz częściej mówi się również o komputerach kwantowych. Teoretycznie mogłyby one znacząco skrócić czas łamania niektórych obecnie stosowanych algorytmów kryptografii asymetrycznej. Obecnie jednak komputery kwantowe nie stanowią jeszcze praktycznego zagrożenia dla powszechnie stosowanych systemów kryptograficznych, choć trwają intensywne prace nad kryptografią odporną na ataki kwantowe (*Post-Quantum Cryptography*, PQC).
+
+**Dobierając długość klucza, należy znaleźć kompromis pomiędzy bezpieczeństwem a wydajnością.** Przy zachowaniu tego samego algorytmu dłuższe klucze zazwyczaj zapewniają wyższy poziom ochrony, ale jednocześnie wymagają większej mocy obliczeniowej oraz więcej czasu na wykonywanie operacji kryptograficznych. Ma to szczególne znaczenie podczas zabezpieczania danych przesyłanych przez sieć, gdzie szyfrowanie i odszyfrowywanie musi odbywać się szybko i często w czasie rzeczywistym.
 # Obfuscation
 ***Zaciemnianie* (ang. *obfuscation*) to proces transformacji danych, w wyniku którego stają się one niezrozumiałe dla człowieka, ale nadal zachowują swoją funkcjonalność dla systemu.**
 
