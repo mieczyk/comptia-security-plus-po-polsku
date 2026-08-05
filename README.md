@@ -115,6 +115,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 	- [Asymmetric](1-general-security-concepts/1-4-cryptographic-solutions.md#asymmetric)
 	- [Symmetric](1-general-security-concepts/1-4-cryptographic-solutions.md#symmetric)
 	- [Key exchange](1-general-security-concepts/1-4-cryptographic-solutions.md#key-exchange)
+	- [Algorithms](1-general-security-concepts/1-4-cryptographic-solutions.md#algorithms)
 - [Obfuscation](1-general-security-concepts/1-4-cryptographic-solutions.md#obfuscation)
 	- [Steganography](1-general-security-concepts/1-4-cryptographic-solutions.md#steganography)
 	- [Tokenization](1-general-security-concepts/1-4-cryptographic-solutions.md#tokenization)
