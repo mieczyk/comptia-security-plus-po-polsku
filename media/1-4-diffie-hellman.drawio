@@ -1,0 +1,75 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Strona-1" id="1CN_Vz13wE4AKwcozj-7">
+    <mxGraphModel dx="1360" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-1" parent="1" style="shape=actor;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="40" x="30" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-2" parent="1" style="line;strokeWidth=2;html=1;rotation=-90;" value="" vertex="1">
+          <mxGeometry height="10" width="290" x="40" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-3" parent="1" style="line;strokeWidth=2;html=1;" value="" vertex="1">
+          <mxGeometry height="10" width="650" x="10" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="Alicja" vertex="1">
+          <mxGeometry height="30" width="60" x="75" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="Przestrzeń publiczna" vertex="1">
+          <mxGeometry height="30" width="260" x="200" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-7" parent="1" style="line;strokeWidth=2;html=1;rotation=-90;" value="" vertex="1">
+          <mxGeometry height="10" width="290" x="340" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-8" parent="1" style="shape=actor;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="40" x="500" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="Bartek" vertex="1">
+          <mxGeometry height="30" width="60" x="560" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="a = tajna liczba Alicji" vertex="1">
+          <mxGeometry height="30" width="150" x="10" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="b = tajna liczba Bartka" vertex="1">
+          <mxGeometry height="30" width="170" x="500" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="&lt;div&gt;p = duża liczba pierwsza&lt;/div&gt;g = generator" vertex="1">
+          <mxGeometry height="30" width="220" x="225" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-19" edge="1" parent="1" source="Pk3J2zjJpvyDrzVrCXZk-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Pk3J2zjJpvyDrzVrCXZk-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="195" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-20" connectable="0" parent="Pk3J2zjJpvyDrzVrCXZk-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" value="A" vertex="1">
+          <mxGeometry relative="1" x="0.0421" y="-4" as="geometry">
+            <mxPoint x="-7" y="-19" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="`A = g^a mod p`" vertex="1">
+          <mxGeometry height="30" width="150" x="10" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="`K = A^b mod p`" vertex="1">
+          <mxGeometry height="30" width="150" x="510" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-23" edge="1" parent="1" source="Pk3J2zjJpvyDrzVrCXZk-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="Pk3J2zjJpvyDrzVrCXZk-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-25" connectable="0" parent="Pk3J2zjJpvyDrzVrCXZk-23" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" value="B" vertex="1">
+          <mxGeometry relative="1" y="3" as="geometry">
+            <mxPoint y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="`B = g^b mod p`" vertex="1">
+          <mxGeometry height="30" width="150" x="510" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="Pk3J2zjJpvyDrzVrCXZk-24" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="`K = B^a mod p`" vertex="1">
+          <mxGeometry height="30" width="150" x="10" y="230" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
