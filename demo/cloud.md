@@ -186,7 +186,7 @@ Jeśli chodzi o bezpieczeństwo danych to chmura ma pewną przewagę nad prywatn
     Duzi usługodawcy mogą pozwolić sobie na zatrudnienie ludzi, którzy zajmują się TYLKO dbaniem o bezpieczeństwo przechowywanych danych, przez co nie są rozpraszani przez inne zadania (jak to często bywa w mniejszych zespołach IT).
     Ze względu na skalę działalności, CSP mogą szybciej i sprawniej dostosowywać swoje zabezpieczenia, żeby przeciwdziałać coraz to nowym zagrożeniom. Dostawcy chmury posiadają już duże doświadczenie w tym temacie, a ponadto są w stanie budować inteligentne rozwiązania z zakresu cyberbezpieczeństwa opierające się na heurystyce i uczeniu maszynowym, dzięki analizie ogromnej ilości danych, do których mają dostęp.
 
-Zagrożenia
+# Zagrożenia
 
 W tej sekcji przyjrzymy się pokrótce różnym zagrożeniom i potencjalnym atakom, które są charakterystyczne dla systemów działających w chmurze. Najpopularniejsze to:
 
