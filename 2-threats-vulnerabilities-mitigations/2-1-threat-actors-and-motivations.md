@@ -132,7 +132,11 @@ Szantaż to fundament modelu biznesowego gangów ransomware, które często stos
 ## Ethical
 **Motywacja etyczna** (ang. *ethical*) dotyczy osób, które **szukają podatności po to, by je naprawić, a nie wykorzystać**. W branży mówi się o hakerach w *białych kapeluszach* (ang. *white hat*), w odróżnieniu od przestępców w *czarnych kapeluszach* (ang. *black hat*) oraz osób działających na granicy prawa, czyli w *szarych kapeluszach* (ang. *grey hat*).
 
-Ważne rozróżnienie: test penetracyjny (ang. *penetration test*) czy program *bug bounty* odbywa się **za zgodą i według zasad** ustalonych z właścicielem systemu. Szukanie luk w cudzym systemie bez zgody, nawet w dobrej wierze, wciąż może zostać uznane za przestępstwo. Dlatego etyczny haker zgłasza znalezioną podatność zgodnie z zasadami **odpowiedzialnego ujawniania** (ang. *responsible/coordinated disclosure*; CERT Polska mówi o **skoordynowanym ujawnianiu podatności**), a w Polsce może w tym celu skorzystać na przykład z pośrednictwa CERT Polska (CERT, ang. *Computer Emergency Response Team*, zespół reagowania na incydenty komputerowe).
+Ważne rozróżnienie: test penetracyjny (ang. *penetration test*) czy program *bug bounty* odbywa się **za zgodą i według zasad** ustalonych z właścicielem systemu. Szukanie luk w cudzym systemie bez zgody, nawet w dobrej wierze, wciąż może zostać uznane za przestępstwo.
+
+Etyczny haker zgłasza znalezioną podatność zgodnie z zasadami **odpowiedzialnego ujawniania** (ang. *responsible/coordinated disclosure*), czyli w taki sposób, żeby właściciel systemu miał czas na *załatanie dziur*, zanim informacja trafi do szerszego grona odbiorców.
+
+W Polsce można zgłaszać podatności np. za pośrednictwem organizacji CERT Polska (*Computer Emergency Response Team*) - mamy wtedy do czynienia ze **skoordynowanym ujawnianiem podatności.**
 ## Revenge
 **Zemsta** (ang. *revenge*) to motywacja typowa dla **rozżalonych pracowników i byłych pracowników**, np. zwolnionych dyscyplinarnie albo pominiętych przy awansie. Mszczący się *insider* może skasować dane, sabotować system, którym się opiekował, albo wynieść poufne informacje i przekazać je konkurencji lub mediom. Dlatego tak ważna jest procedura odejścia pracownika z firmy (ang. *offboarding*), w tym natychmiastowe odebranie wszystkich uprawnień.
 ## Disruption/chaos
