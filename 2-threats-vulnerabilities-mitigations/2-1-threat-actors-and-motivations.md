@@ -119,7 +119,12 @@ Poniższa tabela zestawia typowe cechy poszczególnych sprawców. To uogólnieni
 ## Service disruption
 **Zakłócenie działania usług** (ang. *service disruption*), czyli **uniemożliwienie organizacji normalnego funkcjonowania**: wyłączenie strony internetowej, systemu sprzedaży, poczty czy linii produkcyjnej. Typowym narzędziem są ataki DDoS. Przerwa w działaniu oznacza straty finansowe i wizerunkowe, a w przypadku infrastruktury krytycznej (energetyka, szpitale) może zagrażać życiu ludzi.
 ## Blackmail
-**Szantaż** (ang. *blackmail*) polega na **wymuszeniu korzyści groźbą**: *zapłać, bo opublikujemy wasze dane*, *zapłać, bo nie odzyskacie plików*, *zapłać, to przestaniemy blokować waszą stronę*. Szantaż to fundament modelu biznesowego gangów ransomware, które często stosują tzw. **podwójne wymuszenie** (ang. *double extortion*): najpierw wykradają dane, potem je szyfrują i żądają zapłaty zarówno za klucz, jak i za milczenie. Szantażowany może być też pojedynczy pracownik, którego sprawca zmusza w ten sposób do współpracy.
+**Szantaż** (ang. *blackmail*) polega na **wymuszeniu korzyści groźbą**: 
+- *Zapłać, bo opublikujemy wasze dane.*
+- *Zapłać, bo nie odzyskacie plików.*
+- *Zapłać, to przestaniemy blokować waszą stronę.*
+
+Szantaż to fundament modelu biznesowego gangów ransomware, które często stosują tzw. **podwójne wymuszenie** (ang. *double extortion*): najpierw wykradają dane, potem je szyfrują i żądają zapłaty zarówno za klucz, jak i za milczenie. Szantażowany może być też pojedynczy pracownik, którego sprawca zmusza w ten sposób do współpracy.
 ## Financial gain
 **Zysk finansowy** (ang. *financial gain*) to **najczęstsza motywacja cyberprzestępców**. Pieniądze przy atakach hakerskich można zdobyć na wiele sposobów, na przykład poprzez: okup, kradzież środków z kont bankowych, kradzież kryptowalut, oszustwa typu *na prezesa* (ang. *Business Email Compromise*, BEC), sprzedaż wykradzionych danych albo wynajem zainfekowanych komputerów (botnetów). Jeśli w scenariuszu na egzaminie pojawia się żądanie zapłaty lub kradzież pieniędzy, najprawdopodobniej chodzi o *organized crime* i tę właśnie motywację.
 ## Philosophical/political beliefs
