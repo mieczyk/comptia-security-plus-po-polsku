@@ -144,7 +144,9 @@ W Polsce można zgłaszać podatności np. za pośrednictwem organizacji CERT Po
 ## War
 **Wojna** (ang. *war*) to motywacja **grup państwowych działających w ramach konfliktu zbrojnego albo przygotowujących się do niego**. Celem jest osłabienie przeciwnika: wyłączenie jego infrastruktury krytycznej, zniszczenie danych, sparaliżowanie łączności czy wojska. Cyberataki są dziś stałym elementem konfliktów i tzw. **działań hybrydowych** (ang. *hybrid warfare*), w których ataki w sieci łączą się z dezinformacją i sabotażem w świecie fizycznym.
 
-Przykładem jest atak **NotPetya** z 2017 r. Złośliwe oprogramowanie, rozprowadzone przez zainfekowaną aktualizację popularnego na Ukrainie programu księgowego, udawało ransomware, ale w rzeczywistości bezpowrotnie niszczyło dane. Rządy USA i Wielkiej Brytanii przypisały ten atak rosyjskiemu wojsku. Choć celem była Ukraina, szkodnik rozprzestrzenił się na cały świat i sparaliżował m.in. globalne firmy logistyczne, a straty liczono w miliardach dolarów.
+Przykładem jest atak **NotPetya** z 2017 r. Złośliwe oprogramowanie rozprzestrzeniało się m.in. poprzez zainfekowaną aktualizację popularnego na Ukrainie programu księgowego. Podszywało się pod ransomware, ale jego rzeczywistym celem było niszczenie danych. Zapłacenie okupu nie zapewniało możliwości ich odzyskania.
+
+Rządy USA i Wielkiej Brytanii przypisały ten atak rosyjskiemu wojsku. Choć celem była Ukraina, szkodnik rozprzestrzenił się na cały świat i sparaliżował m.in. globalne firmy logistyczne, a straty liczono w miliardach dolarów.
 # Materiały źródłowe
 - [Professor Messer’s CompTIA SY0-701 Security+ Training Course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
 - [CompTIA Security+ Study Guide SY0-701, Mike Chapple, David Seidl](https://www.amazon.com/CompTIA-Security-Study-Practice-Questions/dp/1394211414)
