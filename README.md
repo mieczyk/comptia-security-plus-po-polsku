@@ -27,6 +27,7 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 
 ## Autorzy
 - [Jan Wolski](https://github.com/BlackAndWhiteFan) – współautor opracowań sekcji 2.1, 2.2 i 5.6.
+- [Dominik Blek](https://www.linkedin.com/in/dominik-blek) - współautor opracowań sekcji 1.4.
 
 # Spis treści
 ## 1.0 General Security Concepts
@@ -124,6 +125,11 @@ Nie ukrywam, że przydałaby mi się pomoc przy tworzeniu kompletnego zestawu op
 	- [Key exchange](1-general-security-concepts/1-4-cryptographic-solutions.md#key-exchange)
 	- [Algorithms](1-general-security-concepts/1-4-cryptographic-solutions.md#algorithms)
 	- [Key length](1-general-security-concepts/1-4-cryptographic-solutions.md#key-length)
+- [Tools](1-general-security-concepts/1-4-cryptographic-solutions.md#tools)
+	- [Trusted Platform Module (TPM)](1-general-security-concepts/1-4-cryptographic-solutions.md#trusted-platform-module-tpm)
+	- [Hardware security module (HSM)](1-general-security-concepts/1-4-cryptographic-solutions.md#hardware-security-module-hsm)
+	- [Key management system](1-general-security-concepts/1-4-cryptographic-solutions.md#key-management-system-or-service-kms)
+	- [Secure enclave](1-general-security-concepts/1-4-cryptographic-solutions.md#Secure-Enclave)
 - [Obfuscation](1-general-security-concepts/1-4-cryptographic-solutions.md#obfuscation)
 	- [Steganography](1-general-security-concepts/1-4-cryptographic-solutions.md#steganography)
 	- [Tokenization](1-general-security-concepts/1-4-cryptographic-solutions.md#tokenization)
