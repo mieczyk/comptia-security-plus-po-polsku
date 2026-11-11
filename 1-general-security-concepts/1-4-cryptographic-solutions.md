@@ -413,7 +413,7 @@ Klucze kryptograficzne mają swoją hierarchię bazującą na:
 - **KEK** (*Key Encryption Key*): Klucz wyższego poziomu (przechowywany w KMS/HSM), który szyfruje sam klucz DEK.
 
 ### Magazyny Kluczy
-**Magazyn kluczy (ang.*key vault*) to scentralizowana usługa (najczęściej chmurowa) przeznaczona do bezpiecznego przechowywania i udostępniania kluczy kryptograficznych, certyfikatów oraz sekretów aplikacji.**
+**Magazyn kluczy (ang. *key vault*) to scentralizowana usługa (najczęściej chmurowa) przeznaczona do bezpiecznego przechowywania i udostępniania kluczy kryptograficznych, certyfikatów oraz sekretów aplikacji.**
 Kluczowe cechy magazynów kluczy:
 - **Zarządzanie sekretami** (ang. *secrets management*): Przechowywanie nie tylko kluczy szyfrujących, ale też haseł, tokenów API czy ciągów połączeniowych do baz danych (*connection strings*).
 - **Rejestrowanie zdarzeń i audyt** (ang. *audit logging*): KMS może rejestrować operacje związane z kluczami, np. ich tworzenie, używanie, zmianę uprawnień czy usuwanie. Dzienniki audytowe pomagają ustalić, kto i kiedy korzystał z określonych zasobów, o ile odpowiednie mechanizmy rejestrowania zostały skonfigurowane. Ułatwia to zachowanie zgodności z normami bezpieczeństwa.
