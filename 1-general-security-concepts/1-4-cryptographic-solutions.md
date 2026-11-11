@@ -373,6 +373,7 @@ Coraz częściej mówi się również o komputerach kwantowych. Teoretycznie mog
 **Narzędzia (ang. *tools*), w kontekście kryptografii, to fizyczne lub cyfrowe instrumenty, które są wykorzystywane do ochrony kryptograficznej**. Mogą to być moduły sprzętowe wbudowane w podzespoły komputera, urządzenia podłączane do komputera z zewnątrz albo usługi w chmurze.
 
 Narzędzia kryptograficzne są wykorzystywane jako dodatkowa warstwa ochrony, która zabezpiecza dane na każdym etapie - od ich generowania i przechowywania, aż po bezpieczne przetwarzanie. Ich głównym zadaniem jest zapewnienie poufności i integralności operacji kryptograficznych, niezależnie od tego, czy odbywają się one na lokalnym komputerze, czy w chmurze.
+
 Wybrane narzędzia umożliwają bezpieczne generowanie, przechowywanie i rotację kluczy. Na szczególną uwagę zasługują rozwiązania sprzętowe, które tworzą niezmienną bazę zaufania oraz bardzo mocno utrudniają przejęcie kluczy i ingerencję w operacje kryptograficzne.
 
 ## Trusted Platform Module (TPM)
